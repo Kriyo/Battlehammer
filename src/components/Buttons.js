@@ -32,6 +32,29 @@ const BUTTON_MODIFIERS = {
     background: none;
     border-color: ${defaultTheme.status.warningColor};
   `,
+  success: () => `
+    background-color: ${defaultTheme.status.successColor};
+
+    &:hover, &:focus {
+      color: ${defaultTheme.textColorInverted};
+      background-color: ${defaultTheme.status.successColorHover};
+    }
+    &:active: {
+      background-color: ${defaultTheme.status.successColorActive};
+    }
+  `,
+  error: () => `
+    background-color: ${defaultTheme.status.errorColor};
+    color: ${defaultTheme.textColorInverted};
+
+    &:hover, &:focus {
+      color: ${defaultTheme.textColorInverted};
+      background-color: ${defaultTheme.status.errorColorHover};
+    }
+    &:active: {
+      background-color: ${defaultTheme.status.errorColorActive};
+    }
+  `,
 };
 
 const Button = styled.button`
