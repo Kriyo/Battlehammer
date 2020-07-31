@@ -26,7 +26,13 @@ const BUTTON_MODIFIERS = {
   `,
   secondaryButtonWarning: () => `
     background: none;
+    color: ${defaultTheme.status.warningColor};
+    border: 2px solid ${defaultTheme.status.warningColor};
     border-color: ${defaultTheme.status.warningColor};
+    &:hover {
+      background: ${defaultTheme.status.warningColorHover};
+      color: ${defaultTheme.status.textColorInverted};
+    }
   `,
   tertiaryButtonWarning: () => `
     background: none;

@@ -15,6 +15,7 @@ export const defaultTheme = {
   textColor: lightModePrimary[300],
   textColorOnPrimary: lightModePrimary[200],
   textColorOnSecondary: neutral[100],
+  textColorInverted: neutral[100],
   disabled: neutral[400],
   textOnDisabled: neutral[300],
   status: {
@@ -38,6 +39,7 @@ export const darkTheme = {
   textColor: darkModePrimary[400],
   textColorOnPrimary: neutral[100],
   textColorOnSecondary: darkModePrimary[200],
+  textColorInverted: neutral[100],
   disabled: neutral[400],
   textOnDisabled: neutral[300],
   status: {
