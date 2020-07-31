@@ -19,6 +19,11 @@ export const PrimaryButton = styled(Button)`
     outline: 3px solid ${defaultTheme.primaryColor};
     outline-offset: 2px;
   }
+  &:disabled {
+    background-color: ${defaultTheme.disabled};
+    color: ${defaultTheme.textOnDisabled};
+    cursor: not-allowed;
+  }
 `;
 
 export const SecondaryButton = styled(Button)`
@@ -37,6 +42,12 @@ export const SecondaryButton = styled(Button)`
     outline: 3px solid ${defaultTheme.secondaryColor};
     outline-offset: 2px;
   }
+  &:disabled {
+    background: none;
+    border: 2px solid ${defaultTheme.disabled};
+    color: ${defaultTheme.disabled};
+    cursor: not-allowed;
+  }
 `;
 
 export const TertiaryButton = styled(Button)`
@@ -54,6 +65,11 @@ export const TertiaryButton = styled(Button)`
     color: ${defaultTheme.textColorOnSecondary};
     outline: 3px solid ${defaultTheme.secondaryColor};
     outline-offset: 2px;
+  }
+  &:disabled {
+    background: none;
+    color: ${defaultTheme.disabled};
+    cursor: not-allowed;
   }
 `;
 
