@@ -1,4 +1,5 @@
 export const primaryFont = '"Roboto Mono", sans-serif';
+export const secondaryFont = '"Squada One", sans-serif';
 
 export const typeScale = {
   h1: "3.05rem",
