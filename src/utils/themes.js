@@ -1,4 +1,12 @@
-import { defaultShadow, lightModePrimary, darkModePrimary, neutral } from "./colors";
+import {
+  defaultShadow,
+  lightModePrimary,
+  darkModePrimary,
+  neutral,
+  success,
+  error,
+  warning,
+} from "./colors";
 import { primaryFont } from "./typography";
 
 export const defaultTheme = {
@@ -9,6 +17,17 @@ export const defaultTheme = {
   textColorOnSecondary: neutral[100],
   disabled: neutral[400],
   textOnDisabled: neutral[300],
+  status: {
+    warningColor: warning[100],
+    warningColorHover: warning[200],
+    warningColorActive: warning[300],
+    errorColor: error[100],
+    errorColorHover: error[200],
+    errorColorActive: error[300],
+    successColor: success[100],
+    successColorHover: success[200],
+    successColorActive: success[300],
+  },
   primaryFont,
   defaultShadow,
 };
@@ -21,6 +40,17 @@ export const darkTheme = {
   textColorOnSecondary: darkModePrimary[200],
   disabled: neutral[400],
   textOnDisabled: neutral[300],
+  status: {
+    warningColor: warning[100],
+    warningColorHover: warning[200],
+    warningColorActive: warning[300],
+    errorColor: error[100],
+    errorColorHover: error[200],
+    errorColorActive: error[300],
+    successColor: success[100],
+    successColorHover: success[200],
+    successColorActive: success[300],
+  },
   primaryFont,
   defaultShadow,
 };
