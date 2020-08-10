@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { HeaderFour, InputGroup } from './index'
 import { Primaries } from './Primaries'
 
-const pState = {
+const defaultState = {
   name: '',
   cp: 0,
   faction: '',
@@ -32,20 +32,21 @@ const pState = {
     {
       title: '',
       amount: 0,
+      amounts: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
     },
     {
       title: '',
-      amount: 0,
+      amounts: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
     },
     {
       title: '',
-      amount: 0,
+      amounts: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
     },
   ],
 }
 
 export const Player = ({ label }) => {
-  const [playerConfig, setPlayerConfig] = useState(pState)
+  const [playerConfig, setPlayerConfig] = useState(defaultState)
 
   const buildPrimaries = () => {
     console.log('::> building Primaries => playerConfig: ', playerConfig)
@@ -53,7 +54,6 @@ export const Player = ({ label }) => {
   }
 
   const buildSecondaries = () => {
-    const values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
   }
 
   return (
