@@ -7,19 +7,22 @@ import { GlobalStyle } from "./utils";
 const App = () => {
   const [activeGame, setActiveGame] = useState(false);
   return (
-    <Router>
-      <Switch>
-        <Route
-          exact
-          path='/'
-          render={() => {
-            return activeGame ? <Redirect to='/dashboard' /> : <Redirect to='/home' />;
-          }}
-        />
-        <Route exact path='/home' component={Home} />
-        <Route exact path='/dashboard' component={Dashboard} />
-      </Switch>
-    </Router>
+    <div>
+      <Router>
+        <Switch>
+          <Route
+            exact
+            path='/'
+            render={() => {
+              return activeGame ? <Redirect to='/dashboard' /> : <Redirect to='/home' />;
+            }}
+          />
+          <Route exact path='/home' component={Home} />
+          <Route exact path='/dashboard' component={Dashboard} />
+        </Switch>
+      </Router>
+      <GlobalStyle />
+    </div>
   );
 };
 

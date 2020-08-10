@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ThemeProvider } from "styled-components";
-import { PrimaryButton } from "../components/Buttons";
+import { Link } from "react-router-dom";
+import { PrimaryButton } from "../components";
 import { darkTheme, defaultTheme } from "../utils";
 import Background from "../assets/sm-background.jpg";
 
@@ -33,7 +34,11 @@ export const Home = () => {
         >
           Battlehammer
         </h1>
-        <PrimaryButton>Let's Game</PrimaryButton>
+
+        <Link to='/dashboard'>
+          <PrimaryButton>Let's Game</PrimaryButton>
+        </Link>
+
         <PrimaryButton onClick={() => setUseDarkTheme(!useDarkTheme)}>
           {modeTypeSwitch}
         </PrimaryButton>
