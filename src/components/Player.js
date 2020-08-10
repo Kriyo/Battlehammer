@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { HeaderFour, InputGroup, Radios } from './index'
+import { HeaderFour, InputGroup } from './index'
 import { Primaries } from './Primaries'
 
 const pState = {
