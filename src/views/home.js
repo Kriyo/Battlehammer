@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { Link } from 'react-router-dom'
-import { PrimaryButton } from '../components'
+import { HeaderOne, PrimaryButton } from '../components'
 import { darkTheme, defaultTheme } from '../utils'
 import Background from '../assets/sm-background.jpg'
 
@@ -23,20 +23,10 @@ export const Home = () => {
           flexDirection: 'column',
         }}
       >
-        <h1
-          style={{
-            color: 'white',
-            fontFamily: `${darkTheme.secondaryFont}`,
-            fontSize: darkTheme.typeScale.h1,
-            textShadow:
-              '0px 4px 3px rgba(0,0,0,0.4), 0px 8px 13px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1)',
-          }}
-        >
-          Battlehammer
-        </h1>
+        <HeaderOne label="Battlehammer" />
 
         <Link to="/dashboard">
-          <PrimaryButton>Let's Game</PrimaryButton>
+          <PrimaryButton>Play</PrimaryButton>
         </Link>
 
         <PrimaryButton onClick={() => setUseDarkTheme(!useDarkTheme)}>

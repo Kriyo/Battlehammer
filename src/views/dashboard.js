@@ -1,13 +1,15 @@
-import React from "react";
-import { InputGroup } from "../components";
+import React from 'react'
+import { HeaderOne } from '../components'
+import { Player } from './player'
 
 export const Dashboard = () => {
+  const players = ['Player 1', 'Player 2']
+  const buildPlayers = players.map((p) => <Player key={p} label={p} />)
+
   return (
     <div>
-      <h1>Dashboard View</h1>
-
-      <InputGroup label='Player 1' />
-      <InputGroup label='Player 2' />
+      <HeaderOne label="Dashboard" />
+      {buildPlayers}
     </div>
-  );
-};
+  )
+}

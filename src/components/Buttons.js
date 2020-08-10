@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { typeScale } from "../utils";
-import { applyStyleModifiers } from "styled-components-modifiers";
+import styled from 'styled-components'
+import { applyStyleModifiers } from 'styled-components-modifiers'
+import { primaryFont, typeScale } from '../utils'
 
 const BUTTON_MODIFIERS = {
   small: () => `
@@ -61,7 +61,7 @@ const BUTTON_MODIFIERS = {
       background-color: ${props.theme.status.errorColorActive};
     }
   `,
-};
+}
 
 const Button = styled.button`
   padding: 12px 24px;
@@ -69,9 +69,9 @@ const Button = styled.button`
   font-size: ${typeScale.paragraph};
   min-width: 100px;
   cursor: pointer;
-  font-family: "Roboto", sans-serif;
+  font-family: ${primaryFont};
   transition: background-color 0.2s linear, color 0.2 linear;
-`;
+`
 
 export const PrimaryButton = styled(Button)`
   background-color: ${(props) => props.theme.primaryColor};
@@ -88,7 +88,7 @@ export const PrimaryButton = styled(Button)`
   }
 
   ${applyStyleModifiers(BUTTON_MODIFIERS)}
-`;
+`
 
 export const SecondaryButton = styled(Button)`
   background-color: white;
@@ -114,7 +114,7 @@ export const SecondaryButton = styled(Button)`
   }
 
   ${applyStyleModifiers(BUTTON_MODIFIERS)}
-`;
+`
 
 export const TertiaryButton = styled(Button)`
   background-color: white;
@@ -139,6 +139,5 @@ export const TertiaryButton = styled(Button)`
   }
 
   ${applyStyleModifiers(BUTTON_MODIFIERS)}
-`;
-
-export default PrimaryButton;
+`
+export default PrimaryButton
