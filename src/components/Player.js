@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useReducer } from 'react'
 import { HeaderFour, InputGroup } from './index'
 import { Primaries } from './Primaries'
 
@@ -45,23 +45,42 @@ const defaultState = {
   ],
 }
 
+const reducer = (prevState, updatedProperty) => ({
+  ...prevState,
+  ...updatedProperty,
+})
+
 export const Player = ({ label }) => {
-  const [playerConfig, setPlayerConfig] = useState(defaultState)
+  const [state, setState] = useReducer(reducer, defaultState)
+
+  const handleChange = (e, key) => {
+    setState({ [key]: e.target.value })
+  }
 
   const buildPrimaries = () => {
-    console.log('::> building Primaries => playerConfig: ', playerConfig)
-    return <Primaries config={playerConfig} />
+    return <Primaries config={state} />
   }
 
-  const buildSecondaries = () => {
-  }
+  const buildSecondaries = () => {}
 
   return (
     <div>
       <HeaderFour label={label} />
-      <InputGroup label="Name" />
-      <InputGroup label="CP" />
-      <InputGroup label="Faction" />
+      <InputGroup
+        label="Name"
+        value={state.name}
+        onChange={(e) => handleChange(e, 'name')}
+      />
+      <InputGroup
+        label="CP"
+        value={state.cp}
+        onChange={(e) => handleChange(e, 'cp')}
+      />
+      <InputGroup
+        label="Faction"
+        value={state.faction}
+        onChange={(e) => handleChange(e, 'faction')}
+      />
       {buildPrimaries()}
     </div>
   )

@@ -4,9 +4,9 @@ import styles from './styles.css'
 
 import { Input } from '../Input'
 
-export const InputGroup = ({ label }) => (
+export const InputGroup = ({ label, onChange }) => (
   <div className="group">
-    <Input type="text" required />
+    <Input type="text" required onChange={onChange} />
     <span className="highlight" />
     <span className="bar" />
     <label htmlFor={label}>{label}</label>
