@@ -1,6 +1,6 @@
 import React from 'react'
 import { HeaderOne } from '../components'
-import { Player } from './player'
+import { Player } from '../components/Player'
 
 export const Dashboard = () => {
   const players = ['Player 1', 'Player 2']

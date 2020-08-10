@@ -11,6 +11,12 @@ import { GlobalStyle } from './utils'
 
 const App = () => {
   const [activeGame, setActiveGame] = useState(false)
+
+  const onChange = (e) => {
+    console.log('::> onChange: ', e)
+    setActiveGame(!activeGame)
+  }
+
   return (
     <div>
       <Router>
