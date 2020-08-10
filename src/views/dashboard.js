@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-
+import React from "react";
 import { InputGroup } from "../components";
+
 export const Dashboard = () => {
   return (
     <div>

@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import styles from "./styles.css";
+import React, { useState } from 'react'
+// eslint-disable-next-line no-unused-vars
+import styles from './styles.css'
 
-import { Input } from "../../components";
+import { Input } from '../Input'
 
 export const InputGroup = ({ label }) => (
-  <div class='group'>
-    <Input type='text' required />
-    <span class='highlight'></span>
-    <span class='bar'></span>
-    <label>{label}</label>
+  <div className="group">
+    <Input type="text" required />
+    <span className="highlight" />
+    <span className="bar" />
+    <label htmlFor={label}>{label}</label>
   </div>
-);
+)
