@@ -7,7 +7,9 @@ export const Dashboard = () => {
   const buildPlayers = players.map((p) => <Player key={p} label={p} />)
 
   return (
-    <div>
+    <div
+      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+    >
       <HeaderOne label="Dashboard" />
       {buildPlayers}
     </div>

@@ -3,6 +3,10 @@ import { applyStyleModifiers } from 'styled-components-modifiers'
 import { primaryFont, typeScale } from '../utils'
 
 const BUTTON_MODIFIERS = {
+  tiny: () => `
+    font-size: ${typeScale.copyright}
+    padding: 4px;
+  `,
   small: () => `
     font-size: ${typeScale.helper};
     padding: 8px;

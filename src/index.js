@@ -6,11 +6,16 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom'
+import { ThemeProvider } from 'styled-components'
+import { darkTheme, defaultTheme, GlobalStyle } from './utils'
+import { PrimaryButton } from './components'
+
 import { Dashboard, Home } from './views'
-import { GlobalStyle } from './utils'
 
 const App = () => {
   const [activeGame, setActiveGame] = useState(false)
+  const [useDarkTheme, setUseDarkTheme] = useState(false)
+  const modeTypeSwitch = useDarkTheme ? 'Use Light Mode' : 'Use Dark Mode'
 
   const onChange = (e) => {
     console.log('::> onChange: ', e)
@@ -18,7 +23,7 @@ const App = () => {
   }
 
   return (
-    <div>
+    <ThemeProvider theme={useDarkTheme ? darkTheme : defaultTheme}>
       <Router>
         <Switch>
           <Route
@@ -36,8 +41,11 @@ const App = () => {
           <Route exact path="/dashboard" component={Dashboard} />
         </Switch>
       </Router>
+      <PrimaryButton onClick={() => setUseDarkTheme(!useDarkTheme)}>
+        {modeTypeSwitch}
+      </PrimaryButton>
       <GlobalStyle />
-    </div>
+    </ThemeProvider>
   )
 }
 

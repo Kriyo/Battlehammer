@@ -91,6 +91,7 @@ export const Player = ({ label }) => {
         onChange={(e) => handleChange(e, 'faction')}
       />
       {buildPrimaries()}
+      {buildSecondaries()}
     </div>
   )
 }

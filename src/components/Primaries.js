@@ -17,7 +17,7 @@ export const Primaries = ({ config, onChange }) => {
                 index: i,
               })
             }
-            modifier="small"
+            modifiers="small"
           >
             {amount}
           </PrimaryButton>
