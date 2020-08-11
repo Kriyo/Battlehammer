@@ -90,7 +90,9 @@ export const PrimaryButton = styled(Button)`
     color: ${(props) => props.theme.textOnDisabled};
     cursor: not-allowed;
   }
-
+  &.active {
+    background-color: ${(props) => props.theme.secondaryColor};
+  }
   ${applyStyleModifiers(BUTTON_MODIFIERS)}
 `
 

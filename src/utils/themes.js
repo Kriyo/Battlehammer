@@ -6,8 +6,8 @@ import {
   success,
   error,
   warning,
-} from "./colors";
-import { primaryFont, secondaryFont, typeScale } from "./typography";
+} from './colors'
+import { primaryFont, secondaryFont, typeScale } from './typography'
 
 export const defaultTheme = {
   primaryColor: lightModePrimary[100],
@@ -33,7 +33,7 @@ export const defaultTheme = {
   secondaryFont,
   defaultShadow,
   typeScale,
-};
+}
 
 export const darkTheme = {
   primaryColor: darkModePrimary[100],
@@ -59,4 +59,4 @@ export const darkTheme = {
   secondaryFont,
   defaultShadow,
   typeScale,
-};
+}
