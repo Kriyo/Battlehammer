@@ -57,8 +57,12 @@ export const Player = ({ label }) => {
     setState({ [key]: e.target.value })
   }
 
+  const handlePrimaryChange = (update) => {
+    console.log('::> update: ', update)
+  }
+
   const buildPrimaries = () => {
-    return <Primaries config={state} />
+    return <Primaries onChange={(e) => handlePrimaryChange(e)} config={state} />
   }
 
   const buildSecondaries = () => {}
