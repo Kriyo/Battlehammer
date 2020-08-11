@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react'
+import { cloneDeep } from 'lodash'
 import { HeaderFour, InputGroup } from './index'
 import { Primaries } from './Primaries'
 
@@ -8,23 +9,23 @@ const defaultState = {
   faction: '',
   primaries: [
     {
+      current: 0,
       round: 2,
-      current: 0,
       amounts: [5, 10, 15],
     },
     {
+      current: 0,
       round: 3,
-      current: 0,
       amounts: [5, 10, 15],
     },
     {
+      current: 0,
       round: 4,
-      current: 0,
       amounts: [5, 10, 15],
     },
     {
-      round: 5,
       current: 0,
+      round: 5,
       amounts: [5, 10, 15],
     },
   ],
@@ -58,7 +59,11 @@ export const Player = ({ label }) => {
   }
 
   const handlePrimaryChange = (update) => {
-    console.log('::> update: ', update)
+    const cloneSpec = cloneDeep(state)
+    const cloneUpdate = cloneDeep(update)
+    delete cloneUpdate.index
+    cloneSpec.primaries.splice(update.index, 1, cloneUpdate)
+    setState({ primaries: cloneSpec.primaries })
   }
 
   const buildPrimaries = () => {

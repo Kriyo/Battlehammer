@@ -2,7 +2,7 @@ import React from 'react'
 import { PrimaryButton } from '.'
 
 export const Primaries = ({ config, onChange }) => {
-  const rounds = config.primaries.map((p) => {
+  const rounds = config.primaries.map((p, i) => {
     return (
       <div key={p.round}>
         <h4>Primary Objective Round {p.round}</h4>
@@ -10,7 +10,12 @@ export const Primaries = ({ config, onChange }) => {
           <PrimaryButton
             key={amount}
             onClick={() =>
-              onChange({ current: amount, round: p.round, amounts: p.amounts })
+              onChange({
+                current: amount,
+                round: p.round,
+                amounts: p.amounts,
+                index: i,
+              })
             }
             modifier="small"
           >
