@@ -46,6 +46,13 @@ const defaultState = {
   ],
 }
 
+// Max amount of points for objectives is 45
+const getTotalScore = (arr, key) => {
+  const cloneArr = cloneDeep(arr)
+  const currentScore = cloneArr.reduce((a, b) => a + (b[key] || 0), 0)
+  return currentScore >= 45 ? 45 : currentScore
+}
+
 const reducer = (prevState, updatedProperty) => ({
   ...prevState,
   ...updatedProperty,
@@ -72,6 +79,11 @@ export const Player = ({ label }) => {
 
   const buildSecondaries = () => {}
 
+  const buildPrimaryTotalScore = () => {
+    const totalScore = getTotalScore(state.primaries, 'current')
+    return <p>Total score for primaries: {totalScore}</p>
+  }
+
   return (
     <div>
       <HeaderFour label={label} />
@@ -92,6 +104,7 @@ export const Player = ({ label }) => {
       />
       {buildPrimaries()}
       {buildSecondaries()}
+      {buildPrimaryTotalScore()}
     </div>
   )
 }
