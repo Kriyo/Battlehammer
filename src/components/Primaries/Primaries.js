@@ -16,7 +16,7 @@ export const Primaries = ({ config, onChange }) => {
               key={amount}
               onClick={() =>
                 onChange({
-                  current: amount,
+                  current: p.current !== amount ? amount : 0,
                   round: p.round,
                   amounts: p.amounts,
                   index: i,

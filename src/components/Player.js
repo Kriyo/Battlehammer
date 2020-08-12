@@ -2,6 +2,7 @@ import React, { useReducer } from 'react'
 import { cloneDeep } from 'lodash'
 import { HeaderFour, InputGroup } from './index'
 import { Primaries } from './Primaries/Primaries'
+import { Secondaries } from './Secondaries/Secondaries'
 
 const defaultState = {
   name: '',
@@ -31,17 +32,22 @@ const defaultState = {
   ],
   secondaries: [
     {
-      title: '',
       amount: 0,
       amounts: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+      key: 'First',
+      title: '',
     },
     {
-      title: '',
+      amount: 0,
+      key: 'Second',
       amounts: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+      title: '',
     },
     {
-      title: '',
+      amount: 0,
+      key: 'Third',
       amounts: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+      title: '',
     },
   ],
 }
@@ -66,6 +72,7 @@ export const Player = ({ label }) => {
   }
 
   const handlePrimaryChange = (update) => {
+    console.log('::> HPC - upd:', update)
     const cloneSpec = cloneDeep(state)
     const cloneUpdate = cloneDeep(update)
     delete cloneUpdate.index
@@ -73,15 +80,23 @@ export const Player = ({ label }) => {
     setState({ primaries: cloneSpec.primaries })
   }
 
+  const handleSecondaryChange = (update) => {
+    console.log('::> handleSecondaryChange => update: ', update)
+  }
+
   const buildPrimaries = () => {
     return <Primaries onChange={(e) => handlePrimaryChange(e)} config={state} />
   }
 
-  const buildSecondaries = () => {}
-
   const buildPrimaryTotalScore = () => {
     const totalScore = getTotalScore(state.primaries, 'current')
     return <p>Total score for primaries: {totalScore}</p>
+  }
+
+  const buildSecondaries = () => {
+    return (
+      <Secondaries onChange={(e) => handleSecondaryChange(e)} config={state} />
+    )
   }
 
   return (
@@ -103,8 +118,8 @@ export const Player = ({ label }) => {
         onChange={(e) => handleChange(e, 'faction')}
       />
       {buildPrimaries()}
-      {buildSecondaries()}
       {buildPrimaryTotalScore()}
+      {buildSecondaries()}
     </div>
   )
 }

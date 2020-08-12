@@ -4,8 +4,9 @@ import { primaryFont, typeScale } from '../utils'
 
 const BUTTON_MODIFIERS = {
   tiny: () => `
-    font-size: ${typeScale.copyright}
-    padding: 4px;
+    font-size: ${typeScale.copyright};
+    padding: 8px;
+    min-width: 55px;
   `,
   small: () => `
     font-size: ${typeScale.helper};

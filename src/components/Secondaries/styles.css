@@ -1,0 +1,6 @@
+.secondaries-btn-wrapper {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  max-width: 324px
+}
