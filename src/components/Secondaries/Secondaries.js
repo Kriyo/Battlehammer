@@ -13,7 +13,15 @@ export const Secondaries = ({ config, onChange }) => {
             className="secondaries-input"
             label={`${s.key} Secondary Objective`}
             value={s.title}
-            onChange={(e) => onChange(e, 'title')}
+            onChange={(e) =>
+              onChange({
+                amounts: s.amounts,
+                current: s.current,
+                index: i,
+                key: s.key,
+                title: e.target.value,
+              })
+            }
           />
         </div>
         <div className="secondaries-btn-wrapper">
@@ -26,6 +34,7 @@ export const Secondaries = ({ config, onChange }) => {
                   current: s.current !== amount ? amount : 0,
                   key: s.key,
                   amounts: s.amounts,
+                  title: s.title,
                   index: i,
                 })
               }
