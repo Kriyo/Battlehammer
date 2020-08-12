@@ -43,13 +43,7 @@ const App = () => {
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/objectives" component={ObjectivesList} />
         </Switch>
-        <Link to="/objectives">
-          <PrimaryButton>Objectives</PrimaryButton>
-        </Link>
       </Router>
-      <PrimaryButton onClick={() => setUseDarkTheme(!useDarkTheme)}>
-        {modeTypeSwitch}
-      </PrimaryButton>
 
       <GlobalStyle />
     </ThemeProvider>
@@ -57,3 +51,10 @@ const App = () => {
 }
 
 ReactDOM.render(<App />, document.querySelector('#root'))
+
+// <Link to="/objectives">
+//           <PrimaryButton>Objectives</PrimaryButton>
+//         </Link>
+//       <PrimaryButton onClick={() => setUseDarkTheme(!useDarkTheme)}>
+//         {modeTypeSwitch}
+//       </PrimaryButton>

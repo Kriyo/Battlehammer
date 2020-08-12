@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react'
+import { NavBar } from '../../components'
 
 import { Action } from './action'
 import { Loss } from './loss'
@@ -33,9 +34,10 @@ export const ObjectivesList = () => {
 
   const buildCheckboxes = () => {
     return objectiveTypes.map((obj) => (
-      <label htmlFor={`${obj}`}>
+      <label key={`${obj}-label`} htmlFor={`${obj}`}>
         {obj.charAt(0).toUpperCase() + obj.slice(1)}
         <input
+          key={`${obj}`}
           type="checkbox"
           name={`${obj}`}
           checked={state[obj]}
@@ -47,6 +49,7 @@ export const ObjectivesList = () => {
 
   return (
     <div>
+      <NavBar />
       <h2>Objectives</h2>
       <div>{buildCheckboxes()}</div>
       {action || all ? <Action /> : null}
