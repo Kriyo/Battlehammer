@@ -53,7 +53,7 @@ const defaultState = {
 }
 
 // Max amount of points for objectives is 45
-const getTotalScore = (arr, key) => {
+const getScore = (arr, key) => {
   const cloneArr = cloneDeep(arr)
   const currentScore = cloneArr.reduce((a, b) => a + (b[key] || 0), 0)
   return currentScore >= 45 ? 45 : currentScore
@@ -113,13 +113,25 @@ export const Player = ({ label }) => {
     )
   }
 
-  const buildTotalScore = (key) => {
-    const totalScore = getTotalScore(state[key], 'current')
+  const buildScore = (key) => {
+    const score = getScore(state[key], 'current')
     return (
       <h4>
-        Total score for {key}: {totalScore}
+        Total score for {key}: {score}
       </h4>
     )
+  }
+
+  const getTotalScore = () => {
+    const { primaries, secondaries } = state
+    const p = getScore(primaries, 'current')
+    const s = getScore(secondaries, 'current')
+    return p + s
+  }
+
+  const buildTotalScore = () => {
+    const total = getTotalScore()
+    return <h4>Total Score: {total}</h4>
   }
 
   const buildSecondaries = () => {
@@ -150,9 +162,10 @@ export const Player = ({ label }) => {
         onChange={(e) => handleChange(e, 'faction')}
       />
       {buildPrimaries()}
-      {buildTotalScore('primaries')}
+      {buildScore('primaries')}
       {buildSecondaries()}
-      {buildTotalScore('secondaries')}
+      {buildScore('secondaries')}
+      {buildTotalScore()}
       <PrimaryButton onClick={() => handleReset()}>Reset Player</PrimaryButton>
     </div>
   )
