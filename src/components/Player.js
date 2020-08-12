@@ -91,9 +91,9 @@ export const Player = ({ label }) => {
   const buildTotalScore = (key) => {
     const totalScore = getTotalScore(state[key], 'current')
     return (
-      <p>
+      <h4>
         Total score for {key}: {totalScore}
-      </p>
+      </h4>
     )
   }
 
