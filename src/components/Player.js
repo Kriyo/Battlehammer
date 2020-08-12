@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useEffect, useReducer } from 'react'
 import { cloneDeep } from 'lodash'
 import { HeaderFour, InputGroup } from './index'
 import { Primaries } from './Primaries/Primaries'
@@ -64,9 +64,26 @@ const reducer = (prevState, updatedProperty) => ({
   ...updatedProperty,
 })
 
-export const Player = ({ label }) => {
-  const [state, setState] = useReducer(reducer, defaultState)
+function useLocallyPersistedReducer(storageKey, init = null) {
+  const hookVars = useReducer(reducer, defaultState, () => {
+    const persisted = JSON.parse(localStorage.getItem(storageKey))
+    // eslint-disable-next-line no-nested-ternary
+    return persisted !== null
+      ? persisted
+      : init !== null
+      ? init(defaultState)
+      : defaultState
+  })
 
+  useEffect(() => {
+    localStorage.setItem(storageKey, JSON.stringify(hookVars[0]))
+  }, [hookVars, storageKey])
+
+  return hookVars
+}
+
+export const Player = ({ label }) => {
+  const [state, setState] = useLocallyPersistedReducer('state')
   const handleChange = (e, key) => {
     setState({ [key]: e.target.value })
   }
