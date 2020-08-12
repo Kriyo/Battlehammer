@@ -5,12 +5,14 @@ import {
   Route,
   Switch,
   Redirect,
+  Link,
 } from 'react-router-dom'
+
 import { ThemeProvider } from 'styled-components'
 import { darkTheme, defaultTheme, GlobalStyle } from './utils'
 import { PrimaryButton } from './components'
 
-import { Dashboard, Home } from './views'
+import { Dashboard, Home, ObjectivesList } from './views'
 
 const App = () => {
   const [activeGame, setActiveGame] = useState(false)
@@ -39,11 +41,16 @@ const App = () => {
           />
           <Route exact path="/home" component={Home} />
           <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/objectives" component={ObjectivesList} />
         </Switch>
+        <Link to="/objectives">
+          <PrimaryButton>Objectives</PrimaryButton>
+        </Link>
       </Router>
       <PrimaryButton onClick={() => setUseDarkTheme(!useDarkTheme)}>
         {modeTypeSwitch}
       </PrimaryButton>
+
       <GlobalStyle />
     </ThemeProvider>
   )
