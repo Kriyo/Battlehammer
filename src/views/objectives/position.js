@@ -46,7 +46,7 @@ export const Position = () => {
             No Man’s Land, Vital Ground, and Line of Demarcation
           </h4>
           <p>
-            provide VP if you control certain objectives specific to their
+            provides VP if you control certain objectives specific to their
             particular missions.
           </p>
         </li>
@@ -54,7 +54,7 @@ export const Position = () => {
         <li>
           <h4>Encircle and Test Their Line </h4>
           <p>
-            score VP if you have units in particular locations on the board
+            scores VP if you have units in particular locations on the board
             specific to the mission.
           </p>
         </li>
