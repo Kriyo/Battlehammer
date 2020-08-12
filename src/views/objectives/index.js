@@ -25,10 +25,12 @@ const objectiveTypes = ['all', 'action', 'loss', 'position', 'target']
 
 export const ObjectivesList = () => {
   const [state, setState] = useReducer(reducer, defaultState)
+  const { action, all, loss, position, target } = state
 
   const handleChange = (e) => {
     setState({ [e.target.name]: e.target.checked })
   }
+
   const buildCheckboxes = () => {
     return objectiveTypes.map((obj) => (
       <label htmlFor={`${obj}`}>
@@ -43,40 +45,14 @@ export const ObjectivesList = () => {
     ))
   }
 
-  const buildActionObjs = () => {
-    if (state.action || state.all) {
-      return <Action />
-    }
-    return null
-  }
-
-  const buildLossObjs = () => {
-    if (state.loss || state.all) {
-      return <Loss />
-    }
-    return null
-  }
-  const buildPositionObjs = () => {
-    if (state.position || state.all) {
-      return <Position />
-    }
-    return null
-  }
-  const buildTargetObjs = () => {
-    if (state.target || state.all) {
-      return <Target />
-    }
-    return null
-  }
-
   return (
     <div>
       <h2>Objectives</h2>
       <div>{buildCheckboxes()}</div>
-      {buildActionObjs()}
-      {buildLossObjs()}
-      {buildPositionObjs()}
-      {buildTargetObjs()}
+      {action || all ? <Action /> : null}
+      {loss || all ? <Loss /> : null}
+      {position || all ? <Position /> : null}
+      {target || all ? <Target /> : null}
     </div>
   )
 }
