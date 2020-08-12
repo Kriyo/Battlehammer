@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from 'react'
 import { cloneDeep } from 'lodash'
-import { HeaderFour, InputGroup } from './index'
+import { HeaderFour, InputGroup, PrimaryButton } from './index'
 import { Primaries } from './Primaries/Primaries'
 import { Secondaries } from './Secondaries/Secondaries'
 
@@ -59,11 +59,13 @@ const getTotalScore = (arr, key) => {
   return currentScore >= 45 ? 45 : currentScore
 }
 
-const reducer = (prevState, updatedProperty) => ({
-  ...prevState,
-  ...updatedProperty,
-})
+const reducer = (prevState, updatedProperty) => {
+  return updatedProperty.reset
+    ? defaultState
+    : { ...prevState, ...updatedProperty }
+}
 
+// Customer useReducer fn for using localStorage as a means of persistence.
 function useLocallyPersistedReducer(storageKey, init = null) {
   const hookVars = useReducer(reducer, defaultState, () => {
     const persisted = JSON.parse(localStorage.getItem(storageKey))
@@ -83,7 +85,7 @@ function useLocallyPersistedReducer(storageKey, init = null) {
 }
 
 export const Player = ({ label }) => {
-  const [state, setState] = useLocallyPersistedReducer('state')
+  const [state, setState] = useLocallyPersistedReducer(`${label}-state`)
   const handleChange = (e, key) => {
     setState({ [key]: e.target.value })
   }
@@ -94,6 +96,12 @@ export const Player = ({ label }) => {
     delete cloneUpdate.index
     cloneSpec[key].splice(update.index, 1, cloneUpdate)
     setState({ [key]: cloneSpec[key] })
+  }
+
+  // fn for clearing localstorage and state, resetting the player.
+  const handleReset = () => {
+    localStorage.clear()
+    setState({ reset: true })
   }
 
   const buildPrimaries = () => {
@@ -145,6 +153,7 @@ export const Player = ({ label }) => {
       {buildTotalScore('primaries')}
       {buildSecondaries()}
       {buildTotalScore('secondaries')}
+      <PrimaryButton onClick={() => handleReset()}>Reset Player</PrimaryButton>
     </div>
   )
 }
