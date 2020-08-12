@@ -6,7 +6,6 @@ import styles from './styles.css'
 
 export const Secondaries = ({ config, onChange }) => {
   const rounds = config.secondaries.map((s, i) => {
-    console.log('::> sss: ', s)
     return (
       <div key={s.key}>
         <div className="secondaries-input-wrapper">
