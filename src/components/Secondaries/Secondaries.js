@@ -24,7 +24,7 @@ export const Secondaries = ({ config, onChange }) => {
               key={amount}
               onClick={() =>
                 onChange({
-                  current: amount,
+                  current: s.current !== amount ? amount : 0,
                   key: s.key,
                   amounts: s.amounts,
                   index: i,

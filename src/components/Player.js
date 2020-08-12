@@ -32,19 +32,19 @@ const defaultState = {
   ],
   secondaries: [
     {
-      amount: 0,
+      current: 0,
       amounts: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
       key: 'First',
       title: '',
     },
     {
-      amount: 0,
+      current: 0,
       key: 'Second',
       amounts: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
       title: '',
     },
     {
-      amount: 0,
+      current: 0,
       key: 'Third',
       amounts: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
       title: '',
@@ -71,30 +71,38 @@ export const Player = ({ label }) => {
     setState({ [key]: e.target.value })
   }
 
-  const handlePrimaryChange = (update) => {
+  const handleObjChange = (update, key) => {
     const cloneSpec = cloneDeep(state)
     const cloneUpdate = cloneDeep(update)
     delete cloneUpdate.index
-    cloneSpec.primaries.splice(update.index, 1, cloneUpdate)
-    setState({ primaries: cloneSpec.primaries })
-  }
-
-  const handleSecondaryChange = (update) => {
-    console.log('::> handleSecondaryChange => update: ', update)
+    cloneSpec[key].splice(update.index, 1, cloneUpdate)
+    setState({ [key]: cloneSpec[key] })
   }
 
   const buildPrimaries = () => {
-    return <Primaries onChange={(e) => handlePrimaryChange(e)} config={state} />
+    return (
+      <Primaries
+        onChange={(e) => handleObjChange(e, 'primaries')}
+        config={state}
+      />
+    )
   }
 
-  const buildPrimaryTotalScore = () => {
-    const totalScore = getTotalScore(state.primaries, 'current')
-    return <p>Total score for primaries: {totalScore}</p>
+  const buildTotalScore = (key) => {
+    const totalScore = getTotalScore(state[key], 'current')
+    return (
+      <p>
+        Total score for {key}: {totalScore}
+      </p>
+    )
   }
 
   const buildSecondaries = () => {
     return (
-      <Secondaries onChange={(e) => handleSecondaryChange(e)} config={state} />
+      <Secondaries
+        onChange={(e) => handleObjChange(e, 'secondaries')}
+        config={state}
+      />
     )
   }
 
@@ -117,8 +125,9 @@ export const Player = ({ label }) => {
         onChange={(e) => handleChange(e, 'faction')}
       />
       {buildPrimaries()}
-      {buildPrimaryTotalScore()}
+      {buildTotalScore('primaries')}
       {buildSecondaries()}
+      {buildTotalScore('secondaries')}
     </div>
   )
 }
