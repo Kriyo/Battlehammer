@@ -4,3 +4,7 @@
   gap: 12px;
   max-width: 324px
 }
+
+.secondaries-input-wrapper input{
+  margin: 35px 0 0 0;
+}

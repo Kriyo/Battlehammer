@@ -5,7 +5,6 @@ import styles from './styles.css'
 
 export const Primaries = ({ config, onChange }) => {
   const rounds = config.primaries.map((p, i) => {
-    console.log('::> ppp: ', p)
     return (
       <div key={p.round}>
         <h4>Primary Objective Round {p.round}</h4>

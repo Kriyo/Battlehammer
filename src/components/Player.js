@@ -72,7 +72,6 @@ export const Player = ({ label }) => {
   }
 
   const handlePrimaryChange = (update) => {
-    console.log('::> HPC - upd:', update)
     const cloneSpec = cloneDeep(state)
     const cloneUpdate = cloneDeep(update)
     delete cloneUpdate.index
