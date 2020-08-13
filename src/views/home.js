@@ -38,6 +38,6 @@ const Body = {
     justify-content: space-around;
     flex-direction: column;
     background: ${(props) => (props.darkMode ? darkBG : lightBG)};
-    background-size: 'cover';
+    background-size: cover;
   `,
 }
