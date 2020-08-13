@@ -59,9 +59,6 @@ const Navbar = {
     justify-content: space-between;
     align-items: center;
     background: none;
-    h4 {
-      color: white;
-    }
     a {
       text-decoration: none;
       color: white;
@@ -70,7 +67,6 @@ const Navbar = {
     @media only screen and (max-width: 40em) {
       position: fixed;
       width: 100vw;
-      top: 0;
     }
   `,
   Logo: styled.svg`
@@ -87,7 +83,8 @@ const Navbar = {
       position: fixed;
       right: 0;
       top: 0;
-      height: 100%;
+      width: 150px;
+      height: 23%;
       flex-direction: column;
       background-color: black;
       padding: 1rem 2rem;
