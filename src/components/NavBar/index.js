@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
-import styled, { createGlobalStyle } from 'styled-components'
+import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { HammerIcon } from '../../assets/hammer'
 
-export const NavBar = (props) => {
-  console.log('::> nav props: ', props)
+export const NavBar = ({ path }) => {
   const [openDrawer, toggleDrawer] = useState(false)
   const drawerRef = useRef(null)
 
@@ -15,18 +15,16 @@ export const NavBar = (props) => {
 
       toggleDrawer(false)
     }
-
     document.addEventListener('mousedown', closeDrawer)
     return () => document.removeEventListener('mousedown', closeDrawer)
   }, [])
 
   return (
-    <Styles.Wrapper>
-      {/* <CSSReset /> */}
-
-      <Navbar.Wrapper>
-        <Navbar.Logo>Logo</Navbar.Logo>
-
+    <Styles.Wrapper path={path}>
+      <Navbar.Wrapper path={path}>
+        <Navbar.Logo>
+          <HammerIcon fill={path === '/home' ? 'white' : 'black'} />
+        </Navbar.Logo>
         <HamburgerButton.Wrapper onClick={() => toggleDrawer(true)}>
           <HamburgerButton.Lines />
         </HamburgerButton.Wrapper>
@@ -38,40 +36,45 @@ export const NavBar = (props) => {
           <Navbar.Item>
             <Link to="/objectives">Objectives</Link>
           </Navbar.Item>
-          <Navbar.Item>Toggle Mode</Navbar.Item>
+          <Navbar.Item>
+            <a href="void:0">Toggle Mode</a>
+          </Navbar.Item>
         </Navbar.Items>
       </Navbar.Wrapper>
     </Styles.Wrapper>
   )
 }
 
+// filth hack
 const Styles = {
-  Wrapper: styled.main``,
+  Wrapper: styled.main`
+    margin-top: ${(props) => {
+      return props.path === '/home' ? '-145px' : 'auto'
+    }};
+  `,
 }
-
-// display: flex;
-//     background-color: #eeeeee;
-//     height: 100vh;
-
-//    background: ${(props) => (props.path === '/home' ? 'none' : 'white')};
 
 const Navbar = {
   Wrapper: styled.nav`
     flex: 1;
-
     align-self: flex-start;
-
     padding: 1rem 3rem;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     background: ${(props) => {
-      console.log('::> style prop: ', props)
       return props.path === '/home' ? 'none' : 'white'
     }};
-    color: black;
+    h4 {
+      color: ${(props) => {
+        return props.path === '/home' ? 'white' : 'black'
+      }};
+    }
+    a {
+      text-decoration: none;
+      color: ${(props) => {
+        return props.path === '/home' ? 'white' : 'black'
+      }};
 
     // 40em == 640px
     @media only screen and (max-width: 40em) {
@@ -80,9 +83,11 @@ const Navbar = {
       top: 0;
     }
   `,
-  Logo: styled.h4`
-    border: 1px solid gray;
+  Logo: styled.svg`
     padding: 0.5rem 1rem;
+    color: white;
+    height: 50px;
+    width: auto;
   `,
   Items: styled.ul`
     display: flex;
@@ -92,16 +97,11 @@ const Navbar = {
       position: fixed;
       right: 0;
       top: 0;
-
       height: 100%;
-
       flex-direction: column;
-
       background-color: black;
       padding: 1rem 2rem;
-
       transition: 0.2s ease-out;
-
       transform: ${({ openDrawer }) =>
         openDrawer ? `translateX(0)` : `translateX(100%)`};
     }
@@ -122,7 +122,6 @@ const HamburgerButton = {
     width: 2rem;
     position: relative;
     font-size: 12px;
-
     display: none;
 
     @media only screen and (max-width: 40em) {
@@ -133,7 +132,6 @@ const HamburgerButton = {
     border: none;
     background: transparent;
     outline: none;
-
     cursor: pointer;
 
     &:after {
