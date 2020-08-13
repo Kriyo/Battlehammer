@@ -12,15 +12,14 @@ import { darkTheme, defaultTheme, GlobalStyle } from './utils'
 
 import { Dashboard, Home, ObjectivesList } from './views'
 
+const storedKeys = ['Player 1 state', 'Player 2 state']
+const checkForExistingGame = () =>
+  storedKeys.some((key) => JSON.parse(localStorage.getItem(key)))
+
 const App = () => {
-  const [activeGame, setActiveGame] = useState(false)
+  const existingGame = checkForExistingGame()
   const [useDarkTheme, setUseDarkTheme] = useState(false)
   const modeTypeSwitchLabel = useDarkTheme ? 'Light Mode' : 'Dark Mode'
-
-  const onChange = (e) => {
-    console.log('::> onChange: ', e)
-    setActiveGame(!activeGame)
-  }
 
   return (
     <ThemeProvider theme={useDarkTheme ? darkTheme : defaultTheme}>
@@ -30,7 +29,7 @@ const App = () => {
             exact
             path="/"
             render={() => {
-              return activeGame ? (
+              return existingGame ? (
                 <Redirect to="/dashboard" />
               ) : (
                 <Redirect to="/home" />
@@ -76,10 +75,3 @@ const App = () => {
 }
 
 ReactDOM.render(<App />, document.querySelector('#root'))
-
-// <Link to="/objectives">
-//           <PrimaryButton>Objectives</PrimaryButton>
-//         </Link>
-//       <PrimaryButton onClick={() => setUseDarkTheme(!useDarkTheme)}>
-//         {modeTypeSwitch}
-//       </PrimaryButton>

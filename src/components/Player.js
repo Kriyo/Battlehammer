@@ -85,7 +85,7 @@ function useLocallyPersistedReducer(storageKey, init = null) {
 }
 
 export const Player = ({ label }) => {
-  const [state, setState] = useLocallyPersistedReducer(`${label}-state`)
+  const [state, setState] = useLocallyPersistedReducer(`${label} state`)
   const handleChange = (e, key) => {
     setState({ [key]: e.target.value })
   }
