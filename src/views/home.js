@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-
 import { HeaderOne, NavBar, PrimaryButton } from '../components'
 import darkBackground from '../assets/sm-background.jpg'
 import lightBackground from '../assets/light-sm-background.jpg'
@@ -10,7 +9,6 @@ export const Home = ({ darkMode, modeType, swapTheme }) => {
   return (
     <Styles.Wrap>
       <NavBar modeType={modeType} swapTheme={swapTheme} />
-
       <Body.Back darkMode={darkMode}>
         <HeaderOne label="Battlehammer" />
         <Link to="/dashboard">
@@ -33,13 +31,13 @@ const Body = {
     position: absolute;
     z-index: -1;
     top: 0;
-    background: ${(props) => (props.darkMode ? darkBG : lightBG)};
-    background-size: 'cover';
     width: 100vw;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
+    background: ${(props) => (props.darkMode ? darkBG : lightBG)};
+    background-size: 'cover';
   `,
 }
