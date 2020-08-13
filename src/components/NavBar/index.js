@@ -36,7 +36,7 @@ export const NavBar = ({ darkMode, modeType, swapTheme }) => {
         </HamburgerButton.Wrapper>
 
         <Navbar.Items ref={drawerRef} openDrawer={openDrawer}>
-          <Navbar.Item>
+          <Navbar.Item className="active">
             <Home color="white" size={16} />
             &nbsp;
             <Link to="/home">Home</Link>
@@ -58,6 +58,9 @@ export const NavBar = ({ darkMode, modeType, swapTheme }) => {
   )
 }
 
+// border-bottom: 1px solid yellow;
+// padding: 0;
+
 const Styles = {
   Wrapper: styled.main``,
 }
@@ -73,7 +76,13 @@ const Navbar = {
     background: none;
     a {
       text-decoration: none;
-      color: white;
+      color: ${(props) => props.theme.buttonText};
+    &.active {
+      color: ${(props) => props.theme.primaryColor};
+    }
+    &:hover {
+      color: ${(props) => props.theme.primaryColor};
+    }
 
     // 40em == 640px
     @media only screen and (max-width: 40em) {
@@ -109,6 +118,14 @@ const Navbar = {
     display: flex;
     padding: 0 1rem;
     cursor: pointer;
+    font-weight: bold;
+
+    &.active {
+      border-bottom: 3px solid ${(props) => props.theme.primaryColor};
+      &:hover {
+        border-bottom: 3px solid ${(props) => props.theme.primaryColor};
+      }
+    }
 
     @media only screen and (max-width: 40em) {
       padding: 1rem 0;
