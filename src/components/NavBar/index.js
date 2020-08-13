@@ -2,18 +2,18 @@ import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Home, Book, Moon, Sun } from 'react-feather'
-
 import { HammerIcon } from '../../assets/hammer'
+import { darkTheme, defaultTheme } from '../../utils'
 
 export const NavBar = ({ darkMode, modeType, swapTheme }) => {
   const [openDrawer, toggleDrawer] = useState(false)
   const drawerRef = useRef(null)
+  const iconColor = darkMode ? darkTheme.buttonText : defaultTheme.buttonText
   const modeIcon = darkMode ? (
-    <Moon color="white" size={16} />
+    <Sun color={iconColor} size={16} />
   ) : (
-    <Sun color="white" size={16} />
+    <Moon color={iconColor} size={16} />
   )
-
   useEffect(() => {
     const closeDrawer = (event) => {
       if (drawerRef.current && drawerRef.current.contains(event.target)) {
@@ -29,7 +29,7 @@ export const NavBar = ({ darkMode, modeType, swapTheme }) => {
     <Styles.Wrapper>
       <Navbar.Wrapper>
         <Navbar.Logo>
-          <HammerIcon fill="white" />
+          <HammerIcon fill={iconColor} />
         </Navbar.Logo>
         <HamburgerButton.Wrapper onClick={() => toggleDrawer(true)}>
           <HamburgerButton.Lines />
@@ -37,12 +37,12 @@ export const NavBar = ({ darkMode, modeType, swapTheme }) => {
 
         <Navbar.Items ref={drawerRef} openDrawer={openDrawer}>
           <Navbar.Item className="active">
-            <Home color="white" size={16} />
+            <Home color={iconColor} size={16} />
             &nbsp;
             <Link to="/home">Home</Link>
           </Navbar.Item>
           <Navbar.Item>
-            <Book color="white" size={16} />
+            <Book color={iconColor} size={16} />
             &nbsp;
             <Link to="/objectives">Objectives</Link>
           </Navbar.Item>
@@ -58,9 +58,6 @@ export const NavBar = ({ darkMode, modeType, swapTheme }) => {
   )
 }
 
-// border-bottom: 1px solid yellow;
-// padding: 0;
-
 const Styles = {
   Wrapper: styled.main``,
 }
@@ -73,7 +70,7 @@ const Navbar = {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: none;
+    background: ${(props) => props.theme.navBarColor};
     a {
       text-decoration: none;
       color: ${(props) => props.theme.buttonText};
