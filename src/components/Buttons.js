@@ -74,14 +74,15 @@ const Button = styled.button`
   font-size: ${typeScale.paragraph};
   min-width: 100px;
   cursor: pointer;
-  font-family: ${primaryFont};
+  font-family: ${(props) => props.theme.primaryFont};
   transition: background-color 0.2s linear, color 0.2 linear;
 `
 
 export const PrimaryButton = styled(Button)`
   background-color: ${(props) => props.theme.primaryColor};
   border: none;
-  color: white;
+  color: ${(props) => props.theme.buttonText};
+  font-weight: bold;
   &:focus {
     outline: 3px solid ${(props) => props.theme.primaryColor};
     outline-offset: 2px;

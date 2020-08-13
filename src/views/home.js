@@ -10,7 +10,7 @@ export const Home = ({ darkMode, modeType, swapTheme }) => {
     <Styles.Wrap>
       <NavBar modeType={modeType} swapTheme={swapTheme} />
       <Body.Back darkMode={darkMode}>
-        <HeaderOne label="Battlehammer" />
+        <HeaderOne>Battlehammer</HeaderOne>
         <Link to="/dashboard">
           <PrimaryButton>Play</PrimaryButton>
         </Link>

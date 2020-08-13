@@ -1,0 +1,22 @@
+<?xml version="1.0"?><svg width="640" height="480" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+
+ <g>
+  <title>Layer 1</title>
+  <line y2="58.25" x2="325.917" y1="149.25" x1="174.917" stroke-width="5" stroke="#000000" fill="none" id="svg_7"/>
+  <line y2="148.25" x2="478.917" y1="58.25" x1="323.917" stroke-width="5" stroke="#000000" fill="none" id="svg_8"/>
+  <line y2="235.25" x2="326.917" y1="148.25" x1="478.917" stroke-width="5" stroke="#000000" fill="none" id="svg_9"/>
+  <line y2="149.25" x2="176.917" y1="233.25" x1="329.917" stroke-width="5" stroke="#000000" fill="none" id="svg_10"/>
+  <line y2="414.25" x2="326.917" y1="233.25" x1="329.917" stroke-width="5" stroke="#000000" fill="none" id="svg_20"/>
+  <ellipse ry="16" rx="28" cy="150" cx="326" stroke-width="5" stroke="#000000" fill="#000000" id="svg_22"/>
+  <ellipse ry="19.4696" rx="26.9824" cy="214" cx="439.5" transform="rotate(-29.7772 439.5 214)" stroke-width="5" stroke="#000000" fill="#000000" id="svg_25"/>
+  <ellipse ry="19.4696" rx="26.9824" cy="277" cx="407.5" transform="rotate(-29.7772 407.5 277)" stroke-width="5" stroke="#000000" fill="#000000" id="svg_26"/>
+  <ellipse ry="19.4696" rx="26.9824" cy="343" cx="374.5" transform="rotate(-29.7772 374.5 343)" stroke-width="5" stroke="#000000" fill="#000000" id="svg_27"/>
+  <ellipse ry="19.4696" rx="26.9824" cy="225" cx="224.5" transform="rotate(45 224.5 225)" stroke-width="5" stroke="#000000" fill="#000000" id="svg_28"/>
+  <ellipse ry="19.4696" rx="26.9824" cy="335" cx="278.5" transform="rotate(45 278.5 335)" stroke-width="5" stroke="#000000" fill="#000000" id="svg_29"/>
+  <line y2="414.25" x2="322.917" y1="327.25" x1="474.917" stroke-width="5" stroke="#000000" fill="none" id="svg_30"/>
+  <line y2="328.25" x2="172.917" y1="412.25" x1="325.917" stroke-width="5" stroke="#000000" fill="none" id="svg_31"/>
+  <line y2="330.25" x2="172.917" y1="149.25" x1="175.917" stroke-width="5" stroke="#000000" fill="none" id="svg_32"/>
+  <line y2="328.25" x2="474.917" y1="147.25" x1="477.917" stroke-width="5" stroke="#000000" fill="none" id="svg_33"/>
+ </g>
+</svg>

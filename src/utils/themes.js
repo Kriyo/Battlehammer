@@ -1,10 +1,12 @@
 import {
-  defaultShadow,
-  lightModePrimary,
   darkModePrimary,
+  darkTextShadow,
+  defaultShadow,
+  error,
+  lightModePrimary,
+  lightTextShadow,
   neutral,
   success,
-  error,
   warning,
 } from './colors'
 import { primaryFont, secondaryFont, typeScale } from './typography'
@@ -12,10 +14,13 @@ import { primaryFont, secondaryFont, typeScale } from './typography'
 export const defaultTheme = {
   primaryColor: lightModePrimary[100],
   secondaryColor: lightModePrimary[200],
+  largeHeadingTextColor: lightModePrimary[200],
+  buttonText: lightModePrimary[200],
   textColor: lightModePrimary[300],
   textColorOnPrimary: lightModePrimary[200],
   textColorOnSecondary: neutral[100],
   textColorInverted: neutral[100],
+  textShadow: lightTextShadow,
   disabled: neutral[400],
   textOnDisabled: neutral[300],
   status: {
@@ -38,10 +43,13 @@ export const defaultTheme = {
 export const darkTheme = {
   primaryColor: darkModePrimary[100],
   secondaryColor: darkModePrimary[200],
+  largeHeadingTextColor: neutral[100],
+  buttonText: neutral[100],
   textColor: darkModePrimary[400],
   textColorOnPrimary: neutral[100],
   textColorOnSecondary: darkModePrimary[200],
   textColorInverted: neutral[100],
+  textShadow: darkTextShadow,
   disabled: neutral[400],
   textOnDisabled: neutral[300],
   status: {
