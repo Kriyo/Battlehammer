@@ -101,10 +101,11 @@ const Navbar = {
       position: fixed;
       right: 0;
       top: 0;
-      width: 155px;
-      height: 30%;
+      width: 170px;
+      height: 100%;
+      margin-top: 0;
       flex-direction: column;
-      background-color: black;
+      background-color: ${(props) => props.theme.sideBarColor};
       padding: 1rem 2rem;
       transition: 0.2s ease-out;
       transform: ${({ openDrawer }) =>
