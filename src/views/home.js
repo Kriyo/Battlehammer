@@ -5,10 +5,15 @@ import { HeaderOne, NavBar, PrimaryButton } from '../components'
 import darkBackground from '../assets/sm-background.jpg'
 import lightBackground from '../assets/light-sm-background.jpg'
 
-export const Home = ({ darkMode, modeType, swapTheme }) => {
+export const Home = ({ darkMode, location, modeType, swapTheme }) => {
   return (
     <Styles.Wrap>
-      <NavBar darkMode={darkMode} modeType={modeType} swapTheme={swapTheme} />
+      <NavBar
+        darkMode={darkMode}
+        location={location}
+        modeType={modeType}
+        swapTheme={swapTheme}
+      />
       <Body.Back darkMode={darkMode}>
         <HeaderOne>Battlehammer</HeaderOne>
         <Link to="/dashboard">

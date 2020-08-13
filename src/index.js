@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import {
@@ -27,9 +28,9 @@ const App = () => {
           <Route
             exact
             path="/"
-            render={() => {
+            render={(props) => {
               return existingGame ? (
-                <Redirect to="/dashboard" />
+                <Redirect to="/dashboard" {...props} />
               ) : (
                 <Redirect to="/home" />
               )
@@ -38,8 +39,9 @@ const App = () => {
           <Route
             exact
             path="/home"
-            component={() => (
+            component={(props) => (
               <Home
+                {...props}
                 darkMode={useDarkTheme}
                 modeType={modeTypeSwitchLabel}
                 swapTheme={() => setUseDarkTheme(!useDarkTheme)}
@@ -49,8 +51,9 @@ const App = () => {
           <Route
             exact
             path="/dashboard"
-            component={() => (
+            component={(props) => (
               <Dashboard
+                {...props}
                 darkMode={useDarkTheme}
                 modeType={modeTypeSwitchLabel}
                 swapTheme={() => setUseDarkTheme(!useDarkTheme)}
@@ -60,8 +63,9 @@ const App = () => {
           <Route
             exact
             path="/objectives"
-            component={() => (
+            component={(props) => (
               <ObjectivesList
+                {...props}
                 darkMode={useDarkTheme}
                 modeType={modeTypeSwitchLabel}
                 swapTheme={() => setUseDarkTheme(!useDarkTheme)}

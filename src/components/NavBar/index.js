@@ -5,15 +5,17 @@ import { Home, Book, Moon, Sun } from 'react-feather'
 import { HammerIcon } from '../../assets/hammer'
 import { darkTheme, defaultTheme } from '../../utils'
 
-export const NavBar = ({ darkMode, modeType, swapTheme }) => {
+export const NavBar = ({ darkMode, modeType, location, swapTheme }) => {
   const [openDrawer, toggleDrawer] = useState(false)
   const drawerRef = useRef(null)
+  const { pathname } = location
   const iconColor = darkMode ? darkTheme.buttonText : defaultTheme.buttonText
   const modeIcon = darkMode ? (
     <Sun color={iconColor} size={16} />
   ) : (
     <Moon color={iconColor} size={16} />
   )
+
   useEffect(() => {
     const closeDrawer = (event) => {
       if (drawerRef.current && drawerRef.current.contains(event.target)) {
@@ -36,17 +38,17 @@ export const NavBar = ({ darkMode, modeType, swapTheme }) => {
         </HamburgerButton.Wrapper>
 
         <Navbar.Items ref={drawerRef} openDrawer={openDrawer}>
-          <Navbar.Item className="active">
+          <Navbar.Item className={pathname === '/home' ? 'active' : null}>
             <Home color={iconColor} size={16} />
             &nbsp;
             <Link to="/home">Home</Link>
           </Navbar.Item>
-          <Navbar.Item>
+          <Navbar.Item className={pathname === '/dashboard' ? 'active' : null}>
             <Home color={iconColor} size={16} />
             &nbsp;
             <Link to="/dashboard">Dashboard</Link>
           </Navbar.Item>
-          <Navbar.Item>
+          <Navbar.Item className={pathname === '/objectives' ? 'active' : null}>
             <Book color={iconColor} size={16} />
             &nbsp;
             <Link to="/objectives">Objectives</Link>
