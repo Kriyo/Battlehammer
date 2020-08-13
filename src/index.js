@@ -40,8 +40,9 @@ const App = () => {
             path="/home"
             component={() => (
               <Home
-                swapTheme={() => setUseDarkTheme(!useDarkTheme)}
+                darkMode={useDarkTheme}
                 modeType={modeTypeSwitchLabel}
+                swapTheme={() => setUseDarkTheme(!useDarkTheme)}
               />
             )}
           />
@@ -50,8 +51,9 @@ const App = () => {
             path="/dashboard"
             component={() => (
               <Dashboard
-                swapTheme={() => setUseDarkTheme(!useDarkTheme)}
+                darkMode={useDarkTheme}
                 modeType={modeTypeSwitchLabel}
+                swapTheme={() => setUseDarkTheme(!useDarkTheme)}
               />
             )}
           />
@@ -60,8 +62,9 @@ const App = () => {
             path="/objectives"
             component={() => (
               <ObjectivesList
-                swapTheme={() => setUseDarkTheme(!useDarkTheme)}
+                darkMode={useDarkTheme}
                 modeType={modeTypeSwitchLabel}
+                swapTheme={() => setUseDarkTheme(!useDarkTheme)}
               />
             )}
           />

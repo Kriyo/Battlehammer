@@ -1,6 +1,6 @@
-import { createGlobalStyle } from "styled-components";
-import { primaryFont } from "./typography";
-import { normalize } from "polished";
+import { createGlobalStyle } from 'styled-components'
+import { normalize } from 'polished'
+import { primaryFont } from './typography'
 
 export const GlobalStyle = createGlobalStyle`
   ${normalize()}
@@ -17,9 +17,4 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-family: ${primaryFont};
   }
-
-  main {
-    width: 90%;
-    margin: 0 auto;
-  }
-`;
+`
