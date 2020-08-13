@@ -171,7 +171,7 @@ const HamburgerButton = {
       display: block;
       content: '';
       width: 100%;
-      background-color: white;
+      background-color: ${(props) => props.theme.buttonText};
       position: absolute;
     }
 
