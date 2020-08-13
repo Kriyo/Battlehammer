@@ -7,19 +7,12 @@ export const Dashboard = ({ location, modeType, swapTheme }) => {
   const buildPlayers = players.map((p) => <Player key={p} label={p} />)
 
   return (
-    <div>
-      <NavBar location={location} modeType={modeType} swapTheme={swapTheme} />
-
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        <HeaderOne label="Dashboard" />
-        {buildPlayers}
-      </div>
+    <div
+      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+    >
+      <NavBar modeType={modeType} swapTheme={swapTheme} location={location} />
+      <HeaderOne label="Dashboard" />
+      {buildPlayers}
     </div>
   )
 }

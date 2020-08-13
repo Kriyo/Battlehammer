@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react'
-import { NavBar } from '../../components'
-
+import styled from 'styled-components'
+import { HeaderOne, NavBar } from '../../components'
+import { CheckBoxSelectionSVG } from '../../assets/check-box-selection'
 import { Action } from './action'
 import { Loss } from './loss'
 import { Position } from './position'
@@ -24,7 +25,7 @@ const defaultState = {
 
 const objectiveTypes = ['all', 'action', 'loss', 'position', 'target']
 
-export const ObjectivesList = ({ location, modeType, swapTheme }) => {
+export const ObjectivesList = ({ darkMode, location, modeType, swapTheme }) => {
   const [state, setState] = useReducer(reducer, defaultState)
   const { action, all, loss, position, target } = state
 
@@ -48,14 +49,33 @@ export const ObjectivesList = ({ location, modeType, swapTheme }) => {
   }
 
   return (
-    <div>
+    <Styles.Wrap>
       <NavBar location={location} modeType={modeType} swapTheme={swapTheme} />
-      <h2>Objectives</h2>
-      <div>{buildCheckboxes()}</div>
-      {action || all ? <Action /> : null}
-      {loss || all ? <Loss /> : null}
-      {position || all ? <Position /> : null}
-      {target || all ? <Target /> : null}
-    </div>
+
+      <Body.Back darkMode={darkMode}>
+        <HeaderOne>Objectives</HeaderOne>
+        <div>{buildCheckboxes()}</div>
+        <CheckBoxSelectionSVG fill="yellow" />
+        {action || all ? <Action /> : null}
+        {loss || all ? <Loss /> : null}
+        {position || all ? <Position /> : null}
+        {target || all ? <Target /> : null}
+      </Body.Back>
+    </Styles.Wrap>
   )
+}
+
+const Styles = {
+  Wrap: styled.main``,
+}
+
+const Body = {
+  Back: styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    background: ${(props) => (props.darkMode ? 'black' : 'white')};
+    background-size: cover;
+  `,
 }
