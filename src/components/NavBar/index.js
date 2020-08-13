@@ -42,6 +42,11 @@ export const NavBar = ({ darkMode, modeType, swapTheme }) => {
             <Link to="/home">Home</Link>
           </Navbar.Item>
           <Navbar.Item>
+            <Home color={iconColor} size={16} />
+            &nbsp;
+            <Link to="/dashboard">Dashboard</Link>
+          </Navbar.Item>
+          <Navbar.Item>
             <Book color={iconColor} size={16} />
             &nbsp;
             <Link to="/objectives">Objectives</Link>
