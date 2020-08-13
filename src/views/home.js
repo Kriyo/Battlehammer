@@ -8,7 +8,7 @@ import lightBackground from '../assets/light-sm-background.jpg'
 export const Home = ({ darkMode, modeType, swapTheme }) => {
   return (
     <Styles.Wrap>
-      <NavBar modeType={modeType} swapTheme={swapTheme} />
+      <NavBar darkMode={darkMode} modeType={modeType} swapTheme={swapTheme} />
       <Body.Back darkMode={darkMode}>
         <HeaderOne>Battlehammer</HeaderOne>
         <Link to="/dashboard">

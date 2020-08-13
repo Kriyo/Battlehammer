@@ -1,11 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { Home, Book, Moon, Sun } from 'react-feather'
+
 import { HammerIcon } from '../../assets/hammer'
 
-export const NavBar = ({ modeType, swapTheme }) => {
+export const NavBar = ({ darkMode, modeType, swapTheme }) => {
   const [openDrawer, toggleDrawer] = useState(false)
   const drawerRef = useRef(null)
+  const modeIcon = darkMode ? (
+    <Moon color="white" size={16} />
+  ) : (
+    <Sun color="white" size={16} />
+  )
 
   useEffect(() => {
     const closeDrawer = (event) => {
@@ -30,12 +37,17 @@ export const NavBar = ({ modeType, swapTheme }) => {
 
         <Navbar.Items ref={drawerRef} openDrawer={openDrawer}>
           <Navbar.Item>
+            <Home color="white" size={16} />
+            &nbsp;
             <Link to="/home">Home</Link>
           </Navbar.Item>
           <Navbar.Item>
+            <Book color="white" size={16} />
+            &nbsp;
             <Link to="/objectives">Objectives</Link>
           </Navbar.Item>
           <Navbar.Item>
+            {modeIcon}&nbsp;
             <a onClick={swapTheme} href="void:0">
               {modeType}
             </a>
@@ -83,8 +95,8 @@ const Navbar = {
       position: fixed;
       right: 0;
       top: 0;
-      width: 150px;
-      height: 23%;
+      width: 155px;
+      height: 30%;
       flex-direction: column;
       background-color: black;
       padding: 1rem 2rem;
@@ -115,7 +127,6 @@ const HamburgerButton = {
       display: block;
     }
 
-    /* Remove default button styles */
     border: none;
     background: transparent;
     outline: none;
