@@ -20,7 +20,7 @@ export const Home = ({ darkMode, modeType, swapTheme }) => {
 }
 
 const darkBG = `linear-gradient(rgba(0, 0, 0, 0.8) 30%, rgba(0, 0, 0, 0.3) 80%), url(${darkBackground}) no-repeat center center fixed`
-const lightBG = `url(${lightBackground}) no-repeat center center fixed`
+const lightBG = `linear-gradient(rgba(255, 255, 255, 0.5) 5%, rgba(0, 0, 0, 0) 15%), url(${lightBackground}) no-repeat center center fixed`
 
 const Styles = {
   Wrap: styled.main``,

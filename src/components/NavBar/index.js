@@ -12,7 +12,6 @@ export const NavBar = ({ modeType, swapTheme }) => {
       if (drawerRef.current && drawerRef.current.contains(event.target)) {
         return
       }
-
       toggleDrawer(false)
     }
     document.addEventListener('mousedown', closeDrawer)
