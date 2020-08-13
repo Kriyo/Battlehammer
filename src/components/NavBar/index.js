@@ -70,13 +70,20 @@ const Navbar = {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: ${(props) => props.theme.navBarColor};
+    background-color: ${(props) => props.theme.navBarColor};
+    
+    @media only screen and (max-width: 40em) {
+      background-color: transparent;
+    }
+
     a {
       text-decoration: none;
       color: ${(props) => props.theme.buttonText};
+
     &.active {
       color: ${(props) => props.theme.primaryColor};
     }
+
     &:hover {
       color: ${(props) => props.theme.primaryColor};
     }
@@ -86,6 +93,7 @@ const Navbar = {
       position: fixed;
       width: 100vw;
     }
+    
   `,
   Logo: styled.svg`
     padding: 0.5rem 1rem;
