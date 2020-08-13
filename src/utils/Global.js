@@ -15,6 +15,8 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
-    font-family: ${primaryFont};
+    font-family: ${primaryFont};    
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 `

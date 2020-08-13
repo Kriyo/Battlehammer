@@ -8,8 +8,6 @@ export const HeaderOne = styled.h1`
   font-family: ${(props) => props.theme.secondaryFont};
   color: ${(props) => props.theme.largeHeadingTextColor};
   text-shadow: ${(props) => props.theme.textShadow};
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 `
 
 export const HeaderFour = ({ label }) => (
