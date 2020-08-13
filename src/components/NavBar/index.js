@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { HammerIcon } from '../../assets/hammer'
 
-export const NavBar = ({ path }) => {
+export const NavBar = ({ modeType, swapTheme, path }) => {
   const [openDrawer, toggleDrawer] = useState(false)
   const drawerRef = useRef(null)
 
@@ -37,7 +37,9 @@ export const NavBar = ({ path }) => {
             <Link to="/objectives">Objectives</Link>
           </Navbar.Item>
           <Navbar.Item>
-            <a href="void:0">Toggle Mode</a>
+            <a onClick={swapTheme} href="void:0">
+              {modeType}
+            </a>
           </Navbar.Item>
         </Navbar.Items>
       </Navbar.Wrapper>

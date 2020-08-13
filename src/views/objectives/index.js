@@ -24,7 +24,7 @@ const defaultState = {
 
 const objectiveTypes = ['all', 'action', 'loss', 'position', 'target']
 
-export const ObjectivesList = () => {
+export const ObjectivesList = ({ modeType, swapTheme }) => {
   const [state, setState] = useReducer(reducer, defaultState)
   const { action, all, loss, position, target } = state
 
@@ -49,7 +49,7 @@ export const ObjectivesList = () => {
 
   return (
     <div>
-      <NavBar />
+      <NavBar modeType={modeType} swapTheme={swapTheme} />
       <h2>Objectives</h2>
       <div>{buildCheckboxes()}</div>
       {action || all ? <Action /> : null}

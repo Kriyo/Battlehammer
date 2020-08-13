@@ -42,7 +42,7 @@ const App = () => {
             path="/home"
             component={() => (
               <Home
-                swapTheme={setUseDarkTheme}
+                swapTheme={() => setUseDarkTheme(!useDarkTheme)}
                 modeType={modeTypeSwitchLabel}
               />
             )}
@@ -52,7 +52,7 @@ const App = () => {
             path="/dashboard"
             component={() => (
               <Dashboard
-                swapTheme={setUseDarkTheme}
+                swapTheme={() => setUseDarkTheme(!useDarkTheme)}
                 modeType={modeTypeSwitchLabel}
               />
             )}
@@ -62,7 +62,7 @@ const App = () => {
             path="/objectives"
             component={() => (
               <ObjectivesList
-                swapTheme={setUseDarkTheme}
+                swapTheme={() => setUseDarkTheme(!useDarkTheme)}
                 modeType={modeTypeSwitchLabel}
               />
             )}

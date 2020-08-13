@@ -2,7 +2,7 @@ import React from 'react'
 import { HeaderOne, NavBar } from '../components'
 import { Player } from '../components/Player'
 
-export const Dashboard = ({ location }) => {
+export const Dashboard = ({ location, modeType, swapTheme }) => {
   const players = ['Player 1', 'Player 2']
   const buildPlayers = players.map((p) => <Player key={p} label={p} />)
 
@@ -10,7 +10,11 @@ export const Dashboard = ({ location }) => {
     <div
       style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
     >
-      <NavBar path={location.pathname} />
+      <NavBar
+        modeType={modeType}
+        swapTheme={swapTheme}
+        // path={location.pathname}
+      />
       <HeaderOne label="Dashboard" />
       {buildPlayers}
     </div>

@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 import { HeaderOne, NavBar, PrimaryButton } from '../components'
 import Background from '../assets/sm-background.jpg'
 // {location.pathname}
-export const Home = ({ location }) => {
+export const Home = ({ location, modeType, swapTheme }) => {
   return (
     <div>
-      <NavBar path="ble" />
+      <NavBar path="ble" modeType={modeType} swapTheme={swapTheme} />
 
       <div
         style={{
