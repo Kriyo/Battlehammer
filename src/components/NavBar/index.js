@@ -106,11 +106,13 @@ const Navbar = {
     }
   `,
   Item: styled.li`
+    display: flex;
     padding: 0 1rem;
     cursor: pointer;
 
     @media only screen and (max-width: 40em) {
       padding: 1rem 0;
+      display: block;
     }
   `,
 }
