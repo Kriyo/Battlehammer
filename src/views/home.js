@@ -5,12 +5,11 @@ import styled from 'styled-components'
 import { HeaderOne, NavBar, PrimaryButton } from '../components'
 import darkBackground from '../assets/sm-background.jpg'
 import lightBackground from '../assets/light-sm-background.jpg'
-// {location.pathname}
 
-export const Home = ({ darkMode, location, modeType, swapTheme }) => {
+export const Home = ({ darkMode, modeType, swapTheme }) => {
   return (
     <Styles.Wrap>
-      <NavBar path="ble" modeType={modeType} swapTheme={swapTheme} />
+      <NavBar modeType={modeType} swapTheme={swapTheme} />
 
       <Body.Back darkMode={darkMode}>
         <HeaderOne label="Battlehammer" />

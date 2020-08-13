@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { HammerIcon } from '../../assets/hammer'
 
-export const NavBar = ({ modeType, swapTheme, path }) => {
+export const NavBar = ({ modeType, swapTheme }) => {
   const [openDrawer, toggleDrawer] = useState(false)
   const drawerRef = useRef(null)
 
@@ -20,10 +20,10 @@ export const NavBar = ({ modeType, swapTheme, path }) => {
   }, [])
 
   return (
-    <Styles.Wrapper path={path}>
-      <Navbar.Wrapper path={path}>
+    <Styles.Wrapper>
+      <Navbar.Wrapper>
         <Navbar.Logo>
-          <HammerIcon fill={path === '/home' ? 'white' : 'black'} />
+          <HammerIcon fill="white" />
         </Navbar.Logo>
         <HamburgerButton.Wrapper onClick={() => toggleDrawer(true)}>
           <HamburgerButton.Lines />
@@ -47,13 +47,8 @@ export const NavBar = ({ modeType, swapTheme, path }) => {
   )
 }
 
-// filth hack
 const Styles = {
-  Wrapper: styled.main`
-    margin-top: ${(props) => {
-      return props.path === '/home' ? '-145px' : 'auto'
-    }};
-  `,
+  Wrapper: styled.main``,
 }
 
 const Navbar = {
@@ -64,19 +59,13 @@ const Navbar = {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: ${(props) => {
-      return props.path === '/home' ? 'none' : 'white'
-    }};
+    background: none;
     h4 {
-      color: ${(props) => {
-        return props.path === '/home' ? 'white' : 'black'
-      }};
+      color: white;
     }
     a {
       text-decoration: none;
-      color: ${(props) => {
-        return props.path === '/home' ? 'white' : 'black'
-      }};
+      color: white;
 
     // 40em == 640px
     @media only screen and (max-width: 40em) {
