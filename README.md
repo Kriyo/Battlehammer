@@ -24,7 +24,7 @@
 
 ![img](https://i.imgur.com/b32itc2.png "desktop dashboard")
 
-#### Handy Objectives reference page
+### Handy Objectives reference page
 
 ![img](https://i.imgur.com/QY1PuAs.png "Objectives reference page")
 
