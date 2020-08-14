@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Battlehammer",
+  "name": "Battlehammer - Warhammer 40k tool for 9th edition",
   "icons": [
     {
       "src": "favicon.ico",
