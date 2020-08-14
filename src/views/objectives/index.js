@@ -1,7 +1,13 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useReducer } from 'react'
 import styled from 'styled-components'
-import { CheckBox, HeaderOne, NavBar, Paragraph } from '../../components'
+import {
+  CheckBox,
+  HeaderOne,
+  HeaderThree,
+  NavBar,
+  Paragraph,
+} from '../../components'
 import { CheckBoxSelectionSVG } from '../../assets/check-box-selection'
 import { ShadowOperations } from './ShadowOperations'
 import { NoMercy } from './NoMercy'
@@ -96,7 +102,10 @@ export const ObjectivesList = ({ darkMode, location, modeType, swapTheme }) => {
           <CheckBoxSelectionSVG fill="yellow" />
         </Body.TopContent>
         <Body.LowerContent>
-          <Body.CheckBoxes>{buildCheckboxes()}</Body.CheckBoxes>
+          <Body.CheckBoxes>
+            <HeaderThree>Filter</HeaderThree>
+            {buildCheckboxes()}
+          </Body.CheckBoxes>
           <Body.Objectives>
             {purgeTheEnemy || all ? <PurgeTheEnemy /> : null}
             {noMercy || all ? <NoMercy /> : null}
@@ -145,7 +154,15 @@ const Body = {
   CheckBoxes: styled.div`
     display: flex;
     flex-direction: column;
+    min-width: 20%;
   `,
-  LowerContent: styled.div``,
+  LowerContent: styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    @media only screen and (max-width: 40em) {
+      flex-direction: column;
+    }
+  `,
   Objectives: styled.div``,
 }
