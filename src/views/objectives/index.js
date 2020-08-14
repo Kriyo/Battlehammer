@@ -53,7 +53,7 @@ export const ObjectivesList = ({ darkMode, location, modeType, swapTheme }) => {
 
   const buildCheckboxes = () => {
     return objectiveTypes.map((obj) => (
-      <div key={`${obj}-label`}>
+      <Body.CheckBox key={`${obj}-label`}>
         <label>
           <Body.StyleSpan>
             {obj.charAt(0).toUpperCase() + obj.slice(1)}
@@ -64,7 +64,7 @@ export const ObjectivesList = ({ darkMode, location, modeType, swapTheme }) => {
             onChange={handleChange}
           />
         </label>
-      </div>
+      </Body.CheckBox>
     ))
   }
 
@@ -151,6 +151,9 @@ const Body = {
   StyleSpan: styled.span`
     margin-right: 8px;
     color: ${(props) => props.theme.textColor};
+  `,
+  CheckBox: styled.div`
+    padding: 1rem 0;
   `,
   CheckBoxes: styled.div`
     display: flex;
