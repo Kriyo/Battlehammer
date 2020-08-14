@@ -145,7 +145,7 @@ export const Player = ({ label }) => {
 
   return (
     <div>
-      <HeaderFour label={label} />
+      <HeaderFour>{label}</HeaderFour>
       <InputGroup
         label="Name"
         value={state.name}

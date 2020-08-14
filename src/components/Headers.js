@@ -10,14 +10,20 @@ export const HeaderOne = styled.h1`
   text-shadow: ${(props) => props.theme.textShadow};
 `
 
-export const HeaderFour = ({ label }) => (
-  <h4
-    style={{
-      color: 'black',
-      fontFamily: `${darkTheme.secondaryFont}`,
-      fontSize: darkTheme.typeScale.h4,
-    }}
-  >
-    {label}
-  </h4>
-)
+export const HeaderTwo = styled.h2`
+  font-size: ${typeScale.h2};
+  font-family: ${(props) => props.theme.secondaryFont};
+  color: ${(props) => props.theme.largeHeadingTextColor};
+`
+
+export const HeaderThree = styled.h3`
+  font-size: ${typeScale.h3};
+  font-family: ${(props) => props.theme.secondaryFont};
+  color: ${(props) => props.theme.largeHeadingTextColor};
+`
+
+export const HeaderFour = styled.h4`
+  font-size: ${typeScale.h4};
+  font-family: ${(props) => props.theme.secondaryFont};
+  color: ${(props) => props.theme.largeHeadingTextColor};
+`
