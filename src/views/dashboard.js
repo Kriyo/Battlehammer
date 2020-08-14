@@ -15,8 +15,10 @@ export const Dashboard = ({ darkMode, location, modeType, swapTheme }) => {
         swapTheme={swapTheme}
         location={location}
       />
-      <Styles.Content>
+      <Styles.Header>
         <HeaderOne>Dashboard</HeaderOne>
+      </Styles.Header>
+      <Styles.Content>
         <Styles.Players>{buildPlayers}</Styles.Players>
       </Styles.Content>
     </Styles.Wrap>
@@ -25,7 +27,25 @@ export const Dashboard = ({ darkMode, location, modeType, swapTheme }) => {
 
 const Styles = {
   Wrap: styled.main``,
-  Content: styled.div``,
-  Players: styled.div``,
+  Content: styled.div`
+    display: flex;
+    flex-direction: column;
+    background: ${(props) => props.theme.backgroundColor};
+    padding: 0rem 10rem;
+    @media only screen and (max-width: 40em) {
+      padding: 5rem 1rem;
+    }
+  `,
+  Header: styled.div`
+    display: flex;
+    justify-content: center;
+  `,
+  Players: styled.div`
+    display: flex;
+    justify-content: space-around;
+    @media only screen and (max-width: 40em) {
+      flex-direction: column;
+      justify-content: center;
+    }
+  `,
 }
-// style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
