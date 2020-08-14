@@ -66,7 +66,7 @@ export const ObjectivesList = ({ darkMode, location, modeType, swapTheme }) => {
       <NavBar location={location} modeType={modeType} swapTheme={swapTheme} />
 
       <Body.Back darkMode={darkMode}>
-        <HeaderOne>Objectives</HeaderOne>
+        <HeaderOne>Secondary Objectives</HeaderOne>
         <Body.TopContent>
           <Body.TopBlurb>
             <Paragraph>
@@ -113,15 +113,24 @@ const Styles = {
 
 const Body = {
   Back: styled.div`
+    position: absolute;
+    z-index: -1;
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
+    padding: 0 2rem;
     background: ${(props) => (props.darkMode ? 'black' : 'white')};
-    background-size: cover;
   `,
-  TopContent: styled.div``,
-  TopBlurb: styled.div``,
+  TopContent: styled.div`
+    display: flex;
+    @media only screen and (max-width: 40em) {
+      flex-direction: column;
+    }
+  `,
+  TopBlurb: styled.div`
+    padding: 3.5rem 0;
+  `,
   CheckBoxes: styled.div``,
   LowerContent: styled.div``,
   Objectives: styled.div``,
