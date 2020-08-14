@@ -17,7 +17,7 @@ export const Home = ({ darkMode, location, modeType, swapTheme }) => {
       <Body.Back darkMode={darkMode}>
         <HeaderOne>Battlehammer</HeaderOne>
         <Link to="/dashboard">
-          <PrimaryButton>Play</PrimaryButton>
+          <PrimaryButton className="active">Play</PrimaryButton>
         </Link>
       </Body.Back>
     </Styles.Wrap>
