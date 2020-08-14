@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-
 import { typeScale } from '../utils'
 
 export const HeaderOne = styled.h1`
@@ -25,4 +24,22 @@ export const HeaderFour = styled.h4`
   font-size: ${typeScale.h4};
   font-family: ${(props) => props.theme.secondaryFont};
   color: ${(props) => props.theme.largeHeadingTextColor};
+`
+
+export const Paragraph = styled.p`
+  font-size: ${typeScale.p};
+  font-family: ${(props) => props.theme.primaryFont};
+  color: ${(props) => props.theme.textColor};
+`
+
+export const Helper = styled.p`
+  font-size: ${typeScale.helper};
+  font-family: ${(props) => props.theme.primaryFont};
+  color: ${(props) => props.theme.textColor};
+`
+
+export const Copyright = styled.p`
+  font-size: ${typeScale.copyright};
+  font-family: ${(props) => props.theme.primaryFont};
+  color: ${(props) => props.theme.textColor};
 `

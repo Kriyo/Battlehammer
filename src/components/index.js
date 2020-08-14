@@ -1,5 +1,5 @@
 export * from './Buttons'
-export * from './Headers'
+export * from './Typography'
 export * from './Input'
 export * from './InputGroup/InputGroup'
 export * from './NavBar'
