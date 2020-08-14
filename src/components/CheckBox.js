@@ -21,7 +21,7 @@ const CheckboxContainer = styled.div`
 
 const Icon = styled.svg`
   fill: none;
-  stroke: white;
+  stroke: ${(props) => props.theme.sideBarColor};
   stroke-width: 2px;
 `
 

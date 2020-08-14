@@ -75,45 +75,47 @@ export const ObjectivesList = ({ darkMode, location, modeType, swapTheme }) => {
       <NavBar location={location} modeType={modeType} swapTheme={swapTheme} />
 
       <Body.Back darkMode={darkMode}>
-        <Body.TopContent>
-          <Body.TopBlurb>
-            <HeaderOne>Secondary Objectives</HeaderOne>
-            <Paragraph>
-              When you are instructed to select secondary objectives, you can
-              select from any presented here, in addition to any secondary
-              objective listed on the mission you are playing.
-            </Paragraph>
-            <Paragraph>
-              You can score no more than 15 victory points from each secondary
-              objective you select during the mission (any excess victory points
-              awarded are discounted).
-            </Paragraph>
-            <Paragraph>
-              Each secondary objective listed below has a category(e.g. Purge
-              the Enemy). When you select secondary objectives, you cannot
-              choose more than one from each category.
-            </Paragraph>
-            <Paragraph>
-              Use the checkboxes below to filter all secondary objectives based
-              on category.
-            </Paragraph>
-          </Body.TopBlurb>
+        <Body.Content>
+          <Body.TopContent>
+            <Body.TopBlurb>
+              <HeaderOne>Secondary Objectives</HeaderOne>
+              <Paragraph>
+                When you are instructed to select secondary objectives, you can
+                select from any presented here, in addition to any secondary
+                objective listed on the mission you are playing.
+              </Paragraph>
+              <Paragraph>
+                You can score no more than 15 victory points from each secondary
+                objective you select during the mission (any excess victory
+                points awarded are discounted).
+              </Paragraph>
+              <Paragraph>
+                Each secondary objective listed below has a category(e.g. Purge
+                the Enemy). When you select secondary objectives, you cannot
+                choose more than one from each category.
+              </Paragraph>
+              <Paragraph>
+                Use the checkboxes below to filter all secondary objectives
+                based on category.
+              </Paragraph>
+            </Body.TopBlurb>
 
-          <CheckBoxSelectionSVG fill="yellow" />
-        </Body.TopContent>
-        <Body.LowerContent>
-          <Body.CheckBoxes>
-            <HeaderThree>Filter</HeaderThree>
-            {buildCheckboxes()}
-          </Body.CheckBoxes>
-          <Body.Objectives>
-            {purgeTheEnemy || all ? <PurgeTheEnemy /> : null}
-            {noMercy || all ? <NoMercy /> : null}
-            {battlefieldSupremacy || all ? <BattlefieldSupremacy /> : null}
-            {shadowOperations || all ? <ShadowOperations /> : null}
-            {warpcraft || all ? <Warpcraft /> : null}
-          </Body.Objectives>
-        </Body.LowerContent>
+            <CheckBoxSelectionSVG fill="yellow" />
+          </Body.TopContent>
+          <Body.LowerContent>
+            <Body.CheckBoxes>
+              <HeaderThree>Filter</HeaderThree>
+              {buildCheckboxes()}
+            </Body.CheckBoxes>
+            <Body.Objectives>
+              {purgeTheEnemy || all ? <PurgeTheEnemy /> : null}
+              {noMercy || all ? <NoMercy /> : null}
+              {battlefieldSupremacy || all ? <BattlefieldSupremacy /> : null}
+              {shadowOperations || all ? <ShadowOperations /> : null}
+              {warpcraft || all ? <Warpcraft /> : null}
+            </Body.Objectives>
+          </Body.LowerContent>
+        </Body.Content>
       </Body.Back>
     </Styles.Wrap>
   )
@@ -125,20 +127,17 @@ const Styles = {
 
 const Body = {
   Back: styled.div`
-    position: absolute;
+    position: relative;
     z-index: -1;
-    top: 0;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
     flex-direction: column;
     background: ${(props) => props.theme.backgroundColor};
-    background-size: cover;
-    padding: 5rem 3rem;
+    padding: 0rem 10rem;
     @media only screen and (max-width: 40em) {
       padding: 5rem 1rem;
     }
   `,
+  Content: styled.div``,
   TopContent: styled.div`
     display: flex;
     padding: 3.5rem 0;
@@ -150,6 +149,7 @@ const Body = {
   TopBlurb: styled.div``,
   StyleSpan: styled.span`
     margin-right: 8px;
+    color: ${(props) => props.theme.textColor};
   `,
   CheckBoxes: styled.div`
     display: flex;
