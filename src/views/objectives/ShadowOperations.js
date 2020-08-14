@@ -1,5 +1,5 @@
 import React from 'react'
-import { HeaderThree } from '../../components'
+import { HeaderThree, HeaderFive } from '../../components'
 
 export const ShadowOperations = () => {
   return (
@@ -7,7 +7,7 @@ export const ShadowOperations = () => {
       <HeaderThree>Shadow Operations</HeaderThree>
       <ul>
         <li>
-          <h4>Investigate Sites</h4>
+          <HeaderFive>Investigate Sites</HeaderFive>
           <p>Progressive Objective</p>
           <p>
             grants you 3 VP for every turn in which a non-CHARACTER unit with
@@ -17,7 +17,7 @@ export const ShadowOperations = () => {
           </p>
         </li>
         <li>
-          <h4>Repair Teleport Homer</h4>
+          <HeaderFive>Repair Teleport Homer</HeaderFive>
           <p>Progressive Objective</p>
           <p>
             scores 5 VP if an INFANTRY unit is wholly within the opponent’s
@@ -29,7 +29,7 @@ export const ShadowOperations = () => {
           </p>
         </li>
         <li>
-          <h4>Raise the Banners High</h4>
+          <HeaderFive>Raise the Banners High</HeaderFive>
           <p>Progressive and End Game Objective</p>
           <p>
             is a progressive and end game objective based around performing an
@@ -45,10 +45,10 @@ export const ShadowOperations = () => {
           </p>
         </li>
         <li>
-          <h4>
+          <HeaderFive>
             Centre Ground, Raze, Data Intercept, Search for the Portal, Siphon
             Power, and Forward Push
-          </h4>
+          </HeaderFive>
           <p>Progressive Objective</p>
           <p>
             score you VP if you perform an action near specific objective

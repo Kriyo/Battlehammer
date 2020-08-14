@@ -95,7 +95,7 @@ export const ObjectivesList = ({ darkMode, location, modeType, swapTheme }) => {
         <Body.LowerContent>
           <Body.CheckBoxes>{buildCheckboxes()}</Body.CheckBoxes>
           <Body.Objectives>
-            {purgeTheEnemy || all ? <purgeTheEnemy /> : null}
+            {purgeTheEnemy || all ? <PurgeTheEnemy /> : null}
             {noMercy || all ? <NoMercy /> : null}
             {battlefieldSupremacy || all ? <BattlefieldSupremacy /> : null}
             {shadowOperations || all ? <ShadowOperations /> : null}

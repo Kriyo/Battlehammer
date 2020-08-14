@@ -26,6 +26,12 @@ export const HeaderFour = styled.h4`
   color: ${(props) => props.theme.largeHeadingTextColor};
 `
 
+export const HeaderFive = styled.h5`
+  font-size: ${typeScale.h5};
+  font-family: ${(props) => props.theme.primaryFont};
+  color: ${(props) => props.theme.largeHeadingTextColor};
+`
+
 export const Paragraph = styled.p`
   font-size: ${typeScale.p};
   font-family: ${(props) => props.theme.primaryFont};

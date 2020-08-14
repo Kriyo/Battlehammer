@@ -1,5 +1,5 @@
 import React from 'react'
-import { HeaderThree } from '../../components'
+import { HeaderThree, HeaderFive } from '../../components'
 
 export const NoMercy = () => {
   return (
@@ -7,7 +7,7 @@ export const NoMercy = () => {
       <HeaderThree>No Mercy, No Respite</HeaderThree>
       <ul>
         <li>
-          <h4>Thin Their Ranks</h4>
+          <HeaderFive>Thin Their Ranks</HeaderFive>
           <p>End Game Objective</p>
           <p>
             gives you 1 VP for every 10 models destroyed; every model with a
@@ -18,7 +18,7 @@ export const NoMercy = () => {
           </p>
         </li>
         <li>
-          <h4>Attrition</h4>
+          <HeaderFive>Attrition</HeaderFive>
           <p>Progressive Objective</p>
           <p>
             is a progressive objective that scores 4 VP in a battle round in
@@ -30,7 +30,7 @@ export const NoMercy = () => {
         </li>
 
         <li>
-          <h4>While We Stand, We Fight</h4>
+          <HeaderFive>While We Stand, We Fight</HeaderFive>
           <p>End Game Objective</p>
           <p>
             requires that your three most valuable (non-Fortification) models
@@ -43,7 +43,7 @@ export const NoMercy = () => {
         </li>
 
         <li>
-          <h4>First Strike</h4>
+          <HeaderFive>First Strike</HeaderFive>
           <p>End Game Objective</p>
           <p>
             scores 5 VP if any enemy units were destroyed in the first round,
@@ -54,7 +54,7 @@ export const NoMercy = () => {
         </li>
 
         <li>
-          <h4>Minimize Losses</h4>
+          <HeaderFive>Minimize Losses</HeaderFive>
           <p>End Game Objective</p>
           <p>
             is from Retrieval Mission and provides you with VP based on how much

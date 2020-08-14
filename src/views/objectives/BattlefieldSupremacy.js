@@ -1,5 +1,5 @@
 import React from 'react'
-import { HeaderThree } from '../../components'
+import { HeaderThree, HeaderFive } from '../../components'
 
 export const BattlefieldSupremacy = () => {
   return (
@@ -7,7 +7,7 @@ export const BattlefieldSupremacy = () => {
       <HeaderThree>Battlefield Supremacy</HeaderThree>
       <ul>
         <li>
-          <h4>Engage on All Fronts</h4>
+          <HeaderFive>Engage on All Fronts</HeaderFive>
           <p>Progressive Objective</p>
           <p>
             scores VP if you have units wholly within three quarters (2 VP) or
@@ -18,7 +18,7 @@ export const BattlefieldSupremacy = () => {
         </li>
 
         <li>
-          <h4>Linebreaker</h4>
+          <HeaderFive>Linebreaker</HeaderFive>
           <p>Progressive Objective</p>
           <p>
             scores 4 VP at the end of every turn that you have non-AIRCRAFT
@@ -29,7 +29,7 @@ export const BattlefieldSupremacy = () => {
         </li>
 
         <li>
-          <h4>Domination</h4>
+          <HeaderFive>Domination</HeaderFive>
           <p>Progressive Objective</p>
           <p>
             scores 3 VP if you control more than half of the objectives on the
@@ -44,10 +44,10 @@ export const BattlefieldSupremacy = () => {
         </li>
 
         <li>
-          <h4>
+          <HeaderFive>
             Surgical Assault, Survey, Outflank, Surround Them, Ransack, Secure
             No Man’s Land, Vital Ground, and Line of Demarcation
-          </h4>
+          </HeaderFive>
           <p>Progressive Objective</p>
           <p>
             provides VP if you control certain objectives specific to their
@@ -56,7 +56,7 @@ export const BattlefieldSupremacy = () => {
         </li>
 
         <li>
-          <h4>Encircle and Test Their Line </h4>
+          <HeaderFive>Encircle and Test Their Line </HeaderFive>
           <p>Progressive Objective</p>
           <p>
             scores VP if you have units in particular locations on the board
@@ -65,7 +65,7 @@ export const BattlefieldSupremacy = () => {
         </li>
 
         <li>
-          <h4>Hold the Centre</h4>
+          <HeaderFive>Hold the Centre</HeaderFive>
           <p>Progressive Objective</p>
           <p>
             is unique to the Lines of Battle mission and provides VP if you

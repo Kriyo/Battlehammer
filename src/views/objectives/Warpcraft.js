@@ -1,5 +1,5 @@
 import React from 'react'
-import { HeaderThree } from '../../components'
+import { HeaderThree, HeaderFive } from '../../components'
 
 export const Warpcraft = () => {
   return (
@@ -7,7 +7,7 @@ export const Warpcraft = () => {
       <HeaderThree>Warpcraft</HeaderThree>
       <ul>
         <li>
-          <h4>Mental Interrogation</h4>
+          <HeaderFive>Mental Interrogation</HeaderFive>
           <p>Progressive Objective</p>
           <p>
             scores 3 VP each time you successfully complete the following
@@ -19,7 +19,7 @@ export const Warpcraft = () => {
         </li>
 
         <li>
-          <h4>Psychic Ritual</h4>
+          <HeaderFive>Psychic Ritual</HeaderFive>
           <p>End Game Objective</p>
           <p>
             score 15 vp at the end of the battle if any unit from your army
@@ -32,7 +32,7 @@ export const Warpcraft = () => {
         </li>
 
         <li>
-          <h4>Abhor The Witch</h4>
+          <HeaderFive>Abhor The Witch</HeaderFive>
           <p>End Game Objective</p>
           <p>
             You cannot select this secondary objective if your army includes any

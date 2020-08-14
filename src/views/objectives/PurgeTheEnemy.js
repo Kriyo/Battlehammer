@@ -1,5 +1,5 @@
 import React from 'react'
-import { HeaderThree } from '../../components'
+import { HeaderThree, HeaderFive } from '../../components'
 
 export const PurgeTheEnemy = () => {
   return (
@@ -7,7 +7,7 @@ export const PurgeTheEnemy = () => {
       <HeaderThree>Purge The Enemy</HeaderThree>
       <ul>
         <li>
-          <h4>Assassinate </h4>
+          <HeaderFive>Assassinate </HeaderFive>
           <p>End Game Objective</p>
           <p>
             scores 3 VP for every CHARACTER that is destroyed; if your opponent
@@ -17,7 +17,7 @@ export const PurgeTheEnemy = () => {
         </li>
 
         <li>
-          <h4>Bring It Down</h4>
+          <HeaderFive>Bring It Down</HeaderFive>
           <p>End Game Objective</p>
           <p>
             scores 2 VP or 3 VP per MONSTER or VEHICLE model destroyed; the
@@ -27,7 +27,7 @@ export const PurgeTheEnemy = () => {
         </li>
 
         <li>
-          <h4>Titan Slayers</h4>
+          <HeaderFive>Titan Slayers</HeaderFive>
           <p>End Game Objective</p>
           <p>
             gives you 10 VP if you destroy on TITANIC model, or 15 if you
@@ -36,7 +36,7 @@ export const PurgeTheEnemy = () => {
         </li>
 
         <li>
-          <h4>Slay the Warlord</h4>
+          <HeaderFive>Slay the Warlord</HeaderFive>
           <p>End Game Objective</p>
           <p>
             gives you 6 VP if the enemy WARLORD is destroyed; by taking this
