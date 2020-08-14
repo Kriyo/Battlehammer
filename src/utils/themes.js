@@ -14,6 +14,7 @@ import { primaryFont, secondaryFont, typeScale } from './typography'
 export const defaultTheme = {
   primaryColor: lightModePrimary[100],
   secondaryColor: lightModePrimary[200],
+  backgroundColor: neutral[100],
   largeHeadingTextColor: lightModePrimary[200],
   buttonText: lightModePrimary[200],
   navBarColor: neutral[100],
@@ -45,6 +46,7 @@ export const defaultTheme = {
 export const darkTheme = {
   primaryColor: darkModePrimary[100],
   secondaryColor: darkModePrimary[200],
+  backgroundColor: darkModePrimary[300],
   largeHeadingTextColor: neutral[100],
   buttonText: neutral[100],
   navBarColor: 'none',

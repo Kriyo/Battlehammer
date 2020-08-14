@@ -121,7 +121,7 @@ const Body = {
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
-    background: ${(props) => (props.darkMode ? 'black' : 'white')};
+    background: ${(props) => props.theme.backgroundColor};
     background-size: cover;
     padding: 5rem 3rem;
     @media only screen and (max-width: 40em) {
