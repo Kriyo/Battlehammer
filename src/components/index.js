@@ -1,6 +1,6 @@
 export * from './Buttons'
 export * from './CheckBox'
 export * from './Input'
-export * from './InputGroup/InputGroup'
+export * from './InputGroup'
 export * from './NavBar'
 export * from './Typography'
