@@ -115,12 +115,17 @@ const Body = {
   Back: styled.div`
     position: absolute;
     z-index: -1;
+    top: 0;
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
-    padding: 0 2rem;
     background: ${(props) => (props.darkMode ? 'black' : 'white')};
+    background-size: cover;
+    padding: 5rem 3rem;
+    @media only screen and (max-width: 40em) {
+      padding: 5rem 1rem;
+    }
   `,
   TopContent: styled.div`
     display: flex;
@@ -130,6 +135,9 @@ const Body = {
   `,
   TopBlurb: styled.div`
     padding: 3.5rem 0;
+    @media only screen and (max-width: 40em) {
+      padding: 0;
+    }
   `,
   CheckBoxes: styled.div``,
   LowerContent: styled.div``,
