@@ -72,7 +72,12 @@ export const ObjectivesList = ({ darkMode, location, modeType, swapTheme }) => {
 
   return (
     <Styles.Wrap>
-      <NavBar location={location} modeType={modeType} swapTheme={swapTheme} />
+      <NavBar
+        location={location}
+        darkMode={darkMode}
+        modeType={modeType}
+        swapTheme={swapTheme}
+      />
 
       <Body.Back darkMode={darkMode}>
         <Body.Content>

@@ -49,7 +49,7 @@ export const darkTheme = {
   backgroundColor: darkModePrimary[300],
   largeHeadingTextColor: neutral[100],
   buttonText: neutral[100],
-  navBarColor: 'none',
+  navBarColor: darkModePrimary[300],
   sideBarColor: neutral[700],
   textColor: darkModePrimary[400],
   textColorOnPrimary: neutral[100],

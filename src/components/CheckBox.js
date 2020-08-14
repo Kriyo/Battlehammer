@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react'
 import styled from 'styled-components'
-// import { typeScale } from '../utils'
 
 export const CheckBox = ({ className, checked, name, onChange }) => (
   <CheckboxContainer className={className}>
