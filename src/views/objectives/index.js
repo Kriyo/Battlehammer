@@ -31,9 +31,9 @@ const defaultState = {
 
 const objectiveTypes = [
   'all',
-  'battlefieldSupremacy',
-  'noMercy',
   'purgeTheEnemy',
+  'noMercy',
+  'battlefieldSupremacy',
   'shadowOperations',
   'warpcraft',
 ]
