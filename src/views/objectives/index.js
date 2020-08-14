@@ -144,7 +144,12 @@ const Body = {
       padding: 0;
     }
   `,
-  TopBlurb: styled.div``,
+  TopBlurb: styled.div`
+    width: 50%;
+    @media only screen and (max-width: 40em) {
+      width: 100%;
+    }
+  `,
   StyleSpan: styled.span`
     margin-right: 8px;
     color: ${(props) => props.theme.textColor};
