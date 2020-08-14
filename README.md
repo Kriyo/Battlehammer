@@ -1,6 +1,6 @@
 # Battlehammer
 
-### A tool for playing Warhammer 40,000 9th Edition
+## A tool for playing Warhammer 40,000 9th Edition
 
 ![img](https://i.imgur.com/gqyBUOw.jpeg "Title Logo")
 
