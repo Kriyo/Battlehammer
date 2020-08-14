@@ -2,13 +2,11 @@ import React, { useReducer } from 'react'
 import styled from 'styled-components'
 import { HeaderOne, NavBar, Paragraph } from '../../components'
 import { CheckBoxSelectionSVG } from '../../assets/check-box-selection'
-import { Action } from './action'
-import { Loss } from './loss'
-import { Position } from './position'
-import { Target } from './target'
-
-// eslint-disable-next-line no-unused-vars
-import styles from './styles.css'
+import { ShadowOperations } from './ShadowOperations'
+import { NoMercy } from './NoMercy'
+import { BattlefieldSupremacy } from './BattlefieldSupremacy'
+import { PurgeTheEnemy } from './PurgeTheEnemy'
+import { Warpcraft } from './Warpcraft'
 
 const reducer = (prevState, updatedProperty) => ({
   ...prevState,
@@ -17,17 +15,32 @@ const reducer = (prevState, updatedProperty) => ({
 
 const defaultState = {
   all: true,
-  action: false,
-  loss: false,
-  position: false,
-  target: false,
+  battlefieldSupremacy: false,
+  noMercy: false,
+  purgeTheEnemy: false,
+  shadowOperations: false,
+  warpcraft: false,
 }
 
-const objectiveTypes = ['all', 'action', 'loss', 'position', 'target']
+const objectiveTypes = [
+  'all',
+  'purgeTheEnemy',
+  'noMercy',
+  'battlefieldSupremacy',
+  'shadowOperations',
+  'warpcraft',
+]
 
 export const ObjectivesList = ({ darkMode, location, modeType, swapTheme }) => {
   const [state, setState] = useReducer(reducer, defaultState)
-  const { action, all, loss, position, target } = state
+  const {
+    all,
+    battlefieldSupremacy,
+    noMercy,
+    purgeTheEnemy,
+    shadowOperations,
+    warpcraft,
+  } = state
 
   const handleChange = (e) => {
     setState({ [e.target.name]: e.target.checked })
@@ -82,17 +95,18 @@ export const ObjectivesList = ({ darkMode, location, modeType, swapTheme }) => {
         <Body.LowerContent>
           <Body.CheckBoxes>{buildCheckboxes()}</Body.CheckBoxes>
           <Body.Objectives>
-            {action || all ? <Action /> : null}
-            {loss || all ? <Loss /> : null}
-            {position || all ? <Position /> : null}
-            {target || all ? <Target /> : null}
+            {purgeTheEnemy || all ? <purgeTheEnemy /> : null}
+            {noMercy || all ? <NoMercy /> : null}
+            {battlefieldSupremacy || all ? <BattlefieldSupremacy /> : null}
+            {shadowOperations || all ? <ShadowOperations /> : null}
+            {warpcraft || all ? <Warpcraft /> : null}
           </Body.Objectives>
         </Body.LowerContent>
       </Body.Back>
     </Styles.Wrap>
   )
 }
-// TODO: update the titles of these to purge the enemy etc...
+
 const Styles = {
   Wrap: styled.main``,
 }

@@ -1,13 +1,14 @@
 import React from 'react'
-// eslint-disable-next-line no-unused-vars
-import styles from './styles.css'
+import { HeaderThree } from '../../components'
 
-export const Action = () => {
+export const ShadowOperations = () => {
   return (
     <div>
+      <HeaderThree>Shadow Operations</HeaderThree>
       <ul>
         <li>
           <h4>Investigate Sites</h4>
+          <p>Progressive Objective</p>
           <p>
             grants you 3 VP for every turn in which a non-CHARACTER unit with
             the INFANTRY keyword performs an action within 6″ of the middle of
@@ -17,6 +18,7 @@ export const Action = () => {
         </li>
         <li>
           <h4>Repair Teleport Homer</h4>
+          <p>Progressive Objective</p>
           <p>
             scores 5 VP if an INFANTRY unit is wholly within the opponent’s
             deployment zone, performs an Action, and remains in the deployment
@@ -28,6 +30,7 @@ export const Action = () => {
         </li>
         <li>
           <h4>Raise the Banners High</h4>
+          <p>Progressive and End Game Objective</p>
           <p>
             is a progressive and end game objective based around performing an
             action around an objective marker which does not have any enemy
@@ -42,28 +45,11 @@ export const Action = () => {
           </p>
         </li>
         <li>
-          <h4>Metal Interrogation</h4>
-          <p>
-            requires a Psyker to perform a Psychic Action within 18″ of an enemy
-            CHARACTER; every successful attempt scores 3 VP.
-          </p>
-        </li>
-
-        <li>
-          <h4>Psychic Ritual</h4>
-          <p>
-            scores 15 VP at the end of the battle if the same unit performs the
-            same Psychic Action three times while within 6″ of the center of the
-            battlefield. This is an unusual all-or-nothing objective which has
-            the potential to swing the game decisively.
-          </p>
-        </li>
-
-        <li>
           <h4>
             Centre Ground, Raze, Data Intercept, Search for the Portal, Siphon
             Power, and Forward Push
           </h4>
+          <p>Progressive Objective</p>
           <p>
             score you VP if you perform an action near specific objective
             markers from the mission.

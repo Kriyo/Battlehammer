@@ -1,13 +1,25 @@
 import React from 'react'
-// eslint-disable-next-line no-unused-vars
-import styles from './styles.css'
+import { HeaderThree } from '../../components'
 
-export const Loss = () => {
+export const NoMercy = () => {
   return (
     <div>
+      <HeaderThree>No Mercy, No Respite</HeaderThree>
       <ul>
         <li>
+          <h4>Thin Their Ranks</h4>
+          <p>End Game Objective</p>
+          <p>
+            gives you 1 VP for every 10 models destroyed; every model with a
+            Wounds characteristic of 10 or more that is destroyed is also worth
+            1 VP. Note that this is model based, not Wound based, so a Custodes
+            is worth as much as a grot. If your opponent has less than 150
+            models (minus 10 per big model) then you cannot maximize this score.
+          </p>
+        </li>
+        <li>
           <h4>Attrition</h4>
+          <p>Progressive Objective</p>
           <p>
             is a progressive objective that scores 4 VP in a battle round in
             which you destroy more enemy units than you lost friendly units. 4
@@ -19,6 +31,7 @@ export const Loss = () => {
 
         <li>
           <h4>While We Stand, We Fight</h4>
+          <p>End Game Objective</p>
           <p>
             requires that your three most valuable (non-Fortification) models
             survive. Each of those models that is on the battlefield at the end
@@ -31,6 +44,7 @@ export const Loss = () => {
 
         <li>
           <h4>First Strike</h4>
+          <p>End Game Objective</p>
           <p>
             scores 5 VP if any enemy units were destroyed in the first round,
             and an extra 3 VP if more enemy units than friendly units were
@@ -41,6 +55,7 @@ export const Loss = () => {
 
         <li>
           <h4>Minimize Losses</h4>
+          <p>End Game Objective</p>
           <p>
             is from Retrieval Mission and provides you with VP based on how much
             of your army survives the fight.

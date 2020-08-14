@@ -1,13 +1,14 @@
 import React from 'react'
-// eslint-disable-next-line no-unused-vars
-import styles from './styles.css'
+import { HeaderThree } from '../../components'
 
-export const Position = () => {
+export const BattlefieldSupremacy = () => {
   return (
     <div>
+      <HeaderThree>Battlefield Supremacy</HeaderThree>
       <ul>
         <li>
           <h4>Engage on All Fronts</h4>
+          <p>Progressive Objective</p>
           <p>
             scores VP if you have units wholly within three quarters (2 VP) or
             all four quarters (3 VP) and more than 6″ away from the center of
@@ -18,6 +19,7 @@ export const Position = () => {
 
         <li>
           <h4>Linebreaker</h4>
+          <p>Progressive Objective</p>
           <p>
             scores 4 VP at the end of every turn that you have non-AIRCRAFT
             models wholly within the enemy deployment zone; to maximize this
@@ -28,6 +30,7 @@ export const Position = () => {
 
         <li>
           <h4>Domination</h4>
+          <p>Progressive Objective</p>
           <p>
             scores 3 VP if you control more than half of the objectives on the
             board (either 3 or 4 objectives) at the end of each turn. Given that
@@ -45,6 +48,7 @@ export const Position = () => {
             Surgical Assault, Survey, Outflank, Surround Them, Ransack, Secure
             No Man’s Land, Vital Ground, and Line of Demarcation
           </h4>
+          <p>Progressive Objective</p>
           <p>
             provides VP if you control certain objectives specific to their
             particular missions.
@@ -53,6 +57,7 @@ export const Position = () => {
 
         <li>
           <h4>Encircle and Test Their Line </h4>
+          <p>Progressive Objective</p>
           <p>
             scores VP if you have units in particular locations on the board
             specific to the mission.
@@ -61,6 +66,7 @@ export const Position = () => {
 
         <li>
           <h4>Hold the Centre</h4>
+          <p>Progressive Objective</p>
           <p>
             is unique to the Lines of Battle mission and provides VP if you
             control certain objectives and have more models in the center of the
