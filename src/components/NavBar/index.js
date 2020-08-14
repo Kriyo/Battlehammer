@@ -54,9 +54,9 @@ export const NavBar = ({ darkMode, modeType, location, swapTheme }) => {
             <Link to="/objectives">Objectives</Link>
           </Navbar.Item>
           <Navbar.Item>
-            {modeIcon}&nbsp;
             <a onClick={swapTheme} href="void:0">
-              {modeType}
+              {modeIcon}&nbsp;
+              <Navbar.Span>{modeType}</Navbar.Span>
             </a>
           </Navbar.Item>
         </Navbar.Items>
@@ -144,6 +144,9 @@ const Navbar = {
       padding: 1rem 0;
       display: block;
     }
+  `,
+  Span: styled.span`
+    vertical-align: top;
   `,
 }
 

@@ -78,47 +78,45 @@ export const ObjectivesList = ({ darkMode, location, modeType, swapTheme }) => {
       />
 
       <Body.Back darkMode={darkMode}>
-        <Body.Content>
-          <Body.TopContent>
-            <Body.TopBlurb>
-              <HeaderOne>Secondary Objectives</HeaderOne>
-              <Paragraph>
-                When you are instructed to select secondary objectives, you can
-                select from any presented here, in addition to any secondary
-                objective listed on the mission you are playing.
-              </Paragraph>
-              <Paragraph>
-                You can score no more than 15 victory points from each secondary
-                objective you select during the mission (any excess victory
-                points awarded are discounted).
-              </Paragraph>
-              <Paragraph>
-                Each secondary objective listed below has a category(e.g. Purge
-                the Enemy). When you select secondary objectives, you cannot
-                choose more than one from each category.
-              </Paragraph>
-              <Paragraph>
-                Use the checkboxes below to filter all secondary objectives
-                based on category.
-              </Paragraph>
-            </Body.TopBlurb>
+        <Body.TopContent>
+          <Body.TopBlurb>
+            <HeaderOne>Secondary Objectives</HeaderOne>
+            <Paragraph>
+              When you are instructed to select secondary objectives, you can
+              select from any presented here, in addition to any secondary
+              objective listed on the mission you are playing.
+            </Paragraph>
+            <Paragraph>
+              You can score no more than 15 victory points from each secondary
+              objective you select during the mission (any excess victory points
+              awarded are discounted).
+            </Paragraph>
+            <Paragraph>
+              Each secondary objective listed below has a category(e.g. Purge
+              the Enemy). When you select secondary objectives, you cannot
+              choose more than one from each category.
+            </Paragraph>
+            <Paragraph>
+              Use the checkboxes below to filter all secondary objectives based
+              on category.
+            </Paragraph>
+          </Body.TopBlurb>
 
-            <CheckBoxSelectionSVG fill="yellow" />
-          </Body.TopContent>
-          <Body.LowerContent>
-            <Body.CheckBoxes>
-              <HeaderThree>Filter</HeaderThree>
-              {buildCheckboxes()}
-            </Body.CheckBoxes>
-            <Body.Objectives>
-              {purgeTheEnemy || all ? <PurgeTheEnemy /> : null}
-              {noMercy || all ? <NoMercy /> : null}
-              {battlefieldSupremacy || all ? <BattlefieldSupremacy /> : null}
-              {shadowOperations || all ? <ShadowOperations /> : null}
-              {warpcraft || all ? <Warpcraft /> : null}
-            </Body.Objectives>
-          </Body.LowerContent>
-        </Body.Content>
+          <CheckBoxSelectionSVG fill="yellow" />
+        </Body.TopContent>
+        <Body.LowerContent>
+          <Body.CheckBoxes>
+            <HeaderThree>Filter</HeaderThree>
+            {buildCheckboxes()}
+          </Body.CheckBoxes>
+          <Body.Objectives>
+            {purgeTheEnemy || all ? <PurgeTheEnemy /> : null}
+            {noMercy || all ? <NoMercy /> : null}
+            {battlefieldSupremacy || all ? <BattlefieldSupremacy /> : null}
+            {shadowOperations || all ? <ShadowOperations /> : null}
+            {warpcraft || all ? <Warpcraft /> : null}
+          </Body.Objectives>
+        </Body.LowerContent>
       </Body.Back>
     </Styles.Wrap>
   )
@@ -138,7 +136,6 @@ const Body = {
       padding: 5rem 1rem;
     }
   `,
-  Content: styled.div``,
   TopContent: styled.div`
     display: flex;
     padding: 3.5rem 0;
