@@ -49,9 +49,7 @@ export const ObjectivesList = ({ darkMode, location, modeType, swapTheme }) => {
     warpcraft,
   } = state
 
-  const handleChange = (e) => {
-    setState({ [e.target.name]: e.target.checked })
-  }
+  const handleChange = (e) => setState({ [e.target.name]: e.target.checked })
 
   const buildCheckboxes = () => {
     return objectiveTypes.map((obj) => (
@@ -132,8 +130,6 @@ const Styles = {
 
 const Body = {
   Back: styled.div`
-    position: relative;
-    z-index: -1;
     display: flex;
     flex-direction: column;
     background: ${(props) => props.theme.backgroundColor};
