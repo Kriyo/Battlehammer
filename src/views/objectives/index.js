@@ -1,6 +1,7 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useReducer } from 'react'
 import styled from 'styled-components'
-import { HeaderOne, NavBar, Paragraph } from '../../components'
+import { CheckBox, HeaderOne, NavBar, Paragraph } from '../../components'
 import { CheckBoxSelectionSVG } from '../../assets/check-box-selection'
 import { ShadowOperations } from './ShadowOperations'
 import { NoMercy } from './NoMercy'
@@ -24,9 +25,9 @@ const defaultState = {
 
 const objectiveTypes = [
   'all',
-  'purgeTheEnemy',
-  'noMercy',
   'battlefieldSupremacy',
+  'noMercy',
+  'purgeTheEnemy',
   'shadowOperations',
   'warpcraft',
 ]
@@ -48,16 +49,18 @@ export const ObjectivesList = ({ darkMode, location, modeType, swapTheme }) => {
 
   const buildCheckboxes = () => {
     return objectiveTypes.map((obj) => (
-      <label key={`${obj}-label`} htmlFor={`${obj}`}>
-        {obj.charAt(0).toUpperCase() + obj.slice(1)}
-        <input
-          key={`${obj}`}
-          type="checkbox"
-          name={`${obj}`}
-          checked={state[obj]}
-          onChange={handleChange}
-        />
-      </label>
+      <div key={`${obj}-label`}>
+        <label>
+          <Body.StyleSpan>
+            {obj.charAt(0).toUpperCase() + obj.slice(1)}
+          </Body.StyleSpan>
+          <CheckBox
+            checked={state[obj]}
+            name={`${obj}`}
+            onChange={handleChange}
+          />
+        </label>
+      </div>
     ))
   }
 
@@ -69,7 +72,6 @@ export const ObjectivesList = ({ darkMode, location, modeType, swapTheme }) => {
         <Body.TopContent>
           <Body.TopBlurb>
             <HeaderOne>Secondary Objectives</HeaderOne>
-
             <Paragraph>
               When you are instructed to select secondary objectives, you can
               select from any presented here, in addition to any secondary
@@ -137,7 +139,13 @@ const Body = {
     }
   `,
   TopBlurb: styled.div``,
-  CheckBoxes: styled.div``,
+  StyleSpan: styled.span`
+    margin-right: 8px;
+  `,
+  CheckBoxes: styled.div`
+    display: flex;
+    flex-direction: column;
+  `,
   LowerContent: styled.div``,
   Objectives: styled.div``,
 }

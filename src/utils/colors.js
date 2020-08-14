@@ -8,7 +8,7 @@ export const lightModePrimary = {
 
 export const darkModePrimary = {
   100: '#7F5AF0',
-  200: '#FDCA40',
+  200: '#FFFFFE', //  200: '#FDCA40',
   300: '#16161A',
   400: '#94A1B2',
   500: '#72757E',
