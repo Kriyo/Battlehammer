@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Paragraph, PrimaryButton } from '..'
+import { Paragraph, PrimaryButton } from '.'
 
 export const Primaries = ({ config, onChange }) => {
   const rounds = config.primaries.map((p, i) => {

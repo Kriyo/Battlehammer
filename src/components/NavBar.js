@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Home, Book, Moon, Sun } from 'react-feather'
-import { HammerIcon } from '../../assets/hammer'
-import { darkTheme, defaultTheme } from '../../utils'
+import { HammerIcon } from '../assets/hammer'
+import { darkTheme, defaultTheme } from '../utils'
 
 export const NavBar = ({ darkMode, modeType, location, swapTheme }) => {
   const [openDrawer, toggleDrawer] = useState(false)

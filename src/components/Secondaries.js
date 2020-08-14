@@ -1,14 +1,12 @@
 import React from 'react'
-import { InputGroup, PrimaryButton } from '../index'
-
-// eslint-disable-next-line no-unused-vars
-import styles from './styles.css'
+import styled from 'styled-components'
+import { InputGroup, PrimaryButton } from './index'
 
 export const Secondaries = ({ config, onChange }) => {
   const rounds = config.secondaries.map((s, i) => {
     return (
-      <div key={s.key}>
-        <div className="secondaries-input-wrapper">
+      <Styles.Container key={s.key}>
+        <Styles.SecondariesInputWrapper>
           <InputGroup
             className="secondaries-input"
             label={`${s.key} Secondary Objective`}
@@ -23,8 +21,8 @@ export const Secondaries = ({ config, onChange }) => {
               })
             }
           />
-        </div>
-        <div className="secondaries-btn-wrapper">
+        </Styles.SecondariesInputWrapper>
+        <Styles.SecondariesButtonWrapper>
           {s.amounts.map((amount) => (
             <PrimaryButton
               className={s.current === amount ? 'active' : ''}
@@ -43,10 +41,25 @@ export const Secondaries = ({ config, onChange }) => {
               {amount}
             </PrimaryButton>
           ))}
-        </div>
-      </div>
+        </Styles.SecondariesButtonWrapper>
+      </Styles.Container>
     )
   })
 
   return rounds
+}
+
+const Styles = {
+  Container: styled.div``,
+  SecondariesButtonWrapper: styled.div`
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    max-width: 324px;
+  `,
+  SecondariesInputWrapper: styled.div`
+    input {
+      margin: 35px 0 0 0;
+    }
+  `,
 }
