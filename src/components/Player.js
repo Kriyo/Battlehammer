@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer } from 'react'
+import styled from 'styled-components'
 import { cloneDeep } from 'lodash'
-import { HeaderFour, InputGroup, PrimaryButton } from './index'
+import { HeaderFour, HeaderFive, InputGroup, PrimaryButton } from './index'
 import { Primaries } from './Primaries'
 import { Secondaries } from './Secondaries'
 
@@ -116,9 +117,9 @@ export const Player = ({ label }) => {
   const buildScore = (key) => {
     const score = getScore(state[key], 'current')
     return (
-      <h4>
+      <HeaderFive>
         Total score for {key}: {score}
-      </h4>
+      </HeaderFive>
     )
   }
 
@@ -131,7 +132,7 @@ export const Player = ({ label }) => {
 
   const buildTotalScore = () => {
     const total = getTotalScore()
-    return <h4>Total Score: {total}</h4>
+    return <HeaderFive>Overall Score: {total}</HeaderFive>
   }
 
   const buildSecondaries = () => {
@@ -144,8 +145,10 @@ export const Player = ({ label }) => {
   }
 
   return (
-    <div>
-      <HeaderFour>{label}</HeaderFour>
+    <Styles.Container>
+      <Styles.HeaderWrapper>
+        <HeaderFour>{label}</HeaderFour>
+      </Styles.HeaderWrapper>
       <InputGroup
         label="Name"
         value={state.name}
@@ -161,14 +164,26 @@ export const Player = ({ label }) => {
         value={state.faction}
         onChange={(e) => handleChange(e, 'faction')}
       />
-      <HeaderFour>Primary Objectives</HeaderFour>
+      <Styles.HeaderWrapper>
+        <HeaderFour>Primary Objectives</HeaderFour>
+      </Styles.HeaderWrapper>
       {buildPrimaries()}
       {buildScore('primaries')}
-      <HeaderFour>Secondary Objectives</HeaderFour>
+
+      <Styles.HeaderWrapper>
+        <HeaderFour>Secondary Objectives</HeaderFour>
+      </Styles.HeaderWrapper>
       {buildSecondaries()}
       {buildScore('secondaries')}
       {buildTotalScore()}
       <PrimaryButton onClick={() => handleReset()}>Reset Player</PrimaryButton>
-    </div>
+    </Styles.Container>
   )
+}
+
+const Styles = {
+  Container: styled.div``,
+  HeaderWrapper: styled.div`
+    padding: 1rem 0;
+  `,
 }
