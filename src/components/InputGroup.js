@@ -16,7 +16,7 @@ const Styles = {
     position: relative;
     margin-bottom: 45px;
     > label {
-      color: #999;
+      color: ${(props) => props.theme.placeholderColor};
       font-size: 18px;
       font-weight: normal;
       position: absolute;
@@ -39,7 +39,7 @@ const Styles = {
       width: 0;
       bottom: 1px;
       position: absolute;
-      background: #5264ae;
+      background: ${(props) => props.theme.secondaryColor};
       transition: 0.2s ease all;
       -moz-transition: 0.2s ease all;
       -webkit-transition: 0.2s ease all;

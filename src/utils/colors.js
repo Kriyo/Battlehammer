@@ -22,6 +22,7 @@ export const neutral = {
   500: '#4A4B53',
   600: '#000',
   700: 'rgba(0,0,0,0.95)',
+  800: '#999999',
 }
 
 export const success = {

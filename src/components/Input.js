@@ -13,7 +13,7 @@ const INPUT_MODIFIERS = {
 
 const inputHighlighter = keyframes`
   0% {
-    background: #5264ae;
+    background: ${(props) => props.theme.buttonText};
   }
   100% {
     width: 0;
@@ -24,12 +24,13 @@ const inputHighlighter = keyframes`
 export const Input = styled.input`
   font-size: ${typeScale.paragraph};
   font-family: ${primaryFont};
-  ${applyStyleModifiers(INPUT_MODIFIERS)};
   padding: 10px 10px 10px 5px;
   display: block;
   width: 300px;
+  background: none;
+  color:  ${(props) => props.theme.textColorOnPrimary};
   border: none;
-  border-bottom: 1px solid #757575;
+  border-bottom: 1px solid ${(props) => props.theme.strokeColor};
   &:focus {
     outline: none;
   }
@@ -38,7 +39,7 @@ export const Input = styled.input`
   &:valid ~ label {
     top: -20px;
     font-size: 14px;
-    color: #5264ae;
+    color: ${(props) => props.theme.buttonText};
   }
   &:focus ~ .bar:before,
   &:focus ~ .bar:after {
@@ -49,5 +50,7 @@ export const Input = styled.input`
   -moz-animation: ${inputHighlighter} 0.3s ease;
   animation: ${inputHighlighter} 0.3s ease;
   }
+  
+  ${applyStyleModifiers(INPUT_MODIFIERS)};
 }
 `
