@@ -66,9 +66,10 @@ export const ObjectivesList = ({ darkMode, location, modeType, swapTheme }) => {
       <NavBar location={location} modeType={modeType} swapTheme={swapTheme} />
 
       <Body.Back darkMode={darkMode}>
-        <HeaderOne>Secondary Objectives</HeaderOne>
         <Body.TopContent>
           <Body.TopBlurb>
+            <HeaderOne>Secondary Objectives</HeaderOne>
+
             <Paragraph>
               When you are instructed to select secondary objectives, you can
               select from any presented here, in addition to any secondary
@@ -129,16 +130,13 @@ const Body = {
   `,
   TopContent: styled.div`
     display: flex;
-    @media only screen and (max-width: 40em) {
-      flex-direction: column;
-    }
-  `,
-  TopBlurb: styled.div`
     padding: 3.5rem 0;
     @media only screen and (max-width: 40em) {
+      flex-direction: column;
       padding: 0;
     }
   `,
+  TopBlurb: styled.div``,
   CheckBoxes: styled.div``,
   LowerContent: styled.div``,
   Objectives: styled.div``,
