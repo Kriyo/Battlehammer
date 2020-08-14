@@ -78,10 +78,6 @@ const Navbar = {
     justify-content: space-between;
     align-items: center;
     background-color: ${(props) => props.theme.backgroundColor};
-    
-    @media only screen and (max-width: 40em) {
-      background-color: transparent;
-    }
 
     a {
       text-decoration: none;

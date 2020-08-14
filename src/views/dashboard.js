@@ -39,6 +39,7 @@ const Styles = {
   Header: styled.div`
     display: flex;
     justify-content: center;
+    background: ${(props) => props.theme.backgroundColor};
   `,
   Players: styled.div`
     display: flex;
