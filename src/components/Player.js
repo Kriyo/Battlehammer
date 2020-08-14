@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer } from 'react'
 import { cloneDeep } from 'lodash'
 import { HeaderFour, InputGroup, PrimaryButton } from './index'
-import { Primaries } from './Primaries/Primaries'
+import { Primaries } from './Primaries'
 import { Secondaries } from './Secondaries/Secondaries'
 
 const defaultState = {

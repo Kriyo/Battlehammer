@@ -1,14 +1,13 @@
 import React from 'react'
-import { PrimaryButton } from '..'
-// eslint-disable-next-line no-unused-vars
-import styles from './styles.css'
+import styled from 'styled-components'
+import { Paragraph, PrimaryButton } from '..'
 
 export const Primaries = ({ config, onChange }) => {
   const rounds = config.primaries.map((p, i) => {
     return (
-      <div key={p.round}>
-        <h4>Primary Objective Round {p.round}</h4>
-        <div className="primaries-btn-wrapper">
+      <Styles.RoundsWrapper key={p.round}>
+        <Paragraph>Primary Objective Round {p.round}</Paragraph>
+        <Styles.AmountsWrapper>
           {p.amounts.map((amount) => (
             <PrimaryButton
               className={p.current === amount ? 'active' : ''}
@@ -26,10 +25,23 @@ export const Primaries = ({ config, onChange }) => {
               {amount}
             </PrimaryButton>
           ))}
-        </div>
-      </div>
+        </Styles.AmountsWrapper>
+      </Styles.RoundsWrapper>
     )
   })
 
   return rounds
+}
+
+const Styles = {
+  RoundsWrapper: styled.div`
+    p {
+      color: ${(props) => props.theme.largeHeadingTextColor};
+    }
+  `,
+  AmountsWrapper: styled.div`
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  `,
 }

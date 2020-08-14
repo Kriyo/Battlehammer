@@ -79,9 +79,9 @@ const Button = styled.button`
 `
 
 export const PrimaryButton = styled(Button)`
-  background-color: ${(props) => props.theme.primaryColor};
+  background-color: ${(props) => props.theme.buttonBGColor};
   border: none;
-  color: ${(props) => props.theme.buttonText};
+  color: ${(props) => props.theme.buttonTextColor};
   font-weight: bold;
   &:focus {
     outline: 3px solid ${(props) => props.theme.primaryColor};
@@ -93,7 +93,8 @@ export const PrimaryButton = styled(Button)`
     cursor: not-allowed;
   }
   &.active {
-    background-color: ${(props) => props.theme.secondaryColor};
+    color: ${(props) => props.theme.buttonTextActiveColor};
+    background-color: ${(props) => props.theme.buttonBGActiveColor};
   }
   ${applyStyleModifiers(BUTTON_MODIFIERS)}
 `
