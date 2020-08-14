@@ -1,7 +1,6 @@
-import React from 'react'
 import styled from 'styled-components'
 
-import { darkTheme, typeScale } from '../utils'
+import { typeScale } from '../utils'
 
 export const HeaderOne = styled.h1`
   font-size: ${typeScale.h1};
