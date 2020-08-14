@@ -9,7 +9,7 @@ export const Secondaries = ({ config, onChange }) => {
         <Styles.SecondariesInputWrapper>
           <InputGroup
             className="secondaries-input"
-            label={`${s.key} Secondary Objective`}
+            label={`${s.key} Objective`}
             value={s.title}
             onChange={(e) =>
               onChange({

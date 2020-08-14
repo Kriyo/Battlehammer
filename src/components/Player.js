@@ -161,8 +161,10 @@ export const Player = ({ label }) => {
         value={state.faction}
         onChange={(e) => handleChange(e, 'faction')}
       />
+      <HeaderFour>Primary Objectives</HeaderFour>
       {buildPrimaries()}
       {buildScore('primaries')}
+      <HeaderFour>Secondary Objectives</HeaderFour>
       {buildSecondaries()}
       {buildScore('secondaries')}
       {buildTotalScore()}

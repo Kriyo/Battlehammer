@@ -6,7 +6,7 @@ export const Primaries = ({ config, onChange }) => {
   const rounds = config.primaries.map((p, i) => {
     return (
       <Styles.RoundsWrapper key={p.round}>
-        <Paragraph>Primary Objective Round {p.round}</Paragraph>
+        <Paragraph>Round {p.round}</Paragraph>
         <Styles.AmountsWrapper>
           {p.amounts.map((amount) => (
             <PrimaryButton
