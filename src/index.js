@@ -10,7 +10,7 @@ import { IdentityContextProvider } from 'react-netlify-identity'
 import IdentityModal from 'react-netlify-identity-widget'
 import { ThemeProvider } from 'styled-components'
 import { darkTheme, defaultTheme, GlobalStyle, PrivateRoute } from './utils'
-import { Dashboard, Home, ObjectivesList } from './views'
+import { Dashboard, Home, Profile, ObjectivesList } from './views'
 import 'react-netlify-identity-widget/styles.css'
 import '@reach/tabs/styles.css'
 
@@ -38,6 +38,24 @@ const App = () => {
     />
   )
 
+  const buildProfileRoute = () => {
+    return (
+      <Route
+        exact
+        path="/profile/:id"
+        component={(props) => (
+          <Profile
+            {...props}
+            darkMode={useDarkTheme}
+            modeType={modeTypeSwitchLabel}
+            showModal={showModal}
+            swapTheme={() => setUseDarkTheme(!useDarkTheme)}
+          />
+        )}
+      />
+    )
+  }
+
   return (
     <IdentityContextProvider url={url}>
       <ThemeProvider theme={useDarkTheme ? darkTheme : defaultTheme}>
@@ -64,6 +82,7 @@ const App = () => {
               )}
             />
             <PrivateRoute path="/dashboard" component={buildDashboardRoute} />
+            <PrivateRoute path="/profile" component={buildProfileRoute} />
             <Route
               exact
               path="/dashboard"

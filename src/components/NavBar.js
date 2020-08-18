@@ -17,6 +17,9 @@ export const NavBar = ({
   const drawerRef = useRef(null)
   const { pathname } = location
   const identity = useIdentityContext()
+  console.log('::> NAV identity: ', identity)
+  const userId = identity && identity.user.id
+  console.log('::> userId: ', userId)
   const userLoggedIn = identity && identity.isLoggedIn
   const iconColor = darkMode ? darkTheme.buttonText : defaultTheme.buttonText
   const modeIcon = darkMode ? (
@@ -70,7 +73,7 @@ export const NavBar = ({
         <Navbar.Item className={pathname === '/profile' ? 'active' : null}>
           <User color={iconColor} size={16} />
           &nbsp;
-          <Link to="/">{fullName}</Link>
+          <Link to={`/profile/${userId}`}>{fullName}</Link>
         </Navbar.Item>
       )
     }

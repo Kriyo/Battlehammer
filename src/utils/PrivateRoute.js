@@ -8,7 +8,11 @@ export const PrivateRoute = ({ component: Component, location, ...rest }) => {
   const identity = useIdentityContext()
   const isLoggedIn = identity && identity.isLoggedIn
 
-  if (!isLoggedIn && location.pathname !== '/home') {
+  // This handles both private guarding "logged-in" views and people routing to /profile without a GUID.
+  if (
+    (!isLoggedIn && location.pathname !== '/home') ||
+    location.pathname === '/profile'
+  ) {
     return <Redirect path="/home" />
   }
 
