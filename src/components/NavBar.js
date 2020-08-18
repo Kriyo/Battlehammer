@@ -49,7 +49,7 @@ export const NavBar = ({
       <Navbar.Item onClick={showModal}>
         {icon}
         &nbsp;
-        {copy}
+        <a href="void:0">{copy}</a>
       </Navbar.Item>
     )
   }
