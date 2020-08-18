@@ -1,11 +1,21 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { useIdentityContext } from 'react-netlify-identity'
+import { Link } from 'react-router-dom'
 import { HeaderOne, NavBar, PrimaryButton } from '../components'
 import darkBackground from '../assets/sm-background.jpg'
 import lightBackground from '../assets/light-sm-background.jpg'
 
-export const Home = ({ darkMode, location, modeType, swapTheme }) => {
+export const Home = ({
+  darkMode,
+  location,
+  modeType,
+  showModal,
+  swapTheme,
+}) => {
+  const identity = useIdentityContext()
+  const buttonText = identity && identity.isLoggedIn ? 'Log Out' : 'Log In'
+
   return (
     <Styles.Wrap>
       <NavBar
@@ -16,6 +26,7 @@ export const Home = ({ darkMode, location, modeType, swapTheme }) => {
       />
       <Body.Back darkMode={darkMode}>
         <HeaderOne>Battlehammer</HeaderOne>
+        <PrimaryButton onClick={showModal}>{buttonText}</PrimaryButton>
         <Link to="/dashboard">
           <PrimaryButton className="active">Play</PrimaryButton>
         </Link>
