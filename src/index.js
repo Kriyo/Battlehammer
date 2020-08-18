@@ -9,7 +9,7 @@ import {
 import { IdentityContextProvider } from 'react-netlify-identity'
 import IdentityModal from 'react-netlify-identity-widget'
 import { ThemeProvider } from 'styled-components'
-import { darkTheme, defaultTheme, GlobalStyle } from './utils'
+import { darkTheme, defaultTheme, GlobalStyle, PrivateRoute } from './utils'
 import { Dashboard, Home, ObjectivesList } from './views'
 import 'react-netlify-identity-widget/styles.css'
 import '@reach/tabs/styles.css'
@@ -21,6 +21,22 @@ const App = () => {
   const url = 'https://battlehammer.eu'
 
   const showModal = () => setVisibility(true)
+
+  const buildDashboardRoute = () => (
+    <Route
+      exact
+      path="/dashboard"
+      component={(props) => (
+        <Dashboard
+          {...props}
+          darkMode={useDarkTheme}
+          modeType={modeTypeSwitchLabel}
+          showModal={showModal}
+          swapTheme={() => setUseDarkTheme(!useDarkTheme)}
+        />
+      )}
+    />
+  )
 
   return (
     <IdentityContextProvider url={url}>
@@ -47,6 +63,7 @@ const App = () => {
                 />
               )}
             />
+            <PrivateRoute path="/dashboard" component={buildDashboardRoute} />
             <Route
               exact
               path="/dashboard"
