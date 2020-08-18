@@ -12,7 +12,6 @@ export const Profile = ({
   swapTheme,
 }) => {
   const identity = useIdentityContext()
-  console.log('::> identity:', identity)
   const { id } = useParams()
   const { full_name: fullName } = identity.user.user_metadata
 

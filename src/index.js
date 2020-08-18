@@ -9,16 +9,33 @@ import {
 import { IdentityContextProvider } from 'react-netlify-identity'
 import IdentityModal from 'react-netlify-identity-widget'
 import { ThemeProvider } from 'styled-components'
-import { darkTheme, defaultTheme, GlobalStyle, PrivateRoute } from './utils'
+import {
+  darkTheme,
+  defaultTheme,
+  GlobalStyle,
+  PrivateRoute,
+  useLocallyPersistedReducer,
+} from './utils'
 import { Dashboard, Home, Profile, ObjectivesList } from './views'
 import 'react-netlify-identity-widget/styles.css'
 import '@reach/tabs/styles.css'
 
+const defaultState = {
+  useDarkTheme: false,
+}
+
 const App = () => {
   const [isVisible, setVisibility] = useState(false)
-  const [useDarkTheme, setUseDarkTheme] = useState(false)
-  const modeTypeSwitchLabel = useDarkTheme ? 'Light Mode' : 'Dark Mode'
+  const [state, setUseDarkTheme] = useLocallyPersistedReducer(
+    defaultState,
+    `useDarkTheme`
+  )
+  const modeTypeSwitchLabel = state.useDarkTheme ? 'Light Mode' : 'Dark Mode'
   const url = 'https://battlehammer.eu'
+
+  const handleChangeTheme = (e) => {
+    setUseDarkTheme({ useDarkTheme: e })
+  }
 
   const showModal = () => setVisibility(true)
 
@@ -29,10 +46,10 @@ const App = () => {
       component={(props) => (
         <Dashboard
           {...props}
-          darkMode={useDarkTheme}
+          darkMode={state.useDarkTheme}
           modeType={modeTypeSwitchLabel}
           showModal={showModal}
-          swapTheme={() => setUseDarkTheme(!useDarkTheme)}
+          swapTheme={() => handleChangeTheme(!state.useDarkTheme)}
         />
       )}
     />
@@ -46,10 +63,10 @@ const App = () => {
         component={(props) => (
           <Profile
             {...props}
-            darkMode={useDarkTheme}
+            darkMode={state.useDarkTheme}
             modeType={modeTypeSwitchLabel}
             showModal={showModal}
-            swapTheme={() => setUseDarkTheme(!useDarkTheme)}
+            swapTheme={() => handleChangeTheme(!state.useDarkTheme)}
           />
         )}
       />
@@ -58,7 +75,7 @@ const App = () => {
 
   return (
     <IdentityContextProvider url={url}>
-      <ThemeProvider theme={useDarkTheme ? darkTheme : defaultTheme}>
+      <ThemeProvider theme={state.useDarkTheme ? darkTheme : defaultTheme}>
         <Router>
           <Switch>
             <Route
@@ -74,10 +91,10 @@ const App = () => {
               component={(props) => (
                 <Home
                   {...props}
-                  darkMode={useDarkTheme}
+                  darkMode={state.useDarkTheme}
                   modeType={modeTypeSwitchLabel}
                   showModal={showModal}
-                  swapTheme={() => setUseDarkTheme(!useDarkTheme)}
+                  swapTheme={() => handleChangeTheme(!state.useDarkTheme)}
                 />
               )}
             />
@@ -89,10 +106,10 @@ const App = () => {
               component={(props) => (
                 <Dashboard
                   {...props}
-                  darkMode={useDarkTheme}
+                  darkMode={state.useDarkTheme}
                   modeType={modeTypeSwitchLabel}
                   showModal={showModal}
-                  swapTheme={() => setUseDarkTheme(!useDarkTheme)}
+                  swapTheme={() => handleChangeTheme(!state.useDarkTheme)}
                 />
               )}
             />
@@ -102,10 +119,10 @@ const App = () => {
               component={(props) => (
                 <ObjectivesList
                   {...props}
-                  darkMode={useDarkTheme}
+                  darkMode={state.useDarkTheme}
                   modeType={modeTypeSwitchLabel}
                   showModal={showModal}
-                  swapTheme={() => setUseDarkTheme(!useDarkTheme)}
+                  swapTheme={() => handleChangeTheme(!state.useDarkTheme)}
                 />
               )}
             />
