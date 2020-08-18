@@ -55,6 +55,7 @@ const App = () => {
                   {...props}
                   darkMode={useDarkTheme}
                   modeType={modeTypeSwitchLabel}
+                  showModal={showModal}
                   swapTheme={() => setUseDarkTheme(!useDarkTheme)}
                 />
               )}
@@ -67,6 +68,7 @@ const App = () => {
                   {...props}
                   darkMode={useDarkTheme}
                   modeType={modeTypeSwitchLabel}
+                  showModal={showModal}
                   swapTheme={() => setUseDarkTheme(!useDarkTheme)}
                 />
               )}

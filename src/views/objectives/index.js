@@ -38,7 +38,13 @@ const objectiveTypes = [
   'warpcraft',
 ]
 
-export const ObjectivesList = ({ darkMode, location, modeType, swapTheme }) => {
+export const ObjectivesList = ({
+  darkMode,
+  location,
+  modeType,
+  showModal,
+  swapTheme,
+}) => {
   const [state, setState] = useReducer(reducer, defaultState)
   const {
     all,
@@ -74,6 +80,7 @@ export const ObjectivesList = ({ darkMode, location, modeType, swapTheme }) => {
         location={location}
         darkMode={darkMode}
         modeType={modeType}
+        showModal={showModal}
         swapTheme={swapTheme}
       />
 

@@ -3,7 +3,13 @@ import styled from 'styled-components'
 import { HeaderOne, NavBar } from '../components'
 import { Player } from '../components/Player'
 
-export const Dashboard = ({ darkMode, location, modeType, swapTheme }) => {
+export const Dashboard = ({
+  darkMode,
+  location,
+  modeType,
+  showModal,
+  swapTheme,
+}) => {
   const players = ['Player 1', 'Player 2']
   const buildPlayers = players.map((p) => <Player key={p} label={p} />)
 
@@ -12,6 +18,7 @@ export const Dashboard = ({ darkMode, location, modeType, swapTheme }) => {
       <NavBar
         darkMode={darkMode}
         modeType={modeType}
+        showModal={showModal}
         swapTheme={swapTheme}
         location={location}
       />

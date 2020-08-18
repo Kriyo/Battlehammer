@@ -33,6 +33,7 @@ export const Home = ({
         darkMode={darkMode}
         location={location}
         modeType={modeType}
+        showModal={showModal}
         swapTheme={swapTheme}
       />
       <Body.Back darkMode={darkMode}>

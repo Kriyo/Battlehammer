@@ -6,7 +6,13 @@ import { Book, Home, LogIn, LogOut, Moon, Sun } from 'react-feather'
 import { HammerIcon } from '../assets/hammer'
 import { darkTheme, defaultTheme } from '../utils'
 
-export const NavBar = ({ darkMode, modeType, location, swapTheme }) => {
+export const NavBar = ({
+  darkMode,
+  modeType,
+  location,
+  showModal,
+  swapTheme,
+}) => {
   const [openDrawer, toggleDrawer] = useState(false)
   const drawerRef = useRef(null)
   const { pathname } = location
@@ -39,7 +45,7 @@ export const NavBar = ({ darkMode, modeType, location, swapTheme }) => {
     )
 
     return userLoggedIn ? (
-      <Navbar.Item onClick={() => console.log('::> clicked button')}>
+      <Navbar.Item onClick={showModal}>
         {icon}
         &nbsp;
         <a>{copy}</a>
