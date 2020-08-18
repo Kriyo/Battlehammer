@@ -36,7 +36,7 @@ export const NavBar = ({
     return () => document.removeEventListener('mousedown', closeDrawer)
   }, [])
 
-  const buildLogButton = () => {
+  const buildAuthLink = () => {
     const copy = userLoggedIn ? 'Log Out' : 'Log In'
     const icon = userLoggedIn ? (
       <LogOut color={iconColor} size={16} />
@@ -44,14 +44,23 @@ export const NavBar = ({
       <LogIn color={iconColor} size={16} />
     )
 
-    return userLoggedIn ? (
+    return (
       <Navbar.Item onClick={showModal}>
         {icon}
         &nbsp;
-        <a>{copy}</a>
+        {copy}
+      </Navbar.Item>
+    )
+  }
+
+  const buildDashboardLink = () =>
+    userLoggedIn ? (
+      <Navbar.Item className={pathname === '/dashboard' ? 'active' : null}>
+        <Home color={iconColor} size={16} />
+        &nbsp;
+        <Link to="/dashboard">Dashboard</Link>
       </Navbar.Item>
     ) : null
-  }
 
   return (
     <Styles.Wrapper>
@@ -69,17 +78,13 @@ export const NavBar = ({
             &nbsp;
             <Link to="/home">Home</Link>
           </Navbar.Item>
-          <Navbar.Item className={pathname === '/dashboard' ? 'active' : null}>
-            <Home color={iconColor} size={16} />
-            &nbsp;
-            <Link to="/dashboard">Dashboard</Link>
-          </Navbar.Item>
+          {buildDashboardLink()}
           <Navbar.Item className={pathname === '/objectives' ? 'active' : null}>
             <Book color={iconColor} size={16} />
             &nbsp;
             <Link to="/objectives">Objectives</Link>
           </Navbar.Item>
-          {buildLogButton()}
+          {buildAuthLink()}
           <Navbar.Item>
             <a onClick={swapTheme} href="void:0">
               {modeIcon}&nbsp;
