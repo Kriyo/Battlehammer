@@ -14,7 +14,18 @@ export const Home = ({
   swapTheme,
 }) => {
   const identity = useIdentityContext()
-  const buttonText = identity && identity.isLoggedIn ? 'Log Out' : 'Log In'
+  const userLoggedIn = identity && identity.isLoggedIn
+
+  const buildButton = () =>
+    userLoggedIn ? (
+      <Link to="/dashboard">
+        <PrimaryButton className="active">Play</PrimaryButton>
+      </Link>
+    ) : (
+      <PrimaryButton className="active" onClick={showModal}>
+        {userLoggedIn ? 'Log Out' : 'Log In'}
+      </PrimaryButton>
+    )
 
   return (
     <Styles.Wrap>
@@ -26,10 +37,7 @@ export const Home = ({
       />
       <Body.Back darkMode={darkMode}>
         <HeaderOne>Battlehammer</HeaderOne>
-        <PrimaryButton onClick={showModal}>{buttonText}</PrimaryButton>
-        <Link to="/dashboard">
-          <PrimaryButton className="active">Play</PrimaryButton>
-        </Link>
+        {buildButton()}
       </Body.Back>
     </Styles.Wrap>
   )
