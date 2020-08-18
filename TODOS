@@ -1,0 +1,5 @@
+- Update Dashboard/Player reset functionality to clear just the key.
+- Persist Dark mode in local storage
+- Build a Scoreboard View
+- Allow Persist the Scoreboard for that user.
+- Pull recent scores back into users profile.

@@ -100,8 +100,8 @@ export const Player = ({ label }) => {
   }
 
   // fn for clearing localstorage and state, resetting the player.
-  const handleReset = () => {
-    localStorage.clear()
+  const handleReset = (key) => {
+    localStorage.removeItem(key)
     setState({ reset: true })
   }
 
@@ -176,7 +176,9 @@ export const Player = ({ label }) => {
       {buildSecondaries()}
       {buildScore('secondaries')}
       {buildTotalScore()}
-      <PrimaryButton onClick={() => handleReset()}>Reset Player</PrimaryButton>
+      <PrimaryButton onClick={() => handleReset(`${label} state`)}>
+        Reset Player
+      </PrimaryButton>
     </Styles.Container>
   )
 }
