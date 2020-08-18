@@ -13,6 +13,7 @@ import { ThemeProvider } from 'styled-components'
 import { darkTheme, defaultTheme, GlobalStyle } from './utils'
 import { Dashboard, Home, ObjectivesList } from './views'
 import 'react-netlify-identity-widget/styles.css'
+import '@reach/tabs/styles.css'
 
 const App = () => {
   const [isVisible, setVisibility] = useState(false)
