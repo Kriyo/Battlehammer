@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { Home, Book, Moon, Sun } from 'react-feather'
+import { useIdentityContext } from 'react-netlify-identity'
+import { Book, Home, LogIn, LogOut, Moon, Sun } from 'react-feather'
 import { HammerIcon } from '../assets/hammer'
 import { darkTheme, defaultTheme } from '../utils'
 
@@ -9,6 +10,8 @@ export const NavBar = ({ darkMode, modeType, location, swapTheme }) => {
   const [openDrawer, toggleDrawer] = useState(false)
   const drawerRef = useRef(null)
   const { pathname } = location
+  const identity = useIdentityContext()
+  const userLoggedIn = identity && identity.isLoggedIn
   const iconColor = darkMode ? darkTheme.buttonText : defaultTheme.buttonText
   const modeIcon = darkMode ? (
     <Sun color={iconColor} size={16} />
@@ -26,6 +29,23 @@ export const NavBar = ({ darkMode, modeType, location, swapTheme }) => {
     document.addEventListener('mousedown', closeDrawer)
     return () => document.removeEventListener('mousedown', closeDrawer)
   }, [])
+
+  const buildLogButton = () => {
+    const copy = userLoggedIn ? 'Log Out' : 'Log In'
+    const icon = userLoggedIn ? (
+      <LogOut color={iconColor} size={16} />
+    ) : (
+      <LogIn color={iconColor} size={16} />
+    )
+
+    return userLoggedIn ? (
+      <Navbar.Item onClick={() => console.log('::> clicked button')}>
+        {icon}
+        &nbsp;
+        <a>{copy}</a>
+      </Navbar.Item>
+    ) : null
+  }
 
   return (
     <Styles.Wrapper>
@@ -53,6 +73,7 @@ export const NavBar = ({ darkMode, modeType, location, swapTheme }) => {
             &nbsp;
             <Link to="/objectives">Objectives</Link>
           </Navbar.Item>
+          {buildLogButton()}
           <Navbar.Item>
             <a onClick={swapTheme} href="void:0">
               {modeIcon}&nbsp;
