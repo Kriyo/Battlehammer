@@ -66,7 +66,6 @@ export const NavBar = ({
     if (userLoggedIn) {
       const fullName = identity.user.user_metadata.full_name
 
-      console.log('::> identity: ', identity)
       return (
         <Navbar.Item className={pathname === '/profile' ? 'active' : null}>
           <User color={iconColor} size={16} />
