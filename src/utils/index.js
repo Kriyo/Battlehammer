@@ -1,5 +1,6 @@
 export * from './colors'
 export * from './Global'
+export * from './hooks/useLocallyPersistedReducer'
 export * from './PrivateRoute'
 export * from './themes'
 export * from './typography'

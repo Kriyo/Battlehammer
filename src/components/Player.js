@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer } from 'react'
 import styled from 'styled-components'
 import { cloneDeep } from 'lodash'
+import { useLocallyPersistedReducer } from '../utils'
 import { HeaderFour, HeaderFive, InputGroup, PrimaryButton } from './index'
 import { Primaries } from './Primaries'
 import { Secondaries } from './Secondaries'
@@ -60,33 +61,11 @@ const getScore = (arr, key) => {
   return currentScore >= 45 ? 45 : currentScore
 }
 
-const reducer = (prevState, updatedProperty) => {
-  return updatedProperty.reset
-    ? defaultState
-    : { ...prevState, ...updatedProperty }
-}
-
-// Customer useReducer fn for using localStorage as a means of persistence.
-function useLocallyPersistedReducer(storageKey, init = null) {
-  const hookVars = useReducer(reducer, defaultState, () => {
-    const persisted = JSON.parse(localStorage.getItem(storageKey))
-    // eslint-disable-next-line no-nested-ternary
-    return persisted !== null
-      ? persisted
-      : init !== null
-      ? init(defaultState)
-      : defaultState
-  })
-
-  useEffect(() => {
-    localStorage.setItem(storageKey, JSON.stringify(hookVars[0]))
-  }, [hookVars, storageKey])
-
-  return hookVars
-}
-
 export const Player = ({ label }) => {
-  const [state, setState] = useLocallyPersistedReducer(`${label} state`)
+  const [state, setState] = useLocallyPersistedReducer(
+    defaultState,
+    `${label} state`
+  )
   const handleChange = (e, key) => {
     setState({ [key]: e.target.value })
   }
