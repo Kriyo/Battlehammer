@@ -14,6 +14,7 @@ export const Profile = ({
   const identity = useIdentityContext()
   console.log('::> identity:', identity)
   const { id } = useParams()
+  const { full_name: fullName } = identity.user.user_metadata
 
   return (
     <Styles.Wrap>
@@ -24,7 +25,7 @@ export const Profile = ({
         showModal={showModal}
         swapTheme={swapTheme}
       />
-      <HeaderOne>Profile for {identity.user.user_metadata.full_name}</HeaderOne>
+      <HeaderOne>Profile for {fullName}</HeaderOne>
     </Styles.Wrap>
   )
 }
