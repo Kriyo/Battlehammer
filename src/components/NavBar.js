@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { useIdentityContext } from 'react-netlify-identity'
-import { Book, Home, LogIn, LogOut, Moon, Sun } from 'react-feather'
+import { Book, Home, LogIn, LogOut, Moon, Sun, User } from 'react-feather'
 import { HammerIcon } from '../assets/hammer'
 import { darkTheme, defaultTheme } from '../utils'
 
@@ -62,6 +62,22 @@ export const NavBar = ({
       </Navbar.Item>
     ) : null
 
+  const buildUserProfileLink = () => {
+    if (userLoggedIn) {
+      const fullName = identity.user.user_metadata.full_name
+
+      console.log('::> identity: ', identity)
+      return (
+        <Navbar.Item className={pathname === '/profile' ? 'active' : null}>
+          <User color={iconColor} size={16} />
+          &nbsp;
+          <Link to="/">{fullName}</Link>
+        </Navbar.Item>
+      )
+    }
+    return null
+  }
+
   return (
     <Styles.Wrapper>
       <Navbar.Wrapper>
@@ -84,13 +100,14 @@ export const NavBar = ({
             &nbsp;
             <Link to="/objectives">Objectives</Link>
           </Navbar.Item>
-          {buildAuthLink()}
           <Navbar.Item>
             <a onClick={swapTheme} href="void:0">
               {modeIcon}&nbsp;
               <Navbar.Span>{modeType}</Navbar.Span>
             </a>
           </Navbar.Item>
+          {buildUserProfileLink()}
+          {buildAuthLink()}
         </Navbar.Items>
       </Navbar.Wrapper>
     </Styles.Wrapper>
