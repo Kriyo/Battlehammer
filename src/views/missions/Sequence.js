@@ -1,9 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { CheckBox, HeaderThree, HeaderFour, Paragraph } from '../../components'
+import {
+  CheckBox,
+  HeaderThree,
+  HeaderFour,
+  HeaderFive,
+  Paragraph,
+} from '../../components'
 
-export const Sequence = ({ battles, battleSize }) => {
+export const Sequence = ({ battles, battleSize, missions }) => {
   const buildBattlesTable = () => (
     <table>
       <thead>
@@ -50,6 +56,35 @@ export const Sequence = ({ battles, battleSize }) => {
     </table>
   )
 
+  const buildMissionTable = (key) => (
+    <table>
+      <thead>
+        <tr>
+          <td>D6</td>
+          <td>Mission</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          {missions[key].map((mission) => (
+            <tr>
+              <td>{mission.dice}</td>
+              <td>{mission.label}</td>
+            </tr>
+          ))}
+        </tr>
+      </tbody>
+    </table>
+  )
+
+  const buildMissions = () =>
+    battles.map((battle) => (
+      <div>
+        <HeaderFive>{battle.label}</HeaderFive>
+        {buildMissionTable(battle.key)}
+      </div>
+    ))
+
   return (
     <>
       <HeaderThree>Mission Sequence</HeaderThree>
@@ -71,7 +106,7 @@ export const Sequence = ({ battles, battleSize }) => {
         <HeaderFour>2. Muster Armies</HeaderFour>
         <Paragraph>
           Each player must then select a Battle-forged army. The points limit of
-          each player's army, and the number of Command points each player
+          each players' army, and the number of Command points each player
           starts with when they begin mustering their army, are shown in the
           table below.
         </Paragraph>
@@ -87,6 +122,8 @@ export const Sequence = ({ battles, battleSize }) => {
           opponent which you will use, or you can roll to randomly select a
           mssion using one of the following tables.
         </Paragraph>
+        <HeaderFive>Combat Patrol Missions</HeaderFive>
+        {buildMissions()}
       </div>
       <div>
         <HeaderFour>4. Read Mission Briefing</HeaderFour>
