@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+
 import React, { useReducer } from 'react'
 import styled from 'styled-components'
 import {
@@ -7,6 +9,9 @@ import {
   NavBar,
   Paragraph,
 } from '../../components'
+import { Sequence } from './Sequence'
+import { MissionReference } from './MissionsReference'
+import { CheckBoxSelectionSVG } from '../../assets/check-box-selection'
 
 const reducer = (prevState, updatedProperty) => ({
   ...prevState,
@@ -20,6 +25,7 @@ const reducer = (prevState, updatedProperty) => ({
 */
 const defaultState = {
   all: true,
+  layout: ['missionReference', 'sequence'],
   battles: {
     combatPatrol: 'Up to 1 hour',
     incursion: 'Up to 2 hours',
@@ -82,7 +88,26 @@ export const Missions = ({
   swapTheme,
 }) => {
   const [state, setState] = useReducer(reducer, defaultState)
+  const { layout } = state
 
+  const handleChange = (e) => setState({ [e.target.name]: e.target.checked })
+
+  const buildCheckboxes = () => {
+    return layout.map((obj) => (
+      <Body.CheckBox key={`${obj}-label`}>
+        <label>
+          <Body.StyleSpan>
+            {obj.charAt(0).toUpperCase() + obj.slice(1)}
+          </Body.StyleSpan>
+          <CheckBox
+            checked={state[obj]}
+            name={`${obj}`}
+            onChange={handleChange}
+          />
+        </label>
+      </Body.CheckBox>
+    ))
+  }
   return (
     <Styles.Wrap>
       <NavBar
@@ -92,11 +117,82 @@ export const Missions = ({
         showModal={showModal}
         swapTheme={swapTheme}
       />
-      <HeaderOne>Missions</HeaderOne>
+      <Body.Back darkMode={darkMode}>
+        <Body.TopContent>
+          <Body.TopBlurb>
+            <HeaderOne>Eternal War</HeaderOne>
+            <Paragraph>
+              Here you can reference the missions layout or the sequence of how
+              you should play the game.
+            </Paragraph>
+            <Paragraph>
+              Use the checkboxes below to filter based on what you wish to view.
+            </Paragraph>
+            {buildCheckboxes()}
+          </Body.TopBlurb>
+
+          <CheckBoxSelectionSVG fill="yellow" />
+        </Body.TopContent>
+        <Body.LowerContent>
+          <Body.CheckBoxes>
+            <Sequence {...state} />
+          </Body.CheckBoxes>
+          <Body.Objectives>
+            <MissionReference {...state} />
+          </Body.Objectives>
+        </Body.LowerContent>
+      </Body.Back>
     </Styles.Wrap>
   )
 }
 
 const Styles = {
   Wrap: styled.main``,
+}
+
+const Body = {
+  Back: styled.div`
+    display: flex;
+    flex-direction: column;
+    background: ${(props) => props.theme.backgroundColor};
+    padding: 0rem 10rem;
+    @media only screen and (max-width: 40em) {
+      padding: 5rem 1rem;
+    }
+  `,
+  TopContent: styled.div`
+    display: flex;
+    padding: 3.5rem 0;
+    @media only screen and (max-width: 40em) {
+      flex-direction: column;
+      padding: 0;
+    }
+  `,
+  TopBlurb: styled.div`
+    width: 50%;
+    @media only screen and (max-width: 40em) {
+      width: 100%;
+    }
+  `,
+  StyleSpan: styled.span`
+    margin-right: 8px;
+    color: ${(props) => props.theme.textColor};
+  `,
+  CheckBox: styled.div`
+    padding: 1rem 0;
+  `,
+  CheckBoxes: styled.div`
+    display: flex;
+    flex-direction: column;
+    min-width: 20%;
+  `,
+  LowerContent: styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    @media only screen and (max-width: 40em) {
+      flex-direction: column;
+    }
+  `,
+  Objectives: styled.div``,
 }
