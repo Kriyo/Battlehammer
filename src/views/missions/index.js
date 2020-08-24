@@ -38,32 +38,36 @@ const defaultState = {
     { label: 'Strike Force', time: 'Up to 3 hours' },
     { label: 'Onslaught', time: 'Up to 4 hours' },
   ],
-  battleSize: {
-    combatPatrol: {
+  battleSize: [
+    {
       battlefieldSize: '44" x 30"',
       commandPoints: 3,
+      label: 'Combat Patrol',
       powerLevel: '0-50',
       points: '0-500',
     },
-    incursion: {
+    {
       battlefieldSize: '44" x 30"',
       commandPoints: 6,
+      label: 'Incursion',
       powerLevel: '51-100',
       points: '501-1000',
     },
-    strikeForce: {
+    {
       battlefieldSize: '44" x 60"',
       commandPoints: 12,
+      label: 'Strike Force',
       powerLevel: '101-200',
       points: '1001-2000',
     },
-    onslaught: {
+    {
       battlefieldSize: '44" x 90"',
       commandPoints: 18,
+      label: 'Onslaught',
       powerLevel: '201-300',
       points: '2001-3000',
     },
-  },
+  ],
   missions: {
     combatPatrol: ['Incisive Attack', 'Outriders', 'Encircle'],
     incursion: [
