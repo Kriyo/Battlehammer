@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 
 import { CheckBox, HeaderThree, HeaderFour, Paragraph } from '../../components'
 
-export const Sequence = ({ battles }) => {
-  const buildBattleSizeTable = () => (
+export const Sequence = ({ battles, battleSize }) => {
+  const buildBattlesTable = () => (
     <table>
       <thead>
         <tr>
@@ -18,6 +18,31 @@ export const Sequence = ({ battles }) => {
             <tr>
               <td>{battle.label}</td>
               <td>{battle.time}</td>
+            </tr>
+          ))}
+        </tr>
+      </tbody>
+    </table>
+  )
+
+  const buildBattleSizeTable = () => (
+    <table>
+      <thead>
+        <tr>
+          <td>Battle Size</td>
+          <td>Points Limit</td>
+          <td>Power Level Limit</td>
+          <td>Command Points</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          {battleSize.map((battle) => (
+            <tr>
+              <td>{battle.label}</td>
+              <td>{battle.points}</td>
+              <td>{battle.powerLevel}</td>
+              <td>{battle.commandPoints}</td>
             </tr>
           ))}
         </tr>
@@ -39,7 +64,7 @@ export const Sequence = ({ battles }) => {
           Combat Patrol, Incursion, Strike Force or Onslaught. The table below
           gives a rough guide of how long each should take.
         </Paragraph>
-        {buildBattleSizeTable()}
+        {buildBattlesTable()}
       </div>
 
       <div>
@@ -50,6 +75,7 @@ export const Sequence = ({ battles }) => {
           starts with when they begin mustering their army, are shown in the
           table below.
         </Paragraph>
+        {buildBattleSizeTable()}
       </div>
       <div>
         <HeaderFour>3. Determine Mission</HeaderFour>
