@@ -11,7 +11,10 @@ export const MissionReference = () => {
   return (
     <>
       <HeaderThree>Filter Missions</HeaderThree>
-      <p>Select a mission category to view suitable missions to play</p>
+      <Paragraph>(Coming Soon!)</Paragraph>
+      {/* <Paragraph>
+        Select a mission category to view suitable missions to play
+      </Paragraph> */}
     </>
   )
 }
