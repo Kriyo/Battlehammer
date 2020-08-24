@@ -2,7 +2,16 @@ import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { useIdentityContext } from 'react-netlify-identity'
-import { Book, Home, LogIn, LogOut, Moon, Sun, User } from 'react-feather'
+import {
+  Book,
+  BookOpen,
+  Home,
+  LogIn,
+  LogOut,
+  Moon,
+  Sun,
+  User,
+} from 'react-feather'
 import { HammerIcon } from '../assets/hammer'
 import { darkTheme, defaultTheme } from '../utils'
 
@@ -95,6 +104,11 @@ export const NavBar = ({
             <Link to="/home">Home</Link>
           </Navbar.Item>
           {buildDashboardLink()}
+          <Navbar.Item className={pathname === '/missions' ? 'active' : null}>
+            <BookOpen color={iconColor} size={16} />
+            &nbsp;
+            <Link to="/missions">Missions</Link>
+          </Navbar.Item>
           <Navbar.Item className={pathname === '/objectives' ? 'active' : null}>
             <Book color={iconColor} size={16} />
             &nbsp;
