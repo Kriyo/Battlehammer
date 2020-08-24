@@ -80,7 +80,7 @@ export const Sequence = ({ battles, battleSize, missions }) => {
   const buildMissions = () =>
     battles.map((battle) => (
       <div>
-        <HeaderFive>{battle.label}</HeaderFive>
+        <HeaderFive>{battle.label} Missions</HeaderFive>
         {buildMissionTable(battle.key)}
       </div>
     ))
@@ -122,7 +122,6 @@ export const Sequence = ({ battles, battleSize, missions }) => {
           opponent which you will use, or you can roll to randomly select a
           mssion using one of the following tables.
         </Paragraph>
-        <HeaderFive>Combat Patrol Missions</HeaderFive>
         {buildMissions()}
       </div>
       <div>
@@ -160,10 +159,11 @@ export const Sequence = ({ battles, battleSize, missions }) => {
           Each player then secretly selects three secondary objectives for the
           battle and writes them down. Each can award victory points to the
           player who chose them. The secondary objectives that players can
-          choose from can be found <Link to="/objectives">here</Link>, though
-          some missions will include secondary objectives the players can also
-          choose from. Once both players have selected their secondary
-          objectives, they reveal their selections to their opponent.
+          choose from can be found in the{' '}
+          <Link to="/objectives">objectives</Link> section, though some missions
+          will include secondary objectives the players can also choose from.
+          Once both players have selected their secondary objectives, they
+          reveal their selections to their opponent.
         </Paragraph>
       </div>
       <div>

@@ -25,7 +25,10 @@ const reducer = (prevState, updatedProperty) => ({
 */
 const defaultState = {
   all: true,
-  layout: ['missionReference', 'sequence'],
+  layout: [
+    { key: 'missionReference', value: 'Mission Reference' },
+    { key: 'sequence', value: 'Sequence' },
+  ],
   battles: [
     {
       key: 'combatPatrol',
@@ -117,14 +120,12 @@ export const Missions = ({
 
   const buildCheckboxes = () => {
     return layout.map((obj) => (
-      <Body.CheckBox key={`${obj}-label`}>
+      <Body.CheckBox key={`${obj.key}`}>
         <label>
-          <Body.StyleSpan>
-            {obj.charAt(0).toUpperCase() + obj.slice(1)}
-          </Body.StyleSpan>
+          <Body.StyleSpan>{obj.value}</Body.StyleSpan>
           <CheckBox
-            checked={state[obj]}
-            name={`${obj}`}
+            checked={state[obj.key]}
+            name={`${obj.key}`}
             onChange={handleChange}
           />
         </label>
