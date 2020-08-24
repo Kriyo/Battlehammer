@@ -26,12 +26,18 @@ const reducer = (prevState, updatedProperty) => ({
 const defaultState = {
   all: true,
   layout: ['missionReference', 'sequence'],
-  battles: {
-    combatPatrol: 'Up to 1 hour',
-    incursion: 'Up to 2 hours',
-    strikeForce: 'Up to 3 hours',
-    onslaught: 'Up to 4 hours',
-  },
+  battles: [
+    {
+      label: 'Combat Patrol',
+      time: 'Up to 1 hour',
+    },
+    {
+      label: 'Incursion',
+      time: 'Up to 2 hours',
+    },
+    { label: 'Strike Force', time: 'Up to 3 hours' },
+    { label: 'Onslaught', time: 'Up to 4 hours' },
+  ],
   battleSize: {
     combatPatrol: {
       battlefieldSize: '44" x 30"',

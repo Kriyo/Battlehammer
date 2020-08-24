@@ -1,15 +1,30 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import {
-  CheckBox,
-  HeaderThree,
-  HeaderFour,
-  NavBar,
-  Paragraph,
-} from '../../components'
+import { CheckBox, HeaderThree, HeaderFour, Paragraph } from '../../components'
 
-export const Sequence = () => {
+export const Sequence = ({ battles }) => {
+  const buildBattleSizeTable = () => (
+    <table>
+      <thead>
+        <tr>
+          <td>Battle Size</td>
+          <td>Battle Duration</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          {battles.map((battle) => (
+            <tr>
+              <td>{battle.label}</td>
+              <td>{battle.time}</td>
+            </tr>
+          ))}
+        </tr>
+      </tbody>
+    </table>
+  )
+
   return (
     <>
       <HeaderThree>Mission Sequence</HeaderThree>
@@ -24,6 +39,7 @@ export const Sequence = () => {
           Combat Patrol, Incursion, Strike Force or Onslaught. The table below
           gives a rough guide of how long each should take.
         </Paragraph>
+        {buildBattleSizeTable()}
       </div>
 
       <div>
