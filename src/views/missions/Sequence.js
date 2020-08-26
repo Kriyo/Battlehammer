@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
 import {
-  CheckBox,
   HeaderThree,
   HeaderFour,
   HeaderFive,
@@ -11,7 +11,7 @@ import {
 
 export const Sequence = ({ battles, battleSize, missions }) => {
   const buildBattlesTable = () => (
-    <table>
+    <StyledTable>
       <thead>
         <tr>
           <td>Battle Size</td>
@@ -28,7 +28,7 @@ export const Sequence = ({ battles, battleSize, missions }) => {
           ))}
         </tr>
       </tbody>
-    </table>
+    </StyledTable>
   )
 
   const buildBattleSizeTable = () => (
@@ -86,7 +86,7 @@ export const Sequence = ({ battles, battleSize, missions }) => {
     ))
 
   return (
-    <>
+    <Styles.Sequence>
       <HeaderThree>Mission Sequence</HeaderThree>
       <Paragraph>
         An Eternal War battle is waged by following the sequence below:
@@ -275,6 +275,14 @@ export const Sequence = ({ battles, battleSize, missions }) => {
           gives the player a maximum total score out of 100 victory points.
         </Paragraph>
       </div>
-    </>
+    </Styles.Sequence>
   )
 }
+
+const Styles = {
+  Sequence: styled.main`
+    width: 50%;
+  `,
+}
+
+const StyledTable = styled.table``
