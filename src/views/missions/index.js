@@ -2,15 +2,8 @@
 
 import React, { useReducer } from 'react'
 import styled from 'styled-components'
-import {
-  CheckBox,
-  HeaderOne,
-  HeaderThree,
-  NavBar,
-  Paragraph,
-} from '../../components'
+import { HeaderOne, NavBar, Paragraph } from '../../components'
 import { Sequence } from './Sequence'
-import { MissionReference } from './MissionsReference'
 import { CheckBoxSelectionSVG } from '../../assets/check-box-selection'
 
 const reducer = (prevState, updatedProperty) => ({
@@ -114,24 +107,7 @@ export const Missions = ({
   swapTheme,
 }) => {
   const [state, setState] = useReducer(reducer, defaultState)
-  const { layout } = state
 
-  const handleChange = (e) => setState({ [e.target.name]: e.target.checked })
-
-  const buildCheckboxes = () => {
-    return layout.map((obj) => (
-      <Body.CheckBox key={`${obj.key}`}>
-        <label>
-          <Body.StyleSpan>{obj.value}</Body.StyleSpan>
-          <CheckBox
-            checked={state[obj.key]}
-            name={`${obj.key}`}
-            onChange={handleChange}
-          />
-        </label>
-      </Body.CheckBox>
-    ))
-  }
   return (
     <Styles.Wrap>
       <NavBar
@@ -152,7 +128,6 @@ export const Missions = ({
             <Paragraph>
               Use the checkboxes below to filter based on what you wish to view.
             </Paragraph>
-            {buildCheckboxes()}
           </Body.TopBlurb>
 
           <CheckBoxSelectionSVG fill="yellow" />
@@ -161,9 +136,6 @@ export const Missions = ({
           <Body.CheckBoxes>
             <Sequence {...state} />
           </Body.CheckBoxes>
-          <Body.Objectives>
-            <MissionReference {...state} />
-          </Body.Objectives>
         </Body.LowerContent>
       </Body.Back>
     </Styles.Wrap>
