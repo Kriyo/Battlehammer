@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import Select from 'react-select'
-import { HeaderOne, NavBar } from '../components'
+import { set } from 'lodash'
+import { HeaderOne, InputGroup, NavBar } from '../components'
 import { Player } from '../components/Player'
-import { useLocallyPersistedReducer } from '../utils'
+import { defaultTheme, darkTheme, useLocallyPersistedReducer } from '../utils'
 import { battleSize, battleTypes, missionOpts } from '../utils/constants'
 
 const defaultState = {
@@ -26,8 +27,31 @@ export const Dashboard = ({
     'dashboard'
   )
 
+  const currentTheme = darkMode ? darkTheme : defaultTheme
+  console.log('::> CT: ', currentTheme)
+
+  const customStyles = {
+    menu: (provided, styleState) => ({
+      ...provided,
+      color: styleState.isSelected ? 'yellow' : currentTheme.navBarColor,
+    }),
+    option: (provided, styleState) => ({
+      ...provided,
+      backgroundColor: styleState.isSelected
+        ? currentTheme.selectBGActiveColor
+        : currentTheme.selectBGColor,
+      color: styleState.isSelected
+        ? currentTheme.selectBGActiveTextColor
+        : currentTheme.selectBGTextColor,
+    }),
+  }
+
   const handleChange = (e, key) => {
-    setState({ [key]: e })
+    if (key === 'points') {
+      setState({ [key]: e.target.value })
+    } else {
+      setState({ [key]: e })
+    }
   }
 
   const buildMissionSelect = () => {
@@ -35,8 +59,13 @@ export const Dashboard = ({
     if (battleType) {
       return (
         <Styles.Mission>
-          <p>Mission</p>
-          <Select options={missionOpts[battleType]} />
+          <Styles.BattleLabel>Mission</Styles.BattleLabel>
+          <Select
+            styles={customStyles}
+            options={missionOpts[battleType.value]}
+            onChange={(e) => handleChange(e, 'mission')}
+            value={state.mission}
+          />
         </Styles.Mission>
       )
     }
@@ -57,14 +86,22 @@ export const Dashboard = ({
         <HeaderOne>Dashboard</HeaderOne>
       </Styles.Header>
       <Styles.BattleSize>
-        <p>Battle Size</p>
+        <Styles.BattleLabel>Battle Size</Styles.BattleLabel>
         <Select
+          styles={customStyles}
           options={battleTypes}
           onChange={(e) => handleChange(e, 'battleType')}
           value={state.battleType}
         />
       </Styles.BattleSize>
       {buildMissionSelect()}
+      <Styles.Points>
+        <InputGroup
+          label="Points"
+          value={state.points}
+          onChange={(e) => handleChange(e, 'points')}
+        />
+      </Styles.Points>
       <Styles.Content>
         <Styles.Players>{buildPlayers}</Styles.Players>
       </Styles.Content>
@@ -73,7 +110,12 @@ export const Dashboard = ({
 }
 
 const Styles = {
-  Wrap: styled.main``,
+  Wrap: styled.main`
+    background: ${(props) => props.theme.backgroundColor};
+  `,
+  BattleLabel: styled.p`
+    color: ${(props) => props.theme.textColorOnPrimary};
+  `,
   Content: styled.div`
     display: flex;
     flex-direction: column;
@@ -88,8 +130,30 @@ const Styles = {
     justify-content: center;
     background: ${(props) => props.theme.backgroundColor};
   `,
-  BattleSize: styled.div``,
-  Mission: styled.div``,
+  BattleSize: styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    margin: 0 auto;
+    background: ${(props) => props.theme.backgroundColor};
+  `,
+  Mission: styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    margin: 0 auto;
+    background: ${(props) => props.theme.backgroundColor};
+  `,
+  Points: styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    margin: 30px auto;
+    background: ${(props) => props.theme.backgroundColor};
+  `,
   Players: styled.div`
     display: flex;
     justify-content: space-around;
