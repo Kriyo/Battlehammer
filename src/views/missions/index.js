@@ -4,7 +4,7 @@ import React, { useReducer } from 'react'
 import styled from 'styled-components'
 import { HeaderOne, NavBar, Paragraph } from '../../components'
 import { Sequence } from './Sequence'
-import { battlesTypes, battleSize, missionOpts } from '../../utils/constants'
+import { battleTypes, battleSize, missionOpts } from '../../utils/constants'
 import { CheckBoxSelectionSVG } from '../../assets/check-box-selection'
 
 const reducer = (prevState, updatedProperty) => ({
@@ -23,7 +23,7 @@ const defaultState = {
     { key: 'missionReference', value: 'Mission Reference' },
     { key: 'sequence', value: 'Sequence' },
   ],
-  battles: battlesTypes,
+  battles: battleTypes,
   battleSize,
   missions: missionOpts,
 }

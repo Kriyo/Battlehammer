@@ -56,7 +56,7 @@ export const Sequence = ({ battles, battleSize, missions }) => {
     </table>
   )
 
-  const buildMissionTable = (key) => (
+  const buildMissionTable = (value) => (
     <table>
       <thead>
         <tr>
@@ -66,7 +66,7 @@ export const Sequence = ({ battles, battleSize, missions }) => {
       </thead>
       <tbody>
         <tr>
-          {missions[key].map((mission) => (
+          {missions[value].map((mission) => (
             <tr>
               <td>{mission.dice}</td>
               <td>{mission.label}</td>
@@ -81,7 +81,7 @@ export const Sequence = ({ battles, battleSize, missions }) => {
     battles.map((battle) => (
       <div>
         <HeaderFive>{battle.label} Missions</HeaderFive>
-        {buildMissionTable(battle.key)}
+        {buildMissionTable(battle.value)}
       </div>
     ))
 

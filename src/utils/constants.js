@@ -1,16 +1,16 @@
-export const battlesTypes = [
+export const battleTypes = [
   {
-    key: 'combatPatrol',
+    value: 'combatPatrol',
     label: 'Combat Patrol',
     time: 'Up to 1 hour',
   },
   {
-    key: 'incursion',
+    value: 'incursion',
     label: 'Incursion',
     time: 'Up to 2 hours',
   },
-  { key: 'strikeForce', label: 'Strike Force', time: 'Up to 3 hours' },
-  { key: 'onslaught', label: 'Onslaught', time: 'Up to 4 hours' },
+  { value: 'strikeForce', label: 'Strike Force', time: 'Up to 3 hours' },
+  { value: 'onslaught', label: 'Onslaught', time: 'Up to 4 hours' },
 ]
 
 export const battleSize = [
