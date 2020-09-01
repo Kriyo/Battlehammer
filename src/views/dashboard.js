@@ -42,11 +42,8 @@ export const Dashboard = ({
   ))
 
   const handleChange = (e, key) => {
-    if (key === 'points') {
-      setState({ [key]: e.target.value })
-    } else {
-      setState({ [key]: e })
-    }
+    const val = key === 'points' ? e.target.value : e
+    setState({ [key]: val })
   }
 
   const buildMissionSelect = () => {
