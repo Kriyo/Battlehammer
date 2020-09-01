@@ -19,8 +19,11 @@ export const Secondaries = ({
   }
 
   const buildSelect = () => {
-    const additionalSecondary = cloneMissions[battleType.value]
-    console.log('::> Add sec: ', additionalSecondary)
+    const getMissionData = cloneMissions[battleType.value].find(
+      (m) => m.value === mission.value
+    )
+    const additionalSecondary = getMissionData.secondary
+    console.log('::> additionalSecondary: ', additionalSecondary)
 
     return (
       <Styles.SelectWrapper>
