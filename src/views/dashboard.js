@@ -38,7 +38,7 @@ export const Dashboard = ({
   }
 
   const buildPlayers = players.map((p) => (
-    <Player key={p} label={p} customStyles={customStyles} />
+    <Player key={p} label={p} customStyles={customStyles} {...state} />
   ))
 
   const handleChange = (e, key) => {

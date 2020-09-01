@@ -1,8 +1,39 @@
 import React from 'react'
 import styled from 'styled-components'
+import Select from 'react-select'
+import { cloneDeep } from 'lodash'
 import { InputGroup, PrimaryButton } from './index'
+import { missionOpts } from '../utils/constants'
 
-export const Secondaries = ({ config, onChange }) => {
+export const Secondaries = ({
+  battleType,
+  config,
+  customStyles,
+  mission,
+  onChange,
+}) => {
+  const cloneMissions = cloneDeep(missionOpts)
+
+  const derp = (e) => {
+    console.log('::> EEEE: ', e)
+  }
+
+  const buildSelect = () => {
+    const additionalSecondary = cloneMissions[battleType.value]
+    console.log('::> Add sec: ', additionalSecondary)
+
+    return (
+      <Styles.SelectWrapper>
+        <Select
+          options={cloneMissions}
+          // value={mission}
+          styles={customStyles}
+          onChange={(e) => derp(e)}
+        />
+      </Styles.SelectWrapper>
+    )
+  }
+
   const rounds = config.secondaries.map((s, i) => {
     return (
       <Styles.Container key={s.key}>
@@ -22,6 +53,7 @@ export const Secondaries = ({ config, onChange }) => {
             }
           />
         </Styles.SecondariesInputWrapper>
+        {buildSelect()}
         <Styles.SecondariesButtonWrapper>
           {s.amounts.map((amount) => (
             <PrimaryButton
@@ -62,4 +94,5 @@ const Styles = {
       margin: 35px 0 0 0;
     }
   `,
+  SelectWrapper: styled.div``,
 }

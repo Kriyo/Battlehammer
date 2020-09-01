@@ -61,7 +61,7 @@ const getScore = (arr, key) => {
   return currentScore >= 45 ? 45 : currentScore
 }
 
-export const Player = ({ label }) => {
+export const Player = ({ battleType, customStyles, label, mission }) => {
   const [state, setState] = useLocallyPersistedReducer(
     defaultState,
     `${label} state`
@@ -117,6 +117,9 @@ export const Player = ({ label }) => {
   const buildSecondaries = () => {
     return (
       <Secondaries
+        battleType={battleType}
+        customStyles={customStyles}
+        mission={mission}
         onChange={(e) => handleObjChange(e, 'secondaries')}
         config={state}
       />
