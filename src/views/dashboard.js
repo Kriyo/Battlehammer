@@ -26,15 +26,9 @@ export const Dashboard = ({
     defaultState,
     'dashboard'
   )
-
   const currentTheme = darkMode ? darkTheme : defaultTheme
-  console.log('::> CT: ', currentTheme)
 
   const customStyles = {
-    menu: (provided, styleState) => ({
-      ...provided,
-      color: styleState.isSelected ? 'yellow' : currentTheme.navBarColor,
-    }),
     option: (provided, styleState) => ({
       ...provided,
       backgroundColor: styleState.isSelected
@@ -71,8 +65,7 @@ export const Dashboard = ({
     }
     return null
   }
-  console.log('::> State: ', state)
-  /* Build up state here for Mission & Points Limit etc */
+
   return (
     <Styles.Wrap>
       <NavBar
