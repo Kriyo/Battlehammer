@@ -1,11 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import Select from 'react-select'
-import { set } from 'lodash'
 import { HeaderOne, InputGroup, NavBar } from '../components'
 import { Player } from '../components/Player'
 import { defaultTheme, darkTheme, useLocallyPersistedReducer } from '../utils'
-import { battleSize, battleTypes, missionOpts } from '../utils/constants'
+import { battleTypes, missionOpts } from '../utils/constants'
 
 const defaultState = {
   battleType: '',
@@ -21,13 +20,11 @@ export const Dashboard = ({
   swapTheme,
 }) => {
   const players = ['Player 1', 'Player 2']
-  const buildPlayers = players.map((p) => <Player key={p} label={p} />)
   const [state, setState] = useLocallyPersistedReducer(
     defaultState,
     'dashboard'
   )
   const currentTheme = darkMode ? darkTheme : defaultTheme
-
   const customStyles = {
     option: (provided, styleState) => ({
       ...provided,
@@ -39,6 +36,10 @@ export const Dashboard = ({
         : currentTheme.selectBGTextColor,
     }),
   }
+
+  const buildPlayers = players.map((p) => (
+    <Player key={p} label={p} customStyles={customStyles} />
+  ))
 
   const handleChange = (e, key) => {
     if (key === 'points') {
