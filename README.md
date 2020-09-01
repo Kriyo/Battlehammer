@@ -1,7 +1,7 @@
 # Battlehammer
 
 ## Release: 
-Version 1: **live**
+Version 1: **live**: https://battlehammer.eu/
 
 Version 2: Coming soon.
 
