@@ -39,6 +39,13 @@ export const Dashboard = ({
         borderColor: currentTheme.primaryColor,
       },
     }),
+    dropdownIndicator: (provided) => ({
+      ...provided,
+      color: currentTheme.selectBGActiveColor,
+      '&:hover': {
+        color: currentTheme.selectBGActiveColor,
+      },
+    }),
     option: (provided, styleState) => ({
       ...provided,
       border: styleState.isSelected
