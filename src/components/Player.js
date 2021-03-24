@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react'
 import styled from 'styled-components'
 import { cloneDeep } from 'lodash'
@@ -16,6 +17,7 @@ const defaultState = {
   name: '',
   cp: 0,
   faction: '',
+  battleReady: false,
   primaries: [
     {
       current: 0,
@@ -72,9 +74,13 @@ export const Player = ({ battleType, customStyles, label, mission }) => {
     defaultState,
     `${label} state`
   )
+
   const handleChange = (e, key) => {
     setState({ [key]: e.target.value })
   }
+
+  const handleChangeCheckbox = (e) =>
+    setState({ [e.target.name]: e.target.checked })
 
   const handleObjChange = (update, key) => {
     const cloneSpec = cloneDeep(state)
@@ -109,10 +115,11 @@ export const Player = ({ battleType, customStyles, label, mission }) => {
   }
 
   const getTotalScore = () => {
-    const { primaries, secondaries } = state
+    const { battleReady, primaries, secondaries } = state
     const p = getScore(primaries, 'current')
     const s = getScore(secondaries, 'current')
-    return p + s
+    const br = battleReady ? 10 : 0
+    return p + s + br
   }
 
   const buildTotalScore = () => {
@@ -154,14 +161,15 @@ export const Player = ({ battleType, customStyles, label, mission }) => {
         value={state.faction}
         onChange={(e) => handleChange(e, 'faction')}
       />
-      <Styles.CheckBoxContainer>
-        <label htmlFor="checkbox">Battle Ready</label>
-        <CheckBox
-          id="checkbox"
-          checked={false}
-          name="test"
-          onChange={handleChange}
-        />
+      <Styles.CheckBoxContainer key="battleReady-label">
+        <label>
+          <Styles.StyleSpan>Battle Ready</Styles.StyleSpan>
+          <CheckBox
+            checked={state.battleReady}
+            name="battleReady"
+            onChange={handleChangeCheckbox}
+          />
+        </label>
       </Styles.CheckBoxContainer>
       <Styles.HeaderWrapper>
         <HeaderFour>Primary Objectives</HeaderFour>
@@ -187,5 +195,14 @@ const Styles = {
   HeaderWrapper: styled.div`
     padding: 1rem 0;
   `,
-  CheckBoxContainer: styled.div``,
+  CheckBoxContainer: styled.div`
+    display: flex;
+    min-width: 20%;
+  `,
+  CheckBox: styled.div`
+    padding: 1rem 0;
+  `,
+  StyleSpan: styled.span`
+    margin-right: 8px;
+  `,
 }

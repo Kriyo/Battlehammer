@@ -55,8 +55,9 @@ export const ObjectivesList = ({
     warpcraft,
   } = state
 
-  const handleChange = (e) => setState({ [e.target.name]: e.target.checked })
-
+  const handleChange = (e) => {
+    setState({ [e.target.name]: e.target.checked })
+  }
   const buildCheckboxes = () => {
     return objectiveTypes.map((obj) => (
       <Body.CheckBox key={`${obj}-label`}>

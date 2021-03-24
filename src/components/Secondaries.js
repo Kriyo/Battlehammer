@@ -17,7 +17,6 @@ export const Secondaries = ({
         {mission ? (
           <Styles.SelectWrapper>
             <Select
-              style={{ borderColor: '#272343' }}
               options={secondaryObjectives}
               value={secondaries[i].title}
               styles={customStyles}
