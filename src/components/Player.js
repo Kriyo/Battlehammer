@@ -204,5 +204,6 @@ const Styles = {
   `,
   StyleSpan: styled.span`
     margin-right: 8px;
+    color: ${(props) => props.theme.textColor};
   `,
 }
