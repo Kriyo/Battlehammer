@@ -47,6 +47,10 @@ export const Dashboard = ({
         color: currentTheme.selectBGActiveColor,
       },
     }),
+    menu: (provided) => ({
+      ...provided,
+      borderRadius: '2px',
+    }),
     option: (provided, styleState) => ({
       ...provided,
       border: styleState.isSelected
