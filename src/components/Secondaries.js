@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import Select from 'react-select'
-import { cloneDeep } from 'lodash'
 import { InputGroup, PrimaryButton } from './index'
-import { missionOpts } from '../utils/constants'
+import { secondaryObjectives } from '../utils/constants'
 
 export const Secondaries = ({
   battleType,
@@ -12,29 +11,32 @@ export const Secondaries = ({
   mission,
   onChange,
 }) => {
-  const cloneMissions = cloneDeep(missionOpts)
+  // const cloneMissions = cloneDeep(missionOpts)
 
   const derp = (e) => {
     console.log('::> EEEE: ', e)
   }
 
   const buildSelect = () => {
-    const getMissionData = cloneMissions[battleType.value].find(
-      (m) => m.value === mission.value
-    )
-    const additionalSecondary = getMissionData.secondary
-    console.log('::> additionalSecondary: ', additionalSecondary)
-
-    return (
-      <Styles.SelectWrapper>
-        <Select
-          options={cloneMissions}
-          // value={mission}
-          styles={customStyles}
-          onChange={(e) => derp(e)}
-        />
-      </Styles.SelectWrapper>
-    )
+    // const getMissionData = cloneMissions[battleType.value]?.find(
+    //   (m) => m.value === mission.value
+    // )
+    // const additionalSecondary = getMissionData?.secondary
+    // console.log('::> additionalSecondary: ', additionalSecondary)
+    if (mission) {
+      console.log('::> mission: ', mission)
+      return (
+        <Styles.SelectWrapper>
+          <Select
+            options={secondaryObjectives}
+            // value={mission}
+            styles={customStyles}
+            onChange={(e) => derp(e)}
+          />
+        </Styles.SelectWrapper>
+      )
+    }
+    return null
   }
 
   const rounds = config.secondaries.map((s, i) => {

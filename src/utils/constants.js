@@ -165,3 +165,117 @@ export const missionOpts = {
     },
   ],
 }
+
+const battleFieldSupremacyObjs = [
+  {
+    label: 'Engage On All Fronts',
+    value: 'engageOnAllFronts',
+  },
+  {
+    label: 'Linebreaker',
+    value: 'linebreaker',
+  },
+  {
+    label: 'Domination',
+    value: 'domination',
+  },
+]
+
+const noMercyNoRespiteObjs = [
+  {
+    label: 'Thin Their Ranks',
+    value: 'thinTheirRanks',
+  },
+  {
+    label: 'Grind Them Down',
+    value: 'grindThemDown',
+  },
+  {
+    label: 'While We Stand, We Fight',
+    value: 'whileWeStandWeFight',
+  },
+]
+
+const purgeTheEnemyObjs = [
+  {
+    label: 'Assassinate',
+    value: 'assassinate',
+  },
+  {
+    label: 'Bring It Down',
+    value: 'bringItDown',
+  },
+  {
+    label: 'Cut Off The Head',
+    value: 'cutOffTheHead',
+  },
+  {
+    label: 'Titan Hunter',
+    value: 'titanHunter',
+  },
+]
+
+const shadowOperationsObjs = [
+  {
+    label: 'Deploy Scramblers',
+    value: 'deployScramblers',
+  },
+  {
+    label: 'Investigate Sites',
+    value: 'investigateSites',
+  },
+  {
+    label: 'Raise The Banners High',
+    value: 'raiseTheBannersHigh',
+  },
+  {
+    label: 'Teleport Homer',
+    value: 'teleportHomer',
+  },
+  {
+    label: 'Titan Hunter',
+    value: 'titanHunter',
+  },
+]
+
+const warpcraftObjs = [
+  {
+    label: 'Abhor The Witch',
+    value: 'abhorTheWitch',
+  },
+  {
+    label: 'Mental Interrogation',
+    value: 'mentalInterrogation',
+  },
+  {
+    label: 'Pierce The Veil',
+    value: 'pierceTheVeil',
+  },
+  {
+    label: 'PsychicRitual',
+    value: 'psychicRitual',
+  },
+]
+
+export const secondaryObjectives = [
+  {
+    label: 'Battlefield Supremacy',
+    options: battleFieldSupremacyObjs,
+  },
+  {
+    label: 'No Mercy No Respite',
+    options: noMercyNoRespiteObjs,
+  },
+  {
+    label: 'Purge The Enemy',
+    options: purgeTheEnemyObjs,
+  },
+  {
+    label: 'Shadow Operations',
+    options: shadowOperationsObjs,
+  },
+  {
+    label: 'Psychic Ritual',
+    options: warpcraftObjs,
+  },
+]
