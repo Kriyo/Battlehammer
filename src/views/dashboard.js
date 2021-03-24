@@ -26,14 +26,34 @@ export const Dashboard = ({
   )
   const currentTheme = darkMode ? darkTheme : defaultTheme
   const customStyles = {
+    singleValue: (provided) => ({
+      ...provided,
+      color: currentTheme.selectBGTextColor,
+    }),
+    control: (provided, styleState) => ({
+      ...provided,
+      borderColor: styleState.isSelected
+        ? currentTheme.primaryColor
+        : currentTheme.secondaryColor,
+      '&:hover': {
+        borderColor: currentTheme.primaryColor,
+      },
+    }),
     option: (provided, styleState) => ({
       ...provided,
+      border: styleState.isSelected
+        ? currentTheme.selectBGActiveColor
+        : currentTheme.selectBGColor,
       backgroundColor: styleState.isSelected
         ? currentTheme.selectBGActiveColor
         : currentTheme.selectBGColor,
       color: styleState.isSelected
         ? currentTheme.selectBGActiveTextColor
         : currentTheme.selectBGTextColor,
+      '&:hover': {
+        color: currentTheme.selectBGActiveTextColor,
+        backgroundColor: currentTheme.selectBGActiveColor,
+      },
     }),
   }
 

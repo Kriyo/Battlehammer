@@ -2,7 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import { cloneDeep } from 'lodash'
 import { useLocallyPersistedReducer } from '../utils'
-import { HeaderFour, HeaderFive, InputGroup, PrimaryButton } from './index'
+import {
+  CheckBox,
+  HeaderFour,
+  HeaderFive,
+  InputGroup,
+  PrimaryButton,
+} from './index'
 import { Primaries } from './Primaries'
 import { Secondaries } from './Secondaries'
 
@@ -115,6 +121,7 @@ export const Player = ({ battleType, customStyles, label, mission }) => {
   }
 
   const buildSecondaries = () => {
+    const { secondaries } = state
     return (
       <Secondaries
         battleType={battleType}
@@ -122,6 +129,7 @@ export const Player = ({ battleType, customStyles, label, mission }) => {
         mission={mission}
         onChange={(e) => handleObjChange(e, 'secondaries')}
         config={state}
+        secondaries={secondaries}
       />
     )
   }
@@ -146,6 +154,15 @@ export const Player = ({ battleType, customStyles, label, mission }) => {
         value={state.faction}
         onChange={(e) => handleChange(e, 'faction')}
       />
+      <Styles.CheckBoxContainer>
+        <label htmlFor="checkbox">Battle Ready</label>
+        <CheckBox
+          id="checkbox"
+          checked={false}
+          name="test"
+          onChange={handleChange}
+        />
+      </Styles.CheckBoxContainer>
       <Styles.HeaderWrapper>
         <HeaderFour>Primary Objectives</HeaderFour>
       </Styles.HeaderWrapper>
@@ -170,4 +187,5 @@ const Styles = {
   HeaderWrapper: styled.div`
     padding: 1rem 0;
   `,
+  CheckBoxContainer: styled.div``,
 }

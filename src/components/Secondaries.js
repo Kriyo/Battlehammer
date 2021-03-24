@@ -1,64 +1,38 @@
 import React from 'react'
 import styled from 'styled-components'
 import Select from 'react-select'
-import { InputGroup, PrimaryButton } from './index'
+import { PrimaryButton } from './index'
 import { secondaryObjectives } from '../utils/constants'
 
 export const Secondaries = ({
-  battleType,
   config,
   customStyles,
   mission,
   onChange,
+  secondaries,
 }) => {
-  // const cloneMissions = cloneDeep(missionOpts)
-
-  const derp = (e) => {
-    console.log('::> EEEE: ', e)
-  }
-
-  const buildSelect = () => {
-    // const getMissionData = cloneMissions[battleType.value]?.find(
-    //   (m) => m.value === mission.value
-    // )
-    // const additionalSecondary = getMissionData?.secondary
-    // console.log('::> additionalSecondary: ', additionalSecondary)
-    if (mission) {
-      console.log('::> mission: ', mission)
-      return (
-        <Styles.SelectWrapper>
-          <Select
-            options={secondaryObjectives}
-            // value={mission}
-            styles={customStyles}
-            onChange={(e) => derp(e)}
-          />
-        </Styles.SelectWrapper>
-      )
-    }
-    return null
-  }
-
   const rounds = config.secondaries.map((s, i) => {
     return (
       <Styles.Container key={s.key}>
-        <Styles.SecondariesInputWrapper>
-          <InputGroup
-            className="secondaries-input"
-            label={`${s.key} Objective`}
-            value={s.title}
-            onChange={(e) =>
-              onChange({
-                amounts: s.amounts,
-                current: s.current,
-                index: i,
-                key: s.key,
-                title: e.target.value,
-              })
-            }
-          />
-        </Styles.SecondariesInputWrapper>
-        {buildSelect()}
+        {mission ? (
+          <Styles.SelectWrapper>
+            <Select
+              style={{ borderColor: '#272343' }}
+              options={secondaryObjectives}
+              value={secondaries[i].title}
+              styles={customStyles}
+              onChange={(e) =>
+                onChange({
+                  amounts: s.amounts,
+                  current: s.current,
+                  index: i,
+                  key: s.key,
+                  title: e,
+                })
+              }
+            />
+          </Styles.SelectWrapper>
+        ) : null}
         <Styles.SecondariesButtonWrapper>
           {s.amounts.map((amount) => (
             <PrimaryButton
@@ -99,5 +73,7 @@ const Styles = {
       margin: 35px 0 0 0;
     }
   `,
-  SelectWrapper: styled.div``,
+  SelectWrapper: styled.div`
+    padding: 20px 0;
+  `,
 }
