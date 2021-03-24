@@ -32,6 +32,7 @@ export const Dashboard = ({
     }),
     control: (provided, styleState) => ({
       ...provided,
+      borderRadius: '2px',
       borderColor: styleState.isSelected
         ? currentTheme.primaryColor
         : currentTheme.secondaryColor,
