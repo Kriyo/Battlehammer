@@ -1,3 +1,6 @@
 export * from './dashboard'
 export * from './home'
+export * from './missions'
 export * from './objectives'
+export * from './profile'
+export * from './scoreboard'

@@ -38,7 +38,13 @@ const objectiveTypes = [
   'warpcraft',
 ]
 
-export const ObjectivesList = ({ darkMode, location, modeType, swapTheme }) => {
+export const ObjectivesList = ({
+  darkMode,
+  location,
+  modeType,
+  showModal,
+  swapTheme,
+}) => {
   const [state, setState] = useReducer(reducer, defaultState)
   const {
     all,
@@ -49,8 +55,9 @@ export const ObjectivesList = ({ darkMode, location, modeType, swapTheme }) => {
     warpcraft,
   } = state
 
-  const handleChange = (e) => setState({ [e.target.name]: e.target.checked })
-
+  const handleChange = (e) => {
+    setState({ [e.target.name]: e.target.checked })
+  }
   const buildCheckboxes = () => {
     return objectiveTypes.map((obj) => (
       <Body.CheckBox key={`${obj}-label`}>
@@ -74,6 +81,7 @@ export const ObjectivesList = ({ darkMode, location, modeType, swapTheme }) => {
         location={location}
         darkMode={darkMode}
         modeType={modeType}
+        showModal={showModal}
         swapTheme={swapTheme}
       />
 

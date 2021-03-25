@@ -38,7 +38,7 @@ export const Warpcraft = () => {
             You cannot select this secondary objective if your army includes any
             Psyker units. Score 5 vp at the end of the battle for each enemy
             Psyker Character unit that is destroyed, and 3 vp for every other
-            eneymy Psykey unit that is destroyed.
+            eneymy Psyker unit that is destroyed.
           </Paragraph>
         </li>
       </ul>

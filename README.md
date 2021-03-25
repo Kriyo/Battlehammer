@@ -1,11 +1,15 @@
 # Battlehammer
 
+<<<<<<< HEAD
+## A tool for playing Warhammer 40,000 9th Edition
+=======
 ## Release: 
 Version 1: **live**: https://battlehammer.eu/
 
 Version 2: Coming soon.
 
 ### A tool for playing Warhammer 40,000 9th Edition
+>>>>>>> 2de607fd6b03500a5982ad013e36afbf60badadd
 
 ![img](https://i.imgur.com/gqyBUOw.jpeg "Title Logo")
 

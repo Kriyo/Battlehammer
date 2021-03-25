@@ -8,7 +8,7 @@ export const lightModePrimary = {
 
 export const darkModePrimary = {
   100: '#7F5AF0',
-  200: '#FFFFFE', //  200: '#FDCA40',
+  200: '#FFFFFE',
   300: '#16161A',
   400: '#94A1B2',
   500: '#72757E',
@@ -47,5 +47,9 @@ export const defaultShadow = '0px 4px 4px rgba(0, 0, 0, 0.25)'
 export const modalShadow = '0 5px 16px rgba(0, 0, 0, 0.2)'
 export const lightTextShadow =
   'rgba(255, 255, 255, 1) 4px 4px 4px, rgba(255, 255, 255, 0.5) 5px 8px 13px, rgba(255, 255, 255, 1) 5px 18px 23px'
+export const lightTextShadowXL =
+  'rgb(255 255 255) 0px 0px 4px, rgb(255 255 255 / 50%) 5px 0px 10px, rgb(255 255 255) 5px 18px 23px;'
 export const darkTextShadow =
   '0px 4px 3px rgba(0,0,0,0.4), 0px 8px 13px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1)'
+export const darkTextShadowXL =
+  'rgb(0, 0, 0) 0px 0px 4px, rgb(0 0 0 / 50%) 5px 0px 10px, rgb(0 0 0) 5px 18px 23px;'

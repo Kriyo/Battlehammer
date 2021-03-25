@@ -1,27 +1,37 @@
 import React from 'react'
 import styled from 'styled-components'
-import { InputGroup, PrimaryButton } from './index'
+import Select from 'react-select'
+import { PrimaryButton } from './index'
+import { secondaryObjectives } from '../utils/constants'
 
-export const Secondaries = ({ config, onChange }) => {
+export const Secondaries = ({
+  config,
+  customStyles,
+  mission,
+  onChange,
+  secondaries,
+}) => {
   const rounds = config.secondaries.map((s, i) => {
     return (
       <Styles.Container key={s.key}>
-        <Styles.SecondariesInputWrapper>
-          <InputGroup
-            className="secondaries-input"
-            label={`${s.key} Objective`}
-            value={s.title}
-            onChange={(e) =>
-              onChange({
-                amounts: s.amounts,
-                current: s.current,
-                index: i,
-                key: s.key,
-                title: e.target.value,
-              })
-            }
-          />
-        </Styles.SecondariesInputWrapper>
+        {mission ? (
+          <Styles.SelectWrapper>
+            <Select
+              options={secondaryObjectives}
+              value={secondaries[i].title}
+              styles={customStyles}
+              onChange={(e) =>
+                onChange({
+                  amounts: s.amounts,
+                  current: s.current,
+                  index: i,
+                  key: s.key,
+                  title: e,
+                })
+              }
+            />
+          </Styles.SelectWrapper>
+        ) : null}
         <Styles.SecondariesButtonWrapper>
           {s.amounts.map((amount) => (
             <PrimaryButton
@@ -61,5 +71,8 @@ const Styles = {
     input {
       margin: 35px 0 0 0;
     }
+  `,
+  SelectWrapper: styled.div`
+    padding: 20px 0;
   `,
 }

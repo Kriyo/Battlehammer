@@ -1,32 +1,156 @@
 import React from 'react'
-import styled from 'styled-components'
-import { HeaderOne, NavBar } from '../components'
+import styled from 'styled-components/macro'
+import Select from 'react-select'
+import {
+  useRouter,
+  defaultTheme,
+  darkTheme,
+  useLocallyPersistedReducer,
+} from '../utils'
+import { PrimaryButton, HeaderOne, InputGroup, NavBar } from '../components'
 import { Player } from '../components/Player'
 
-export const Dashboard = ({ darkMode, location, modeType, swapTheme }) => {
+import { battleTypes, missionOpts } from '../utils/constants'
+
+const defaultState = {
+  battleType: '',
+  mission: '',
+  points: '',
+}
+
+export const Dashboard = ({
+  darkMode,
+  location,
+  modeType,
+  showModal,
+  swapTheme,
+}) => {
   const players = ['Player 1', 'Player 2']
-  const buildPlayers = players.map((p) => <Player key={p} label={p} />)
+  const [state, setState] = useLocallyPersistedReducer(
+    defaultState,
+    'dashboard'
+  )
+  const router = useRouter()
+  const currentTheme = darkMode ? darkTheme : defaultTheme
+  const customStyles = {
+    singleValue: (provided) => ({
+      ...provided,
+      color: currentTheme.selectBGTextColor,
+    }),
+    control: (provided, styleState) => ({
+      ...provided,
+      borderRadius: '2px',
+      borderColor: styleState.isSelected
+        ? currentTheme.primaryColor
+        : currentTheme.secondaryColor,
+      '&:hover': {
+        borderColor: currentTheme.primaryColor,
+      },
+    }),
+    dropdownIndicator: (provided) => ({
+      ...provided,
+      color: currentTheme.selectBGActiveColor,
+      '&:hover': {
+        color: currentTheme.selectBGActiveColor,
+      },
+    }),
+    menu: (provided) => ({
+      ...provided,
+      borderRadius: '2px',
+    }),
+    option: (provided, styleState) => ({
+      ...provided,
+      border: styleState.isSelected
+        ? currentTheme.selectBGActiveColor
+        : currentTheme.selectBGColor,
+      backgroundColor: styleState.isSelected
+        ? currentTheme.selectBGActiveColor
+        : currentTheme.selectBGColor,
+      color: styleState.isSelected
+        ? currentTheme.selectBGActiveTextColor
+        : currentTheme.selectBGTextColor,
+      '&:hover': {
+        color: currentTheme.selectBGActiveTextColor,
+        backgroundColor: currentTheme.selectBGActiveColor,
+      },
+    }),
+  }
+
+  const buildPlayers = players.map((p) => (
+    <Player key={p} label={p} customStyles={customStyles} {...state} />
+  ))
+
+  const handleChange = (e, key) => {
+    const val = key === 'points' ? e.target.value : e
+    setState({ [key]: val })
+  }
+
+  const buildMissionSelect = () => {
+    const { battleType } = state
+    if (battleType) {
+      return (
+        <Styles.Mission>
+          <Styles.BattleLabel>Mission</Styles.BattleLabel>
+          <Select
+            styles={customStyles}
+            options={missionOpts[battleType.value]}
+            onChange={(e) => handleChange(e, 'mission')}
+            value={state.mission}
+          />
+        </Styles.Mission>
+      )
+    }
+    return null
+  }
 
   return (
     <Styles.Wrap>
       <NavBar
         darkMode={darkMode}
         modeType={modeType}
+        showModal={showModal}
         swapTheme={swapTheme}
         location={location}
       />
       <Styles.Header>
         <HeaderOne>Dashboard</HeaderOne>
       </Styles.Header>
+      <Styles.BattleSize>
+        <Styles.BattleLabel>Battle Size</Styles.BattleLabel>
+        <Select
+          styles={customStyles}
+          options={battleTypes}
+          onChange={(e) => handleChange(e, 'battleType')}
+          value={state.battleType}
+        />
+      </Styles.BattleSize>
+      {buildMissionSelect()}
+      <Styles.Points>
+        <InputGroup
+          label="Points"
+          value={state.points}
+          onChange={(e) => handleChange(e, 'points')}
+        />
+      </Styles.Points>
       <Styles.Content>
         <Styles.Players>{buildPlayers}</Styles.Players>
       </Styles.Content>
+      <Styles.GameControl>
+        <PrimaryButton onClick={() => router.push('/scoreboard')}>
+          Go to Scoreboard
+        </PrimaryButton>
+      </Styles.GameControl>
     </Styles.Wrap>
   )
 }
 
 const Styles = {
-  Wrap: styled.main``,
+  Wrap: styled.main`
+    background: ${(props) => props.theme.backgroundColor};
+  `,
+  BattleLabel: styled.p`
+    color: ${(props) => props.theme.textColorOnPrimary};
+  `,
   Content: styled.div`
     display: flex;
     flex-direction: column;
@@ -41,6 +165,30 @@ const Styles = {
     justify-content: center;
     background: ${(props) => props.theme.backgroundColor};
   `,
+  BattleSize: styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    margin: 0 auto;
+    background: ${(props) => props.theme.backgroundColor};
+  `,
+  Mission: styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    margin: 0 auto;
+    background: ${(props) => props.theme.backgroundColor};
+  `,
+  Points: styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    margin: 30px auto;
+    background: ${(props) => props.theme.backgroundColor};
+  `,
   Players: styled.div`
     display: flex;
     justify-content: space-around;
@@ -48,5 +196,14 @@ const Styles = {
       flex-direction: column;
       justify-content: center;
     }
+  `,
+  GameControl: styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 250px;
+    margin: 0 auto;
+    padding: 75px 0;
+    background: ${(props) => props.theme.backgroundColor};
   `,
 }

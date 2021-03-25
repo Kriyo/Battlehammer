@@ -1,7 +1,15 @@
-import React, { useEffect, useReducer } from 'react'
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React from 'react'
 import styled from 'styled-components'
 import { cloneDeep } from 'lodash'
-import { HeaderFour, HeaderFive, InputGroup, PrimaryButton } from './index'
+import { getScore, getTotalScore, useLocallyPersistedReducer } from '../utils'
+import {
+  CheckBox,
+  HeaderFour,
+  HeaderFive,
+  InputGroup,
+  PrimaryButton,
+} from './index'
 import { Primaries } from './Primaries'
 import { Secondaries } from './Secondaries'
 
@@ -9,6 +17,8 @@ const defaultState = {
   name: '',
   cp: 0,
   faction: '',
+  battleReady: false,
+  totalScore: 0,
   primaries: [
     {
       current: 0,
@@ -53,43 +63,18 @@ const defaultState = {
   ],
 }
 
-// Max amount of points for objectives is 45
-const getScore = (arr, key) => {
-  const cloneArr = cloneDeep(arr)
-  const currentScore = cloneArr.reduce((a, b) => a + (b[key] || 0), 0)
-  return currentScore >= 45 ? 45 : currentScore
-}
+export const Player = ({ battleType, customStyles, label, mission }) => {
+  const [state, setState] = useLocallyPersistedReducer(
+    defaultState,
+    `${label} state`
+  )
 
-const reducer = (prevState, updatedProperty) => {
-  return updatedProperty.reset
-    ? defaultState
-    : { ...prevState, ...updatedProperty }
-}
-
-// Customer useReducer fn for using localStorage as a means of persistence.
-function useLocallyPersistedReducer(storageKey, init = null) {
-  const hookVars = useReducer(reducer, defaultState, () => {
-    const persisted = JSON.parse(localStorage.getItem(storageKey))
-    // eslint-disable-next-line no-nested-ternary
-    return persisted !== null
-      ? persisted
-      : init !== null
-      ? init(defaultState)
-      : defaultState
-  })
-
-  useEffect(() => {
-    localStorage.setItem(storageKey, JSON.stringify(hookVars[0]))
-  }, [hookVars, storageKey])
-
-  return hookVars
-}
-
-export const Player = ({ label }) => {
-  const [state, setState] = useLocallyPersistedReducer(`${label} state`)
   const handleChange = (e, key) => {
     setState({ [key]: e.target.value })
   }
+
+  const handleChangeCheckbox = (e) =>
+    setState({ [e.target.name]: e.target.checked })
 
   const handleObjChange = (update, key) => {
     const cloneSpec = cloneDeep(state)
@@ -100,8 +85,8 @@ export const Player = ({ label }) => {
   }
 
   // fn for clearing localstorage and state, resetting the player.
-  const handleReset = () => {
-    localStorage.clear()
+  const handleReset = (key) => {
+    localStorage.removeItem(key)
     setState({ reset: true })
   }
 
@@ -123,23 +108,21 @@ export const Player = ({ label }) => {
     )
   }
 
-  const getTotalScore = () => {
-    const { primaries, secondaries } = state
-    const p = getScore(primaries, 'current')
-    const s = getScore(secondaries, 'current')
-    return p + s
-  }
-
   const buildTotalScore = () => {
-    const total = getTotalScore()
+    const total = getTotalScore(state)
     return <HeaderFive>Overall Score: {total}</HeaderFive>
   }
 
   const buildSecondaries = () => {
+    const { secondaries } = state
     return (
       <Secondaries
+        battleType={battleType}
+        customStyles={customStyles}
+        mission={mission}
         onChange={(e) => handleObjChange(e, 'secondaries')}
         config={state}
+        secondaries={secondaries}
       />
     )
   }
@@ -164,6 +147,16 @@ export const Player = ({ label }) => {
         value={state.faction}
         onChange={(e) => handleChange(e, 'faction')}
       />
+      <Styles.CheckBoxContainer key="battleReady-label">
+        <label>
+          <Styles.StyleSpan>Battle Ready</Styles.StyleSpan>
+          <CheckBox
+            checked={state.battleReady}
+            name="battleReady"
+            onChange={handleChangeCheckbox}
+          />
+        </label>
+      </Styles.CheckBoxContainer>
       <Styles.HeaderWrapper>
         <HeaderFour>Primary Objectives</HeaderFour>
       </Styles.HeaderWrapper>
@@ -176,7 +169,9 @@ export const Player = ({ label }) => {
       {buildSecondaries()}
       {buildScore('secondaries')}
       {buildTotalScore()}
-      <PrimaryButton onClick={() => handleReset()}>Reset Player</PrimaryButton>
+      <PrimaryButton onClick={() => handleReset(`${label} state`)}>
+        Reset Player
+      </PrimaryButton>
     </Styles.Container>
   )
 }
@@ -185,5 +180,16 @@ const Styles = {
   Container: styled.div``,
   HeaderWrapper: styled.div`
     padding: 1rem 0;
+  `,
+  CheckBoxContainer: styled.div`
+    display: flex;
+    min-width: 20%;
+  `,
+  CheckBox: styled.div`
+    padding: 1rem 0;
+  `,
+  StyleSpan: styled.span`
+    margin-right: 8px;
+    color: ${(props) => props.theme.textColor};
   `,
 }

@@ -1,14 +1,33 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { Home, Book, Moon, Sun } from 'react-feather'
+import { useIdentityContext } from 'react-netlify-identity'
+import {
+  Book,
+  BookOpen,
+  Home,
+  LogIn,
+  LogOut,
+  Moon,
+  Sun,
+  User,
+} from 'react-feather'
 import { HammerIcon } from '../assets/hammer'
 import { darkTheme, defaultTheme } from '../utils'
 
-export const NavBar = ({ darkMode, modeType, location, swapTheme }) => {
+export const NavBar = ({
+  darkMode,
+  modeType,
+  location,
+  showModal,
+  swapTheme,
+}) => {
   const [openDrawer, toggleDrawer] = useState(false)
   const drawerRef = useRef(null)
   const { pathname } = location
+  const identity = useIdentityContext()
+  const userId = identity && identity.user && identity.user.id
+  const userLoggedIn = identity && identity.isLoggedIn
   const iconColor = darkMode ? darkTheme.buttonText : defaultTheme.buttonText
   const modeIcon = darkMode ? (
     <Sun color={iconColor} size={16} />
@@ -27,6 +46,47 @@ export const NavBar = ({ darkMode, modeType, location, swapTheme }) => {
     return () => document.removeEventListener('mousedown', closeDrawer)
   }, [])
 
+  const buildAuthLink = () => {
+    const copy = userLoggedIn ? 'Log Out' : 'Log In'
+    const icon = userLoggedIn ? (
+      <LogOut color={iconColor} size={16} />
+    ) : (
+      <LogIn color={iconColor} size={16} />
+    )
+
+    return (
+      <Navbar.Item onClick={showModal}>
+        {icon}
+        &nbsp;
+        <a href="void:0">{copy}</a>
+      </Navbar.Item>
+    )
+  }
+
+  const buildDashboardLink = () =>
+    userLoggedIn ? (
+      <Navbar.Item className={pathname === '/dashboard' ? 'active' : null}>
+        <Home color={iconColor} size={16} />
+        &nbsp;
+        <Link to="/dashboard">Dashboard</Link>
+      </Navbar.Item>
+    ) : null
+
+  const buildUserProfileLink = () => {
+    if (userLoggedIn) {
+      const fullName = identity.user.user_metadata.full_name
+
+      return (
+        <Navbar.Item className={pathname === '/profile' ? 'active' : null}>
+          <User color={iconColor} size={16} />
+          &nbsp;
+          <Link to={`/profile/${userId}`}>{fullName}</Link>
+        </Navbar.Item>
+      )
+    }
+    return null
+  }
+
   return (
     <Styles.Wrapper>
       <Navbar.Wrapper>
@@ -43,10 +103,11 @@ export const NavBar = ({ darkMode, modeType, location, swapTheme }) => {
             &nbsp;
             <Link to="/home">Home</Link>
           </Navbar.Item>
-          <Navbar.Item className={pathname === '/dashboard' ? 'active' : null}>
-            <Home color={iconColor} size={16} />
+          {buildDashboardLink()}
+          <Navbar.Item className={pathname === '/missions' ? 'active' : null}>
+            <BookOpen color={iconColor} size={16} />
             &nbsp;
-            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/missions">Missions</Link>
           </Navbar.Item>
           <Navbar.Item className={pathname === '/objectives' ? 'active' : null}>
             <Book color={iconColor} size={16} />
@@ -59,6 +120,8 @@ export const NavBar = ({ darkMode, modeType, location, swapTheme }) => {
               <Navbar.Span>{modeType}</Navbar.Span>
             </a>
           </Navbar.Item>
+          {buildUserProfileLink()}
+          {buildAuthLink()}
         </Navbar.Items>
       </Navbar.Wrapper>
     </Styles.Wrapper>
@@ -110,6 +173,7 @@ const Navbar = {
 
     @media only screen and (max-width: 40em) {
       position: fixed;
+      z-index: 1;
       right: 0;
       top: 0;
       width: 170px;
