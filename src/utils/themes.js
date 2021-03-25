@@ -1,10 +1,12 @@
 import {
   darkModePrimary,
   darkTextShadow,
+  darkTextShadowXL,
   defaultShadow,
   error,
   lightModePrimary,
   lightTextShadow,
+  lightTextShadowXL,
   neutral,
   success,
   warning,
@@ -34,6 +36,7 @@ export const defaultTheme = {
   selectBGTextColor: lightModePrimary[200],
   selectBGActiveTextColor: neutral[100],
   textShadow: lightTextShadow,
+  textShadowXL: lightTextShadowXL,
   disabled: neutral[400],
   textOnDisabled: neutral[300],
   status: {
@@ -76,6 +79,7 @@ export const darkTheme = {
   selectBGTextColor: darkModePrimary[300],
   selectBGActiveTextColor: darkModePrimary[200],
   textShadow: darkTextShadow,
+  textShadowXL: darkTextShadowXL,
   disabled: neutral[400],
   textOnDisabled: neutral[300],
   status: {
