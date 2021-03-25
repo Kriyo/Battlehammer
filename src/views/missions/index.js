@@ -35,6 +35,7 @@ export const Missions = ({
   showModal,
   swapTheme,
 }) => {
+  // eslint-disable-next-line no-unused-vars
   const [state, setState] = useReducer(reducer, defaultState)
 
   return (
