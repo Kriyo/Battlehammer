@@ -1,10 +1,15 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import Select from 'react-select'
-import { useRouter } from '../utils/hooks/useRouter'
+import {
+  useRouter,
+  defaultTheme,
+  darkTheme,
+  useLocallyPersistedReducer,
+} from '../utils'
 import { PrimaryButton, HeaderOne, InputGroup, NavBar } from '../components'
 import { Player } from '../components/Player'
-import { defaultTheme, darkTheme, useLocallyPersistedReducer } from '../utils'
+
 import { battleTypes, missionOpts } from '../utils/constants'
 
 const defaultState = {
