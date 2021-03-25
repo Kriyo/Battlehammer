@@ -279,3 +279,53 @@ export const secondaryObjectives = [
     options: warpcraftObjs,
   },
 ]
+
+export const defaultPlayerState = {
+  name: '',
+  cp: 0,
+  faction: '',
+  battleReady: false,
+  totalScore: 0,
+  primaries: [
+    {
+      current: 0,
+      round: 2,
+      amounts: [5, 10, 15],
+    },
+    {
+      current: 0,
+      round: 3,
+      amounts: [5, 10, 15],
+    },
+    {
+      current: 0,
+      round: 4,
+      amounts: [5, 10, 15],
+    },
+    {
+      current: 0,
+      round: 5,
+      amounts: [5, 10, 15],
+    },
+  ],
+  secondaries: [
+    {
+      current: 0,
+      amounts: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+      key: 'First',
+      title: '',
+    },
+    {
+      current: 0,
+      key: 'Second',
+      amounts: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+      title: '',
+    },
+    {
+      current: 0,
+      key: 'Third',
+      amounts: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+      title: '',
+    },
+  ],
+}

@@ -18,6 +18,7 @@ const defaultState = {
   cp: 0,
   faction: '',
   battleReady: false,
+  totalScore: 0,
   primaries: [
     {
       current: 0,

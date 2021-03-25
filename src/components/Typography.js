@@ -2,16 +2,20 @@ import styled from 'styled-components'
 import { typeScale } from '../utils'
 
 export const HeaderOne = styled.h1`
-  font-size: ${typeScale.h1};
+  font-size: ${(props) => (props.large ? typeScale.h1XL : typeScale.h1)};
   font-family: ${(props) => props.theme.secondaryFont};
   color: ${(props) => props.theme.largeHeadingTextColor};
   text-shadow: ${(props) => props.theme.textShadow};
 `
 
 export const HeaderTwo = styled.h2`
-  font-size: ${typeScale.h2};
+  font-size: ${(props) => (props.large ? typeScale.h2XL : typeScale.h2)};
   font-family: ${(props) => props.theme.secondaryFont};
   color: ${(props) => props.theme.largeHeadingTextColor};
+  text-shadow: ${(props) =>
+    props.large && !props.darkMode
+      ? 'rgb(255 255 255) 0px 0px 4px, rgb(255 255 255 / 50%) 5px 0px 10px, rgb(255 255 255) 5px 18px 23px;'
+      : 'none'};
 `
 
 export const HeaderThree = styled.h3`

@@ -16,7 +16,14 @@ import {
   PrivateRoute,
   useLocallyPersistedReducer,
 } from './utils'
-import { Dashboard, Home, Missions, Profile, ObjectivesList } from './views'
+import {
+  Dashboard,
+  Home,
+  Missions,
+  Profile,
+  ObjectivesList,
+  Scoreboard,
+} from './views'
 import 'react-netlify-identity-widget/styles.css'
 import '@reach/tabs/styles.css'
 
@@ -105,6 +112,19 @@ const App = () => {
               path="/dashboard"
               component={(props) => (
                 <Dashboard
+                  {...props}
+                  darkMode={state.useDarkTheme}
+                  modeType={modeTypeSwitchLabel}
+                  showModal={showModal}
+                  swapTheme={() => handleChangeTheme(!state.useDarkTheme)}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/scoreboard"
+              component={(props) => (
+                <Scoreboard
                   {...props}
                   darkMode={state.useDarkTheme}
                   modeType={modeTypeSwitchLabel}
