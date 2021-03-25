@@ -2,7 +2,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { cloneDeep } from 'lodash'
-import { useLocallyPersistedReducer } from '../utils'
+import { getScore, getTotalScore, useLocallyPersistedReducer } from '../utils'
 import {
   CheckBox,
   HeaderFour,
@@ -63,13 +63,6 @@ const defaultState = {
   ],
 }
 
-// Max amount of points for objectives is 45
-const getScore = (arr, key) => {
-  const cloneArr = cloneDeep(arr)
-  const currentScore = cloneArr.reduce((a, b) => a + (b[key] || 0), 0)
-  return currentScore >= 45 ? 45 : currentScore
-}
-
 export const Player = ({ battleType, customStyles, label, mission }) => {
   const [state, setState] = useLocallyPersistedReducer(
     defaultState,
@@ -115,16 +108,8 @@ export const Player = ({ battleType, customStyles, label, mission }) => {
     )
   }
 
-  const getTotalScore = () => {
-    const { battleReady, primaries, secondaries } = state
-    const p = getScore(primaries, 'current')
-    const s = getScore(secondaries, 'current')
-    const br = battleReady ? 10 : 0
-    return p + s + br
-  }
-
   const buildTotalScore = () => {
-    const total = getTotalScore()
+    const total = getTotalScore(state)
     return <HeaderFive>Overall Score: {total}</HeaderFive>
   }
 

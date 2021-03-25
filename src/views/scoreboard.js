@@ -2,7 +2,12 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import { cloneDeep } from 'lodash'
 import { v4 as uuidv4 } from 'uuid'
-import { useLocallyPersistedReducer, useRouter } from '../utils'
+import {
+  getScore,
+  getTotalScore,
+  useLocallyPersistedReducer,
+  useRouter,
+} from '../utils'
 import { HeaderOne, HeaderTwo, NavBar, PrimaryButton } from '../components'
 import { defaultPlayerState } from '../utils/constants'
 import lightBackground from '../assets/spacemarine.jpg'
@@ -31,21 +36,6 @@ export const Scoreboard = ({
     defaultPlayerState,
     `Player 2 state`
   )
-
-  // Max amount of points for objectives is 45
-  const getScore = (arr, key) => {
-    const cloneArr = cloneDeep(arr)
-    const currentScore = cloneArr.reduce((a, b) => a + (b[key] || 0), 0)
-    return currentScore >= 45 ? 45 : currentScore
-  }
-
-  const getTotalScore = (playerOne) => {
-    const { battleReady, primaries, secondaries } = playerOne
-    const p = getScore(primaries, 'current')
-    const s = getScore(secondaries, 'current')
-    const br = battleReady ? 10 : 0
-    return p + s + br
-  }
 
   const getWinner = () => {
     const playerOneScore = getTotalScore(playerOneState)
@@ -88,9 +78,7 @@ export const Scoreboard = ({
     }
     const updateGames = [...cloneGames.previous, gameInfo]
 
-    // Update the score and route to profile / fallback to home page
-    setGames({ previous: updateGames })
-    router.push('./profile')
+    return setGames({ previous: updateGames })
   }
 
   return (
