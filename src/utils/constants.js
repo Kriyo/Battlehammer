@@ -329,3 +329,7 @@ export const defaultPlayerState = {
     },
   ],
 }
+
+export const defaultGamesState = {
+  previous: [],
+}

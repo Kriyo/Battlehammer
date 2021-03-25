@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import styled from 'styled-components/macro'
 import { cloneDeep } from 'lodash'
@@ -9,12 +10,8 @@ import {
   useRouter,
 } from '../utils'
 import { HeaderOne, HeaderTwo, NavBar, PrimaryButton } from '../components'
-import { defaultPlayerState } from '../utils/constants'
+import { defaultGamesState, defaultPlayerState } from '../utils/constants'
 import lightBackground from '../assets/spacemarine.jpg'
-
-const defaultGamesState = {
-  previous: [],
-}
 
 export const Scoreboard = ({
   darkMode,

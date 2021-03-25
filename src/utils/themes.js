@@ -67,7 +67,7 @@ export const darkTheme = {
   sideBarColor: neutral[700],
   textColor: darkModePrimary[400],
   textColorOnPrimary: neutral[100],
-  textColorOnSecondary: darkModePrimary[200],
+  textColorOnSecondary: darkModePrimary[300],
   textColorInverted: neutral[100],
   buttonBGColor: darkModePrimary[200],
   buttonTextColor: darkModePrimary[300],
