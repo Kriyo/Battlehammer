@@ -45,9 +45,9 @@ export const Scoreboard = ({
     if (playerOneScore > playerTwoScore) {
       winner = `Victory for ${playerOneState.name}'s ${playerOneState.faction}`
     } else if (playerTwoScore > playerOneScore) {
-      winner = `Victory for ${playerTwoState.name}'s ${playerOneState.faction}`
+      winner = `Victory for ${playerTwoState.name}'s ${playerTwoState.faction}`
     } else {
-      winner = "It's a Draw"
+      winner = `It's a Draw between the ${playerOneState.faction} and the ${playerTwoState.faction}`
     }
     return winner
   }
