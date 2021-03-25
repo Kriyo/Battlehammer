@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import { cloneDeep } from 'lodash'
 import { useLocallyPersistedReducer } from '../utils'
-import { HeaderOne, HeaderTwo, NavBar } from '../components'
+import { HeaderOne, HeaderTwo, NavBar, PrimaryButton } from '../components'
 import { defaultPlayerState } from '../utils/constants'
 import lightBackground from '../assets/spacemarine.jpg'
 
@@ -71,6 +71,14 @@ export const Scoreboard = ({
           {getWinner()} GG!
         </HeaderTwo>
       </Styles.Header>
+      <Styles.ButtonWrapper>
+        <Styles.Button>
+          <PrimaryButton>Return to Dashboard</PrimaryButton>
+        </Styles.Button>
+        <Styles.Button>
+          <PrimaryButton>Save Score</PrimaryButton>
+        </Styles.Button>
+      </Styles.ButtonWrapper>
     </Styles.Wrap>
   )
 }
@@ -98,5 +106,23 @@ const Styles = {
     @media only screen and (max-width: 40em) {
       padding: 5rem 1rem;
     }
+  `,
+  ButtonWrapper: styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 15%;
+    margin: 0 auto;
+    padding: 200px 0;
+    @media only screen and (max-width: 40em) {
+      width: 100%;
+      padding: 20px 0;
+    }
+  `,
+  Button: styled.div`
+    display: flex;
+    justify-content: inherit;
+    width: 100%;
+    padding: 15px 0;
   `,
 }
