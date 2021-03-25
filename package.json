@@ -12,6 +12,7 @@
     "lodash": "^4.17.19",
     "netlify-identity-widget": "^1.9.1",
     "polished": "^3.6.5",
+    "query-string": "^7.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-feather": "^2.0.8",

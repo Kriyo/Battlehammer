@@ -1,7 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import Select from 'react-select'
-import { HeaderOne, InputGroup, NavBar } from '../components'
+import { useRouter } from '../utils/hooks/useRouter'
+import { PrimaryButton, HeaderOne, InputGroup, NavBar } from '../components'
 import { Player } from '../components/Player'
 import { defaultTheme, darkTheme, useLocallyPersistedReducer } from '../utils'
 import { battleTypes, missionOpts } from '../utils/constants'
@@ -24,6 +25,7 @@ export const Dashboard = ({
     defaultState,
     'dashboard'
   )
+  const router = useRouter()
   const currentTheme = darkMode ? darkTheme : defaultTheme
   const customStyles = {
     singleValue: (provided) => ({
@@ -128,6 +130,11 @@ export const Dashboard = ({
       <Styles.Content>
         <Styles.Players>{buildPlayers}</Styles.Players>
       </Styles.Content>
+      <Styles.GameControl>
+        <PrimaryButton onClick={() => router.push('/scoreboard')}>
+          Go to Scoreboard
+        </PrimaryButton>
+      </Styles.GameControl>
     </Styles.Wrap>
   )
 }
@@ -184,5 +191,14 @@ const Styles = {
       flex-direction: column;
       justify-content: center;
     }
+  `,
+  GameControl: styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 250px;
+    margin: 0 auto;
+    padding: 75px 0;
+    background: ${(props) => props.theme.backgroundColor};
   `,
 }
