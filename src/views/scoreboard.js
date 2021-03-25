@@ -1,10 +1,15 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import { cloneDeep } from 'lodash'
+import { v4 as uuidv4 } from 'uuid'
 import { useLocallyPersistedReducer, useRouter } from '../utils'
 import { HeaderOne, HeaderTwo, NavBar, PrimaryButton } from '../components'
 import { defaultPlayerState } from '../utils/constants'
 import lightBackground from '../assets/spacemarine.jpg'
+
+const defaultGamesState = {
+  previous: [],
+}
 
 export const Scoreboard = ({
   darkMode,
@@ -13,6 +18,11 @@ export const Scoreboard = ({
   showModal,
   swapTheme,
 }) => {
+  const router = useRouter()
+  const [games, setGames] = useLocallyPersistedReducer(
+    defaultGamesState,
+    'previousGames'
+  )
   const [playerOneState, setPlayerOneState] = useLocallyPersistedReducer(
     defaultPlayerState,
     `Player 1 state`
@@ -21,8 +31,6 @@ export const Scoreboard = ({
     defaultPlayerState,
     `Player 2 state`
   )
-
-  const router = useRouter()
 
   // Max amount of points for objectives is 45
   const getScore = (arr, key) => {
@@ -54,8 +62,37 @@ export const Scoreboard = ({
     return winner
   }
 
-  const getPlayerData = () => {}
-  getPlayerData()
+  const buildPlayerScore = (playerState) => {
+    const { name, faction, battleReady, primaries, secondaries } = playerState
+    const primaryTotalScore = getScore(primaries, 'current')
+    const secondaryTotalScore = getScore(secondaries, 'current')
+    const objectiveCap = 45
+    return {
+      name,
+      faction,
+      battleReady,
+      primary:
+        primaryTotalScore > objectiveCap ? objectiveCap : primaryTotalScore,
+      secondaries:
+        secondaryTotalScore > objectiveCap ? objectiveCap : secondaryTotalScore,
+    }
+  }
+
+  const saveScore = () => {
+    const players = [playerOneState, playerTwoState]
+    const buildScores = players.map((player) => buildPlayerScore(player))
+    const cloneGames = cloneDeep(games)
+    const gameInfo = {
+      id: uuidv4(),
+      scores: buildScores,
+    }
+    const updateGames = [...cloneGames.previous, gameInfo]
+
+    // Update the score and route to profile / fallback to home page
+    setGames({ previous: updateGames })
+    router.push('./profile')
+  }
+
   return (
     <Styles.Wrap>
       <NavBar
@@ -66,7 +103,7 @@ export const Scoreboard = ({
         swapTheme={swapTheme}
       />
       <Styles.Header>
-        <HeaderOne style={{ fontSize: '9rem' }}>
+        <HeaderOne large>
           {getTotalScore(playerOneState)} - {getTotalScore(playerTwoState)}
         </HeaderOne>
         <HeaderTwo darkMode={darkMode} large>
@@ -80,7 +117,7 @@ export const Scoreboard = ({
           </PrimaryButton>
         </Styles.Button>
         <Styles.Button>
-          <PrimaryButton>Save Score</PrimaryButton>
+          <PrimaryButton onClick={() => saveScore()}>Save Score</PrimaryButton>
         </Styles.Button>
       </Styles.ButtonWrapper>
     </Styles.Wrap>
