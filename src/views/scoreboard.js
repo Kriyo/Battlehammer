@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import { cloneDeep } from 'lodash'
-import { useLocallyPersistedReducer } from '../utils'
+import { useLocallyPersistedReducer, useRouter } from '../utils'
 import { HeaderOne, HeaderTwo, NavBar, PrimaryButton } from '../components'
 import { defaultPlayerState } from '../utils/constants'
 import lightBackground from '../assets/spacemarine.jpg'
@@ -21,6 +21,8 @@ export const Scoreboard = ({
     defaultPlayerState,
     `Player 2 state`
   )
+
+  const router = useRouter()
 
   // Max amount of points for objectives is 45
   const getScore = (arr, key) => {
@@ -73,7 +75,9 @@ export const Scoreboard = ({
       </Styles.Header>
       <Styles.ButtonWrapper>
         <Styles.Button>
-          <PrimaryButton>Return to Dashboard</PrimaryButton>
+          <PrimaryButton onClick={() => router.push('/dashboard')}>
+            Return to Dashboard
+          </PrimaryButton>
         </Styles.Button>
         <Styles.Button>
           <PrimaryButton>Save Score</PrimaryButton>
